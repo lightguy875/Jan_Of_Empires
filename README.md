@@ -13,46 +13,56 @@ Dois tipos de recursos:
 -Metal: para criação de pilares. Menos abundante no mapa (terá o suficiente para criar mais 2 pilares para cada jogador).
 -Ossos: para aumento de poder das unidades. Mais abundante no mapa.
 
-## Prédios
-Os prédios são pilares. Cada pilar representa a unidade que foi criada a partir do pilar usando ossos, e ele cria uma única unidade, que é o necromancer. Com o pilar podemos aumentar o poder do necromancer usando ossos.
+## Prédios (Pilares)
+Os prédios são pilares. Cada pilar representa uma fábrica de um tipo de unidade que será criada a partir da quantidade de ossos. Cada pilar cria uma única unidade, que é o necromancer. Depois de criado o necromancer, o pilar pode aumentar o poder do necromancer utilizando ossos.
 
-Cada prédio tem:
+Cada pilar tem:
 -HP: representa a vida do pilar. Se chega a zero, ele é destruído.
 
 É possível reconstruir pilares, com o máximo de 3 por jogador.
 
 Três tipos de pilares:
--Pilar da Espada: é o pilar que representa o necromancer guerreiro.
--Pilar da Lança: é o pilar que representa o necromancer cavaleiro.
--Pilar do Arco : é o pilar que representa o necromancer arqueiro.
+-Pilar da Espada: é o pilar que cria o necromancer guerreiro.
+-Pilar da Lança: é o pilar que cria o necromancer cavaleiro.
+-Pilar do Arco : é o pilar que cria o necromancer arqueiro.
 
 
-## Unidades
-As unidades são representadas como um único elemento, que tem um número que define quanto de poder que ele tem. Por exemplo: em um bloco, há uma unidade A com o número 20. Isso significa que a unidade A tem 20 de poder.
+## Unidades (Necromancers)
+As unidades são representadas por um único elemento, o Necromancer. 
+Cada necromancer tem um número associado que define quanto de poder ele tem. 
+Por exemplo: no mapa há uma unidade A com o número 20. Isso significa que a unidade A tem 20 de poder.
 
 Cada unidade tem: 
 -MP: representa quanto de poder a unidade tem e representa a vida da unidade. Se ela chegar a zero, a unidade morre.
 
 São 3 tipos de unidades:
 
--Necromancer Guerreiro (A): é o necromancer que invoca somente undeads guerreiros. Esses undeads não são representados no mapa, mas são o que definem o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o Necromancer Cavaleiro e desvantagem sobre o Necromancer Arqueiro.
+-Necromancer Guerreiro (A): é o necromancer que invoca somente undeads guerreiros. A quantidade de undeads é o que define o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o Necromancer Cavaleiro e desvantagem sobre o Necromancer Arqueiro.
 
--Necromancer Cavaleiro (B): é o necromancer que invoca somente undeads cavaleiros. Esses undeads não são representados no mapa, mas são o que definem o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o Necromancer Arqueiro e desvantagem sobre o Necromancer Guerreiro.
+-Necromancer Cavaleiro (B): é o necromancer que invoca somente undeads cavaleiros. A quantidade de undeads é o que define o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o Necromancer Arqueiro e desvantagem sobre o Necromancer Guerreiro.
 
--Necromancer Arqueiro (C): é o necromancer que invoca somente undeads arqueiros. Esses undeads não são representados no mapa, mas são o que definem o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o Necromancer Guerreiro e desvantagem sobre o Necromancer Cavaleiro.
+-Necromancer Arqueiro (C): é o necromancer que invoca somente undeads arqueiros. EA quantidade de undeads é o que define o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o Necromancer Guerreiro e desvantagem sobre o Necromancer Cavaleiro.
 
 O máximo de unidades no jogo são 6.
 
 # Regras definidas para o jogo
 
 ## Inicialização
-Elementos iniciais:
--Pilar da Espada
--Necromancer guerreiro
--Mapa com recursos espalhados randomicamente.
+Inicialmente cada jogardor possui:
+- 1 Pilar da Espada
+- 1 Necromancer guerreiro
 
 ## Turno
-O turno é definido para criar pilares, fortalecer as unidades e mover uma delas. Ele acaba quando o jogador decide terminar o turno, movendo ou não as unidades.
+Em UM turno o jogador pode criar pilares, fortalecer unidades e mover apenas uma delas. Ele acaba quando o jogador move uma peça ou decide terminar o turno.
+
+## Captação de recursos
+Os recursos são espalhados randômicamente no mapa no início do jogo.
+São capturados quando o jogador move uma unidade para o mesmo bloco em que o recurso está inserido.
+
+## Combate
+O combate acontece automaticamente quando duas unidades estão vizinhas
+O combate acontece sempre entre apenas duas unidades
+No combate, verificam-se os poderes de cada unidade, e as capacidades e fraquezas de cada uma em relação a outra, de acordo com os seus tipos. Então, é decrescido poder de cada uma de acordo com o estabelecido.
 
 ## Condições de término do jogo
 As condições para o término do jogo são os seguintes:
