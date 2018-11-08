@@ -3,24 +3,28 @@
     Setando diferentes valores iniciais de mp
     de acordo com o tipo de necromancer
 */
-
 Guerreiro::Guerreiro(){
     this->mp = 30;
-}
-void Guerreiro::print_name(){
-    std::cout<< "GUERREIRO"<<std::endl;
 }
 
 Cavaleiro::Cavaleiro(){
     this->mp = 50;
 }
-void Cavaleiro::print_name(){
-    std::cout<< "CAVALEIRO"<<std::endl;
-}
 
 Arqueiro::Arqueiro(){
     this->mp = 60;
 }
+
+
+
+void Cavaleiro::print_name(){
+    std::cout<< "CAVALEIRO"<<std::endl;
+}
+
+void Guerreiro::print_name(){
+    std::cout<< "GUERREIRO"<<std::endl;
+}
+
 void Arqueiro::print_name(){
     std::cout<< "ARQUEIRO"<<std::endl;
 }
