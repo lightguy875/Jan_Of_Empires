@@ -4,17 +4,17 @@
     de acordo com o tipo de necromancer
 */
 Pilar::Pilar(){
-    this->tipo = PREDIO;
+    this->tipo = TipoConteudoBloco::PREDIO;
 }
 
 PilarLanca::PilarLanca(){
-    this->sub_tipo = LANCA;
+    this->tipo_pilar = TipoPilar::LANCA;
 }
 
 PilarArco::PilarArco(){
-    this->sub_tipo = ARCO;
+    this->tipo_pilar = TipoPilar::ARCO;
 }
 
 PilarEspada::PilarEspada(){
-    this->sub_tipo = ESPADA;
+    this->tipo_pilar = TipoPilar::ESPADA;
 }

@@ -4,21 +4,21 @@
     de acordo com o tipo de necromancer
 */
 Necromancer::Necromancer(){
-    this->tipo = UNIDADE;
+    this->tipo = TipoConteudoBloco::UNIDADE;
 }
 
 Guerreiro::Guerreiro(){
-    this->sub_tipo = GUERREIRO;
+    this->tipo_necromancer = TipoNecromancer::GUERREIRO;
     this->mp = 30;
 }
 
 Cavaleiro::Cavaleiro(){
-    this->sub_tipo = CAVALEIRO;
+    this->tipo_necromancer = TipoNecromancer::CAVALEIRO;
     this->mp = 50;
 }
 
 Arqueiro::Arqueiro(){
-    this->sub_tipo = ARQUEIRO;
+    this->tipo_necromancer = TipoNecromancer::ARQUEIRO;
     this->mp = 60;
 }
 

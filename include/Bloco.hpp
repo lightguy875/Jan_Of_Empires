@@ -1,13 +1,15 @@
 #ifndef BLOCO_HPP
 #define BLOCO_HPP
 
-#include "Utils.hpp"
+enum class TipoConteudoBloco{
+    UNIDADE=0,PREDIO,RECURSO
+};
+
 
 class ColocavelEmBloco 
 {
     public:
-        int tipo;
-        int sub_tipo;
+        TipoConteudoBloco tipo;
 };
 
 class Bloco

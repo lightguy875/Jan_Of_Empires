@@ -2,14 +2,14 @@
  
 
 Recurso::Recurso(){
-    this->tipo = RECURSO;
+    this->tipo = TipoConteudoBloco::RECURSO;
 }
 
 Ossos::Ossos(){
-    this->sub_tipo = OSSOS;
+    this->tipo_recurso = TipoRecurso::OSSOS;
 }
 
 Metal::Metal(){
-    this->sub_tipo = METAL;
+    this->tipo_recurso = TipoRecurso::METAL;
 }
 

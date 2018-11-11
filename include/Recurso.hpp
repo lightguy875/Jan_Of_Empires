@@ -3,9 +3,15 @@
 
 #include "Bloco.hpp"
 
+enum class TipoRecurso{
+    METAL = 10,
+    OSSOS
+};
+
 class Recurso  : public ColocavelEmBloco
 { 
-    public: 
+    public:
+        TipoRecurso tipo_recurso;
         Recurso();
 }; 
 

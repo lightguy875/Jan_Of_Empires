@@ -1,0 +1,132 @@
+File 'Bloco.cpp'
+Lines executed:58.33% of 24
+
+File 'Necromancer.cpp'
+Lines executed:46.67% of 15
+
+File 'Pilar.cpp'
+Lines executed:50.00% of 12
+
+File 'Recurso.cpp'
+Lines executed:66.67% of 9
+
+File '../tests/../lib/catch.hpp'
+Lines executed:28.57% of 4036
+
+File '../tests/Tests.cpp'
+Lines executed:100.00% of 11
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__functional_base'
+Lines executed:100.00% of 1
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__locale'
+Lines executed:15.38% of 13
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer'
+Lines executed:14.49% of 138
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__string'
+Lines executed:19.39% of 98
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__tree'
+Lines executed:54.45% of 292
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm'
+Lines executed:7.78% of 424
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/chrono'
+Lines executed:100.00% of 5
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/deque'
+Lines executed:0.00% of 146
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/exception'
+Lines executed:0.00% of 2
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/fstream'
+Lines executed:0.00% of 367
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/initializer_list'
+Lines executed:100.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip'
+Lines executed:0.00% of 12
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/ios'
+Lines executed:33.93% of 56
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/iosfwd'
+Lines executed:40.00% of 5
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/istream'
+Lines executed:0.00% of 34
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/iterator'
+Lines executed:42.59% of 54
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/limits'
+Lines executed:50.00% of 4
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/locale'
+Lines executed:53.57% of 28
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/map'
+Lines executed:55.56% of 27
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/math.h'
+Lines executed:0.00% of 2
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/memory'
+Lines executed:80.97% of 226
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/new'
+Lines executed:100.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/ostream'
+Lines executed:73.33% of 30
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/regex'
+Lines executed:0.00% of 1795
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/set'
+Lines executed:86.67% of 15
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/sstream'
+Lines executed:7.46% of 134
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/stdexcept'
+Lines executed:0.00% of 5
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/stdlib.h'
+Lines executed:0.00% of 1
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/streambuf'
+Lines executed:3.70% of 27
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string'
+Lines executed:36.97% of 211
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string_view'
+Lines executed:100.00% of 5
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/tuple'
+Lines executed:100.00% of 12
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/type_traits'
+Lines executed:87.50% of 8
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/typeinfo'
+Lines executed:0.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/utility'
+Lines executed:38.46% of 13
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/vector'
+Lines executed:46.80% of 344
+
+File '/usr/include/_ctype.h'
+Lines executed:20.00% of 5
+
+File '/usr/include/math.h'
+Lines executed:0.00% of 2
+
