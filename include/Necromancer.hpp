@@ -1,21 +1,17 @@
-#include <iostream>
+#ifndef NECRO_HPP
+#define NECRO_HPP
 
+#include "Bloco.hpp"
 /*
     Classe Necromancer, que possui as coisas comuns entre todos os Necromancers.
     Funções que funcionam igualmente, dentre outros métodos e atributos devem ser implementados
     aqui.
 */
-class Necromancer 
+class Necromancer  : public ColocavelEmBloco
 { 
     public: 
         int mp; 
-        
-        /*  
-            C++ obriga que métodos virtuais tenham implementação, por isso as chaves {}
-            mas eles serão futuramente implementados de formas diferentes nas classes
-            que herdam de Necromancer (no .cpp) 
-        */
-        virtual void print_name(){}
+        Necromancer();
 }; 
 
 
@@ -27,7 +23,6 @@ class Guerreiro : public Necromancer
 { 
     public:
         Guerreiro();  
-        void print_name();
 }; 
 
    
@@ -35,7 +30,6 @@ class Cavaleiro : public Necromancer
 { 
     public: 
         Cavaleiro();
-        void print_name();   
 }; 
 
    
@@ -43,5 +37,8 @@ class Arqueiro : public Necromancer
 { 
     public: 
         Arqueiro();
-        void print_name();
 }; 
+
+
+
+#endif
