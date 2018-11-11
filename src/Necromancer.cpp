@@ -4,7 +4,7 @@
     de acordo com o tipo de necromancer
 */
 Necromancer::Necromancer(){
-    this->tipo_bloco = UNIDADE;
+    this->tipo = UNIDADE;
 }
 
 Guerreiro::Guerreiro(){

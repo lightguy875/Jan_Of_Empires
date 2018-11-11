@@ -4,7 +4,7 @@
     de acordo com o tipo de necromancer
 */
 Pilar::Pilar(){
-    this->tipo_bloco = PREDIO;
+    this->tipo = PREDIO;
 }
 
 PilarLanca::PilarLanca(){

@@ -2,7 +2,7 @@
  
 
 Recurso::Recurso(){
-    this->sub_tipo = RECURSO;
+    this->tipo = RECURSO;
 }
 
 Ossos::Ossos(){

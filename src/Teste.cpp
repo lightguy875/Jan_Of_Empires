@@ -9,7 +9,7 @@ void checa_bloco(Bloco *b){
         std::cout << "bloco vazio!" << std::endl;
     }
     else{
-        if(b->conteudo->tipo_bloco == UNIDADE)
+        if(b->conteudo->tipo == UNIDADE)
             std::cout << "É uma unidade ";
 
             if(b->conteudo->sub_tipo == GUERREIRO)
@@ -19,7 +19,7 @@ void checa_bloco(Bloco *b){
             if(b->conteudo->sub_tipo == ARQUEIRO )
                  std::cout << "do tipo Arqueiro" << std::endl;
 
-        else if(b->conteudo->tipo_bloco == RECURSO)
+        if(b->conteudo->tipo == RECURSO)
             std::cout << "É um recurso ";
 
             if(b->conteudo->sub_tipo == OSSOS)
@@ -27,7 +27,7 @@ void checa_bloco(Bloco *b){
             if(b->conteudo->sub_tipo == METAL)
                  std::cout << "do tipo Metal" << std::endl; 
 
-        else if(b->conteudo->tipo_bloco == PREDIO)
+        if(b->conteudo->tipo == PREDIO)
             std::cout << "É um prédio ";
 
             if(b->conteudo->sub_tipo == ESPADA)
