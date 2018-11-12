@@ -7,6 +7,7 @@
 #include "../include/Bloco.hpp"
 #include "../include/Mapa.hpp"
 
+// TS001
 TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
 {
     Bloco bloco = Bloco();
