@@ -5,16 +5,16 @@ File 'Necromancer.cpp'
 Lines executed:46.67% of 15
 
 File 'Pilar.cpp'
-Lines executed:50.00% of 12
+Lines executed:0.00% of 12
 
 File 'Recurso.cpp'
-Lines executed:66.67% of 9
+Lines executed:0.00% of 9
 
 File '../tests/../lib/catch.hpp'
-Lines executed:28.57% of 4036
+Lines executed:28.59% of 4043
 
 File '../tests/Tests.cpp'
-Lines executed:100.00% of 11
+Lines executed:100.00% of 12
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__functional_base'
 Lines executed:100.00% of 1
@@ -104,7 +104,7 @@ File '/Library/Developer/CommandLineTools/usr/include/c++/v1/streambuf'
 Lines executed:3.70% of 27
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string'
-Lines executed:36.97% of 211
+Lines executed:37.44% of 211
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string_view'
 Lines executed:100.00% of 5

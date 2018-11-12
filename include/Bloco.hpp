@@ -21,7 +21,6 @@ class Bloco
         Bloco();
         Bloco(ColocavelEmBloco *);
         bool preenche(ColocavelEmBloco *);
-        bool retira(ColocavelEmBloco *);
         bool limpa();
 };
 #endif
