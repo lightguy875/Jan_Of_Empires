@@ -33,12 +33,14 @@ TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
     
 }
 
+//TS002
 TEST_CASE("Teste do mapa", "teste inicial do mapa"){
-
+    // vazio
     Mapa mapa = Mapa(25,25);
     REQUIRE(mapa.vazio(2,2) == true);
     REQUIRE(mapa.vazio(-1,2) == false);
 
+    //inserir
     Recurso metal = Metal();
     REQUIRE(mapa.inserir(&metal, 2,2) == true);
     REQUIRE(mapa.inserir(&metal, 2,2) == false);
@@ -46,8 +48,17 @@ TEST_CASE("Teste do mapa", "teste inicial do mapa"){
     REQUIRE(mapa.inserir(&metal, 2,-2) == false);
     REQUIRE(mapa.vazio(2,2) == false);
 
+    //ver
     REQUIRE( mapa.ver(2,2) == &metal);
     REQUIRE( mapa.ver(2,2)->tipo == TipoConteudoBloco::RECURSO);
     REQUIRE( ((Recurso *)mapa.ver(2,2))->tipo_recurso == TipoRecurso::METAL);
     REQUIRE(mapa.ver(2,3) == nullptr);
+    REQUIRE(mapa.vazio(2,2) == false);
+
+    //retirar
+    Recurso *retorno =  (Recurso *) mapa.retirar(2,2);
+    REQUIRE(retorno == &metal);
+    REQUIRE(mapa.ver(2,2) == nullptr);
+    REQUIRE(mapa.vazio(2,2) == true);
+
 }

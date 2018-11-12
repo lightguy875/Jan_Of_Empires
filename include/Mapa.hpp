@@ -20,7 +20,8 @@ class Mapa{
         Mapa(unsigned short,unsigned short);
         bool vazio(unsigned short,unsigned short);
         bool inserir(ColocavelEmBloco *, unsigned short, unsigned short);
-        ColocavelEmBloco *ver(unsigned short, unsigned short);
+        ColocavelEmBloco* ver(unsigned short, unsigned short);
+        ColocavelEmBloco* retirar(unsigned short, unsigned short); 
 };
 
 #endif
