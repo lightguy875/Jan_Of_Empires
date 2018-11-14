@@ -6,6 +6,7 @@
 #include "../include/Pilar.hpp"
 #include "../include/Bloco.hpp"
 #include "../include/Mapa.hpp"
+#include "../include/Player.hpp"
 
 // TS001
 TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
@@ -61,5 +62,11 @@ TEST_CASE("Teste do mapa", "teste inicial do mapa"){
     REQUIRE(retorno == &metal);
     REQUIRE(mapa.ver(2,2) == nullptr);
     REQUIRE(mapa.vazio(2,2) == true);
+
+}
+
+TEST_CASE("Teste do Player", "Inicializacao"){
+    Player p1 = Player();
+
 
 }

@@ -23,6 +23,8 @@ bool Mapa::inserir(ColocavelEmBloco *item,unsigned short X, unsigned short Y){
     if( !this->vazio(X, Y) ) return false;
 
     this->mapa[std::make_pair(X,Y)].preenche(item);
+    item->x = X;
+    item->y = Y;
     return true;
 }
 

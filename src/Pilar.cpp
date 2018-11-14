@@ -9,12 +9,15 @@ Pilar::Pilar(){
 
 PilarLanca::PilarLanca(){
     this->tipo_pilar = TipoPilar::LANCA;
+    this->hp = HP_INICIAL_PILAR_LANCA;
 }
 
 PilarArco::PilarArco(){
     this->tipo_pilar = TipoPilar::ARCO;
+    this->hp = HP_INICIAL_PILAR_ARCO;
 }
 
 PilarEspada::PilarEspada(){
     this->tipo_pilar = TipoPilar::ESPADA;
+    this->hp = HP_INICIAL_PILAR_ESPADA;
 }

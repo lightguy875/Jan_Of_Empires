@@ -1,6 +1,8 @@
 #ifndef BLOCO_HPP
 #define BLOCO_HPP
 
+#include "Utils.hpp"
+
 enum class TipoConteudoBloco{
     UNIDADE=0,PREDIO,RECURSO
 };
@@ -9,7 +11,12 @@ enum class TipoConteudoBloco{
 class ColocavelEmBloco 
 {
     public:
+        bool vivo;
+        bool x, y;
         TipoConteudoBloco tipo;
+        ColocavelEmBloco();
+        bool mata();
+        bool revive();
 };
 
 class Bloco
