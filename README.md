@@ -71,6 +71,7 @@ As condições para o término do jogo são os seguintes:
 
 # Useful links
 + [SDL Tutorial link](http://lazyfoo.net/tutorials/SDL/)
++ [Bibliotecas de SDL](https://www.libsdl.org/release/SDL-1.2.15/docs/html/)
 
 
 
