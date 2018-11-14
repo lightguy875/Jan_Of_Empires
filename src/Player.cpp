@@ -6,7 +6,7 @@ Player::Player(){
     this->metal = 0;
     this->ossos = 0;
 
-    // É com esses dois que o Jogador começa mesmo??
+    // É com esses dois que o Jogador começa: Guerreiro e Pilar da Espada
     this->guerreiro = Guerreiro();
     this->pilar_espada = PilarEspada();
 
