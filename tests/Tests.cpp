@@ -48,6 +48,7 @@ TEST_CASE("Teste do mapa", "teste inicial do mapa"){
     REQUIRE(mapa.inserir(&metal, 2,-2) == false);
     REQUIRE(mapa.vazio(2,2) == false);
 
+
     //ver
     REQUIRE( mapa.ver(2,2) == &metal);
     REQUIRE( mapa.ver(2,2)->tipo == TipoConteudoBloco::RECURSO);
