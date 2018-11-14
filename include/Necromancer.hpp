@@ -7,10 +7,16 @@
     Funções que funcionam igualmente, dentre outros métodos e atributos devem ser implementados
     aqui.
 */
+
+enum class TipoNecromancer{
+    GUERREIRO = 4, CAVALEIRO, ARQUEIRO 
+};
+
 class Necromancer  : public ColocavelEmBloco
 { 
     public: 
         int mp; 
+        TipoNecromancer tipo_necromancer;
         Necromancer();
 }; 
 
