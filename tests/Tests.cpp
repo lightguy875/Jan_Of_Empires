@@ -67,6 +67,6 @@ TEST_CASE("Teste do mapa", "teste inicial do mapa"){
 
 TEST_CASE("Teste do Player", "Inicializacao"){
     Player p1 = Player();
-
+    // faz todo tipo de teste de player aqui
 
 }

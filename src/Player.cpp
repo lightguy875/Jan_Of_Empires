@@ -35,7 +35,10 @@ bool Player::captar_recurso(TipoRecurso rec){
 
 bool Player::criar_pilar(TipoPilar pil){
     if(pil == TipoPilar::ARCO){
-        // FALTA TESTAR SE TEM RECURSO E DEBITAR
+        if(this->metal < METAL_CRIAR_PILAR_ARCO) 
+            return false;
+
+        this->metal -= METAL_CRIAR_PILAR_ARCO;
         if(!this->pilar_arco.vivo){
             this->pilar_arco.revive();
             this->pilar_arco.hp = HP_INICIAL_PILAR_ARCO;
@@ -45,7 +48,10 @@ bool Player::criar_pilar(TipoPilar pil){
     }
     
     if(pil == TipoPilar::LANCA){
-        // FALTA TESTAR SE TEM RECURSO E DEBITAR
+        if(this->metal < METAL_CRIAR_PILAR_LANCA) 
+            return false;
+
+        this->metal -= METAL_CRIAR_PILAR_LANCA;
         if(!this->pilar_lanca.vivo){
             this->pilar_lanca.revive();
             this->pilar_lanca.hp = HP_INICIAL_PILAR_LANCA;
@@ -55,7 +61,10 @@ bool Player::criar_pilar(TipoPilar pil){
     }
 
     if(pil == TipoPilar::ESPADA){
-        // FALTA TESTAR SE TEM RECURSO E DEBITAR
+        if(this->metal < METAL_CRIAR_PILAR_ESPADA) 
+            return false;
+
+        this->metal -= METAL_CRIAR_PILAR_ESPADA;
         if(!this->pilar_espada.vivo){
             this->pilar_espada.revive();
             this->pilar_espada.hp = HP_INICIAL_PILAR_ESPADA;
@@ -68,7 +77,12 @@ bool Player::criar_pilar(TipoPilar pil){
 
 bool Player::criar_necromancer(TipoNecromancer nec){
     if(nec == TipoNecromancer::GUERREIRO){
-        // FALTA TESTAR SE TEM RECURSO E DEBITAR
+        if(!this->pilar_espada.vivo)
+            return false;
+        if(this->ossos < OSSOS_CRIAR_GUERREIRO) 
+            return false;
+
+        this->ossos -= OSSOS_CRIAR_GUERREIRO;
         if(!this->guerreiro.vivo){
             this->guerreiro.revive();
             this->guerreiro.mp = MP_INICIAL_GUERREIRO;
@@ -78,7 +92,12 @@ bool Player::criar_necromancer(TipoNecromancer nec){
     }
     
     if(nec == TipoNecromancer::CAVALEIRO){
-        // FALTA TESTAR SE TEM RECURSO E DEBITAR
+        if(!this->pilar_lanca.vivo)
+            return false;
+        if(this->ossos < OSSOS_CRIAR_CAVALEIRO) 
+            return false;
+
+        this->ossos -= OSSOS_CRIAR_CAVALEIRO;
 
         if(!this->cavaleiro.vivo){
             this->cavaleiro.revive();
@@ -89,7 +108,12 @@ bool Player::criar_necromancer(TipoNecromancer nec){
     }
 
     if(nec == TipoNecromancer::ARQUEIRO){
-        // FALTA TESTAR SE TEM RECURSO E DEBITAR
+        if(!this->pilar_arco.vivo)
+            return false;
+        if(this->ossos < OSSOS_CRIAR_ARQUEIRO) 
+            return false;
+
+        this->ossos -= OSSOS_CRIAR_ARQUEIRO;
         if(!this->arqueiro.vivo){
             this->arqueiro.revive();
             this->arqueiro.mp = MP_INICIAL_ARQUEIRO;
