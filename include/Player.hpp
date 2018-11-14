@@ -7,13 +7,11 @@
 #include "Utils.hpp"
 
 class Player{
-
-    private:
-        unsigned short metal;
-        unsigned short ossos;        
-
+       
     public:  
-        
+        unsigned short metal;
+        unsigned short ossos; 
+                
         Player();
         Guerreiro guerreiro;
         Cavaleiro cavaleiro;
