@@ -1,5 +1,5 @@
-//#ifndef SDL_STRUCTURE
-//#define SDL_STRUCTURE
+#ifndef SDL_STRUCTURE
+#define SDL_STRUCTURE
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include  <iostream>
@@ -26,5 +26,5 @@ static SDL_Window *gWindow = NULL;
 static SDL_Surface *gScreenSurface = NULL;
 
 //The image we will load and show on the screen
-static SDL_Surface *gHelloWorld = NULL;
-//#endif
+static SDL_Surface *gMainmenu = NULL;
+#endif

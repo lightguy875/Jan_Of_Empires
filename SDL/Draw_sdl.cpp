@@ -16,10 +16,10 @@ int main(int argc, char *args[])
         else
         {
             //Apply the image
-            SDL_BlitSurface(gHelloWorld, NULL, gScreenSurface, NULL);
+            //SDL_BlitSurface(gMainmenu, NULL, gScreenSurface, NULL);
 
             //Update the surface
-            SDL_UpdateWindowSurface(gWindow);
+            //SDL_UpdateWindowSurface(gWindow);
         }
     }
     while (Run)
@@ -29,6 +29,9 @@ int main(int argc, char *args[])
             if (Events.type == SDL_QUIT)
                 Run = false;
         }
+        SDL_BlitSurface(gMainmenu, NULL, gScreenSurface, NULL);
+        SDL_UpdateWindowSurface(gWindow);
+        //SDL_UpdateWindowSurface(gWindow);
         // draw pretty pictures to the window :3
         SDL_Delay(100);
     }

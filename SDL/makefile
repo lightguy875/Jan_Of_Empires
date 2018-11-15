@@ -1,7 +1,7 @@
 ID$@IR =../include
 IDIR = ../include
 CC= g++ 
-CFLAGS=-I$(IDIR) -lm -lSDL2 -lSDL_image #-ftest-coverage -fprofile-arcs -lgtest -lgtest_main -fpermissive
+CFLAGS=-I$(IDIR) -lm -lSDL2 -lSDL2_image #-ftest-coverage -fprofile-arcs -lgtest -lgtest_main -fpermissive
 #PROGRAM_GCOV = reader
 ODIR=../obj
 #TEST_ODIR=../Test/obj
