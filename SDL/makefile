@@ -22,7 +22,6 @@ OBJECTS = $(patsubst %,$(ODIR)/%,$(_OBJECTS))
 #_TESTS = Test_reader.cpp 
 #TESTS = $(patsubst %,$(DIR_TESTS)/%,$(_TESTS))
 
-
 $(ODIR)/%.o: %.cpp $(HEADERS) 
 	$(CC) -c -o $@ $< $(CFLAGS) $(LIBS)
 

@@ -2,29 +2,20 @@
 #define SDL_STRUCTURE
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-#include  <iostream>
+#include <stdio.h>
+#include <string>
 
-//Screen dimension constants
-static const int SCREEN_WIDTH = 800;
-static const int SCREEN_HEIGHT = 600;
-static bool Run = true;
 
-static SDL_Event Events;
 //Starts up SDL and creates window
-bool init();
+bool init(SDL_Window **gWindow, SDL_Surface **gScreenSurface, const int SCREEN_WIDTH, const int SCREEN_HEIGHT);
 
 //Loads media
-bool loadMedia();
+bool loadMedia(SDL_Surface **gPNGSurface, SDL_Surface **gScreenSurface);
 
 //Frees media and shuts down SDL
-void close();
+void close(SDL_Surface **gPNGSurface, SDL_Window **gWindow);
 
-//The window we'll be rendering to
-static SDL_Window *gWindow = NULL;
+//Loads individual image
+SDL_Surface *loadSurface(std::string path, SDL_Surface **gScreenSurface);
 
-//The surface contained by the window
-static SDL_Surface *gScreenSurface = NULL;
-
-//The image we will load and show on the screen
-static SDL_Surface *gMainmenu = NULL;
 #endif
