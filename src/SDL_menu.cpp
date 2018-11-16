@@ -2,13 +2,25 @@
 #include <iostream>
 
 
+extern const int SCREEN_WIDTH = 800;
+extern const int SCREEN_HEIGHT = 600;
+extern bool Run = true;
+extern SDL_Event Events;
+//The window we'll be rendering to
+extern SDL_Window *gWindow = NULL;
+
+//The surface contained by the window
+extern SDL_Surface *gScreenSurface = NULL;
+
+//Current displayed PNG image
+extern SDL_Surface *gPNGSurface = NULL;
 int main(int argc, char const *argv[])
 {
         const int HEIGHT = 600;
         const int WIDTH = 800;
         bool running = true;
         //Init SDL
-        
+
         if(SDL_Init(SDL_INIT_EVERYTHING) == -1)
         {
                 running = false;
@@ -16,12 +28,12 @@ int main(int argc, char const *argv[])
         SDL_Surface *screen;
 
         SDL_Window *window = SDL_CreateWindow("Jan_of_empires",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,WIDTH,HEIGHT,SDL_WINDOW_SHOWN);
-        
+
         SDL_Surface *gScreenSurface = NULL;
         //Set up screen
-        
+
         //screen = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE);
-        
+
         if(window == NULL)
         {
                 std::cout << "A janela não pode ser criada" << SDL_GetError() << std::endl;
@@ -41,9 +53,9 @@ int main(int argc, char const *argv[])
                 SDL_FillRect(gScreenSurface,NULL,0);
 
 
-                
+
         }
-        
+
         //
         SDL_Quit();
 

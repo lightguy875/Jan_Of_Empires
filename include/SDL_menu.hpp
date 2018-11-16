@@ -5,17 +5,19 @@
 #include <stdio.h>
 #include <string>
 
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 
 //Starts up SDL and creates window
-bool init(SDL_Window **gWindow, SDL_Surface **gScreenSurface, const int SCREEN_WIDTH, const int SCREEN_HEIGHT);
+bool init();
 
 //Loads media
-bool loadMedia(SDL_Surface **gPNGSurface, SDL_Surface **gScreenSurface);
+bool loadMedia();
 
 //Frees media and shuts down SDL
-void close(SDL_Surface **gPNGSurface, SDL_Window **gWindow);
+void close();
 
 //Loads individual image
-SDL_Surface *loadSurface(std::string path, SDL_Surface **gScreenSurface);
+SDL_Texture * loadTexture(std::string path);
 
 #endif
