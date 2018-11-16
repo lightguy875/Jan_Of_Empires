@@ -1,28 +1,28 @@
 ID$@IR =../include
 IDIR = ../include
-CC= g++ 
-CFLAGS=-I$(IDIR) -lm -lSDL2 -lSDL2_image #-ftest-coverage -fprofile-arcs -lgtest -lgtest_main -fpermissive
+CC= g++
+CFLAGS=-I$(IDIR) #-ftest-coverage -fprofile-arcs -lgtest -lgtest_main -fpermissive
 #PROGRAM_GCOV = reader
 ODIR=../obj
 #TEST_ODIR=../Test/obj
 LDIR =../SDL
 #DIR_TESTS=../Test
 
-#TEST_EXE= Reader_Test 
-#LIBS=
+#TEST_EXE= Reader_Test
+LIBS = -lm -lSDL2 -lSDL2_image
 
 PROGRAM = SDL_main
 
 _HEADERS = SDL_menu.hpp
 HEADERS = $(patsubst %,$(IDIR)/%,$(_HEADERS))
 
-_OBJECTS = SDL_menu.o Draw_sdl.o 
+_OBJECTS = SDL_menu.o Draw_sdl.o
 OBJECTS = $(patsubst %,$(ODIR)/%,$(_OBJECTS))
 
-#_TESTS = Test_reader.cpp 
+#_TESTS = Test_reader.cpp
 #TESTS = $(patsubst %,$(DIR_TESTS)/%,$(_TESTS))
 
-$(ODIR)/%.o: %.cpp $(HEADERS) 
+$(ODIR)/%.o: %.cpp $(HEADERS)
 	$(CC) -c -o $@ $< $(CFLAGS) $(LIBS)
 
 $(PROGRAM): $(OBJECTS)
@@ -36,8 +36,8 @@ $(PROGRAM): $(OBJECTS)
 #test: $(TEST_EXE)
 #	cp $(LDIR)/*.gcno $(ODIR)
 
-run: 
-	./$(PROGRAM) 
+run:
+	./$(PROGRAM)
 
 #run_test:
 #	./$(TEST_EXE)

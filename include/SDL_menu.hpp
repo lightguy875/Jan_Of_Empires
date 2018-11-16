@@ -8,16 +8,28 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
-//Starts up SDL and creates window
-bool init();
+enum GameState {
+    GAME_MENU,
+    GAME_CREDITS,
+};
 
-//Loads media
-bool loadMedia();
+class Graphics{
+    public:
+    Graphics();
+    void close();
+    void start_menu();
+    SDL_Texture * loadTexture(std::string path);
+    bool getGRunning();
+    void setGRunning(bool state);
 
-//Frees media and shuts down SDL
-void close();
+    private:
+    bool g_running;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    SDL_Texture* m_pTexture;
+    SDL_Event Events;
 
-//Loads individual image
-SDL_Texture * loadTexture(std::string path);
+};
+
 
 #endif
