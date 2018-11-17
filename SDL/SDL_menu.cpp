@@ -1,9 +1,10 @@
 #include "../include/SDL_menu.hpp"
 
-Graphics::Graphics(){
+MenuGraphics::MenuGraphics(){
     window = NULL;
     renderer = NULL;
     m_pTexture = NULL;
+    state_menu = GAME_MENU;
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
     {
         printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
@@ -34,6 +35,10 @@ Graphics::Graphics(){
                        printf( "Unable to load image %s! SDL Error: %s\n", "../asset/button_rpg.png", SDL_GetError() );
                    }else{
                         g_running = true;
+                        menuButtons[0].setPositionSize(0,0,800,200);
+                        menuButtons[1].setPositionSize(0,200,800,200);
+                        menuButtons[2].setPositionSize(0,400,800,200);
+                        creditsBackButton.setPositionSize(0,500,800,200);
                    }
                }
            }
@@ -41,7 +46,7 @@ Graphics::Graphics(){
     }
 }
 
-void Graphics::close()
+void MenuGraphics::close()
 {
     //Deallocate surface
     SDL_DestroyTexture( m_pTexture );
@@ -61,13 +66,13 @@ void Graphics::close()
 
 
 
-SDL_Texture* Graphics::loadTexture( std::string path )
+SDL_Texture* MenuGraphics::loadTexture( std::string path )
 {
     //The final texture
     SDL_Texture* newTexture = NULL;
 
     //Load image at specified path
-    SDL_Surface* loadedSurface = SDL_LoadBMP( path.c_str() );
+    SDL_Surface* loadedSurface = IMG_Load( path.c_str() );
     if( loadedSurface == NULL )
     {
         printf( "Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError() );
@@ -88,22 +93,27 @@ SDL_Texture* Graphics::loadTexture( std::string path )
     return newTexture;
 }
 
-bool Graphics::getGRunning(){
+bool MenuGraphics::getGRunning(){
     return g_running;
 }
 
-void Graphics::setGRunning(bool state){
+void MenuGraphics::setGRunning(bool state){
     g_running = state;
 }
 
 
-void Graphics::start_menu(){
+void MenuGraphics::start_menu(){
     while (g_running)
     {
         while (SDL_PollEvent(&Events) != 0)
         {
-            if (Events.type == SDL_QUIT)
+            if (Events.type == SDL_QUIT){
                 g_running = false;
+            }
+            for (int i = 0; i < MENU_BUTTONS; i++)
+            {
+                menuButtons[i].handleEvent(&Events, i);
+            }
         }
         SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
         //Clear screen

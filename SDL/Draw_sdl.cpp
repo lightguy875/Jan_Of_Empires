@@ -3,7 +3,7 @@
 
 int main(int argc, char *args[])
 {
-    Graphics * graph = new Graphics();
+    MenuGraphics * graph = new MenuGraphics();
     graph->start_menu();
     graph->close();
 
