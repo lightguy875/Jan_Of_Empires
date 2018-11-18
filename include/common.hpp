@@ -12,5 +12,6 @@ extern SDL_Renderer* renderer;
 extern Texture menu_screen;
 extern Texture credit_screen;
 extern Texture pause_screen;
+extern Texture round_screen;
 
 #endif

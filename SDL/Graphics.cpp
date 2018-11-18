@@ -8,6 +8,7 @@ SDL_Renderer* renderer = NULL;
 Texture menu_screen;
 Texture credit_screen;
 Texture pause_screen;
+Texture round_screen;
 
 bool Graphics::init(){
     bool success = true;
@@ -65,6 +66,11 @@ bool Graphics::loadMedia(){
     }
 
     if( !pause_screen.loadFromFile( "../assets/pause_screen.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
+    if( !round_screen.loadFromFile( "../assets/round_screen.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }

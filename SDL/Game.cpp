@@ -113,6 +113,29 @@ void Game::renderPause(){
     }
 }
 
+void Game::renderRoundPause(){
+    SDL_Event e;
+
+    while(gameRunning == GAME_ROUND_PAUSE){
+
+            //Handle events on queue
+            while( SDL_PollEvent( &e ) != 0 ) {
+                //User requests quit
+                if( e.type == SDL_QUIT )
+                {
+                    gameRunning = GAME_QUIT;
+                }
+            }
+
+            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+            SDL_RenderClear( renderer );
+            round_screen.render(0,0);
+            SDL_RenderPresent( renderer );
+            SDL_Delay(3000);
+            gameRunning = GAME_PLAY;
+    }
+}
+
 
 void Game::playGame(GameState gameState){
     gameRunning = gameState;
@@ -129,6 +152,9 @@ void Game::playGame(GameState gameState){
             break;
         case GAME_PAUSE:
             renderPause();
+            break;
+        case GAME_ROUND_PAUSE:
+            renderRoundPause();
             break;
         case GAME_CREDITS:
             renderCredits();
