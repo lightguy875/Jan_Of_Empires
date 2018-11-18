@@ -41,6 +41,7 @@ void Button::handleEvent(SDL_Event* e, Game * game){
                     {
                     case BUTTON_PLAY:
                         printf("PLAY");
+                        game->setGameRunning(GAME_PLAY);
                         break;
                     case BUTTON_CREDITS:
                         printf("CREDITS");
@@ -51,9 +52,12 @@ void Button::handleEvent(SDL_Event* e, Game * game){
                         game->setGameRunning(GAME_QUIT);
                         break;
                     case BUTTON_BACK_CREDITS:
-                        printf("BACK");
+                        printf("BACK to MENU");
                         game->setGameRunning(GAME_MENU);
                         break;
+                    case BUTTON_BACK_GAME:
+                        printf("BACK to GAME");
+                        game->setGameRunning(GAME_PLAY);
                     }
                 break;
             }

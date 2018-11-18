@@ -1,11 +1,13 @@
 #include "../include/Graphics.hpp"
 
 Button menuButtons[ TOTAL_MENU_BUTTONS ];
+Button pauseButton[2];
 Button creditsBackButton;
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 Texture menu_screen;
 Texture credit_screen;
+Texture pause_screen;
 
 bool Graphics::init(){
     bool success = true;
@@ -62,10 +64,17 @@ bool Graphics::loadMedia(){
         success = false;
     }
 
+    if( !pause_screen.loadFromFile( "../assets/pause_screen.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
     menuButtons[0].setPositionSizeType(0,0,800,200, BUTTON_PLAY);
     menuButtons[1].setPositionSizeType(0,200,800,200,BUTTON_CREDITS);
     menuButtons[2].setPositionSizeType(0,400,800,200,BUTTON_QUIT);
     creditsBackButton.setPositionSizeType(0,500,800,100,BUTTON_BACK_CREDITS);
+    pauseButton[0].setPositionSizeType(0,0,800,300,BUTTON_BACK_GAME);
+    pauseButton[1].setPositionSizeType(0,300,800,300,BUTTON_QUIT);
 
     return success;
 }

@@ -14,6 +14,8 @@ enum GameState {
     GAME_MENU,
     GAME_CREDITS,
     GAME_QUIT,
+    GAME_PLAY,
+    GAME_PAUSE,
 };
 
 class Game{
@@ -27,6 +29,8 @@ class Game{
     GameState gameRunning;
     void renderMenu();
     void renderCredits();
+    void renderPause();
+    void renderPlay();
 
 };
 

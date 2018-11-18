@@ -20,6 +20,7 @@ enum ButtonType {
     BUTTON_CREDITS,
     BUTTON_QUIT,
     BUTTON_BACK_CREDITS,
+    BUTTON_BACK_GAME,
 };
 
 class Button{
