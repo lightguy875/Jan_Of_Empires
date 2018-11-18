@@ -13,10 +13,10 @@ LIBS = -lm -lSDL2 -lSDL2_image
 
 PROGRAM = SDL_main
 
-_HEADERS = SDL_menu.hpp GeneralButton.hpp
+_HEADERS = Button.hpp Texture.hpp Graphics.hpp Game.hpp
 HEADERS = $(patsubst %,$(IDIR)/%,$(_HEADERS))
 
-_OBJECTS = SDL_menu.o Draw_sdl.o GeneralButton.o
+_OBJECTS = Button.o Texture.o Graphics.o Game.o main_sdl.o
 OBJECTS = $(patsubst %,$(ODIR)/%,$(_OBJECTS))
 
 #_TESTS = Test_reader.cpp
