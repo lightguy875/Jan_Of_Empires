@@ -4,6 +4,9 @@
 #include "Button.hpp"
 #include "Texture.hpp"
 
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+
 extern Button menuButtons[ TOTAL_MENU_BUTTONS ];
 extern Button pauseButton[2];
 extern Button creditsBackButton;
@@ -13,5 +16,6 @@ extern Texture menu_screen;
 extern Texture credit_screen;
 extern Texture pause_screen;
 extern Texture round_screen;
+extern Texture knight, solider, archer;
 
 #endif

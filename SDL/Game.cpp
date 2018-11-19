@@ -1,4 +1,5 @@
 #include "../include/Game.hpp"
+#include "../include/Personage.hpp"
 #include <cstdio>
 
 Game::Game(){
@@ -65,7 +66,10 @@ void Game::renderCredits(){
 
 void Game::renderPlay(){
     SDL_Event e;
-
+    Personage archer_play;
+    archer_play.setPositionX(0);
+    archer_play.setPositionY(0);
+    archer_play.setWidthHeight(archer.getWidth(),archer.getHeight());
     while(gameRunning == GAME_PLAY){
 
             //Handle events on queue
@@ -82,10 +86,12 @@ void Game::renderPlay(){
                         gameRunning = GAME_PAUSE;
                     }
                 }
+                archer_play.handleEvent(&e);
             }
 
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_RenderClear( renderer );
+            archer_play.render(&archer);
             SDL_RenderPresent( renderer );
     }
 }

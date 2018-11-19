@@ -7,9 +7,6 @@
 #include "Texture.hpp"
 #include "common.hpp"
 
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
-
 class Graphics{
     public:
         bool init();
