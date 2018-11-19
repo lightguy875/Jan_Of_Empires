@@ -10,6 +10,7 @@ Texture credit_screen;
 Texture pause_screen;
 Texture round_screen;
 Texture knight, solider, archer;
+Texture map_screen;
 
 bool Graphics::init(){
     bool success = true;
@@ -67,6 +68,11 @@ bool Graphics::loadMedia(){
     }
 
     if( !pause_screen.loadFromFile( "../assets/pause_screen.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+    
+    if( !map_screen.loadFromFile( "../assets/map.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
