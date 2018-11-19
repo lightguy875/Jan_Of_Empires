@@ -9,6 +9,7 @@
 class Player{
        
     public:  
+        unsigned short time;
         unsigned short metal;
         unsigned short ossos; 
                 
@@ -22,7 +23,12 @@ class Player{
 
         bool criar_necromancer(TipoNecromancer);
         bool criar_pilar(TipoPilar);
+
+        Pilar* pilar(TipoPilar);
+        Necromancer* necromancer(TipoNecromancer);
+
         bool captar_recurso(TipoRecurso);
+        void muda_time();
 };
 
 #endif

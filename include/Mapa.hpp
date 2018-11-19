@@ -11,8 +11,8 @@ class Mapa{
 
     private:
         unsigned short tam_x;
-        unsigned short tam_y;
-        bool posicao_valida(unsigned short,unsigned short);        
+        unsigned short tam_y;  
+        bool posicao_valida(unsigned short,unsigned short);      
 
     public:  
         Posicao cursor;
@@ -22,6 +22,7 @@ class Mapa{
         bool inserir(ColocavelEmBloco *, unsigned short, unsigned short);
         ColocavelEmBloco* ver(unsigned short, unsigned short);
         ColocavelEmBloco* retirar(unsigned short, unsigned short); 
+        
 };
 
 #endif

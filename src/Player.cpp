@@ -5,8 +5,8 @@ Player::Player(){
     
     this->metal = 0;
     this->ossos = 0;
-
-    // É com esses dois que o Jogador começa mesmo??
+    this->time = 0;
+    
     this->guerreiro = Guerreiro();
     this->pilar_espada = PilarEspada();
 
@@ -21,6 +21,29 @@ Player::Player(){
 
     this->pilar_lanca = PilarLanca();
     this->pilar_lanca.mata();
+
+    this->guerreiro.time=0;
+    this->arqueiro.time=0;
+    this->cavaleiro.time=0;
+    this->pilar_espada.time=0;
+    this->pilar_arco.time=0;
+    this->pilar_lanca.time=0;
+
+}
+
+void Player::muda_time(){
+    
+    if( this->time == 0 )
+        this->time = 1;
+    else
+        this->time = 0;
+    
+    this->guerreiro.time= this->time;
+    this->arqueiro.time= this->time;
+    this->cavaleiro.time= this->time;
+    this->pilar_espada.time= this->time;
+    this->pilar_arco.time= this->time;
+    this->pilar_lanca.time= this->time;
 }
 
 bool Player::captar_recurso(TipoRecurso rec){
@@ -31,6 +54,35 @@ bool Player::captar_recurso(TipoRecurso rec){
         this->ossos = this->ossos + QUANTIDADE_OSSOS_POR_ITEM;
     }
     return true;
+}
+
+
+Pilar* Player::pilar(TipoPilar pil){
+    if(pil == TipoPilar::ARCO)
+        return &this->pilar_arco;
+
+    if(pil == TipoPilar::LANCA)
+        return &this->pilar_arco;
+
+    if(pil == TipoPilar::ESPADA)
+        return &this->pilar_espada;    
+
+    return nullptr;
+}
+
+
+
+Necromancer* Player::necromancer(TipoNecromancer nec){
+    if(nec == TipoNecromancer::GUERREIRO)
+        return &this->guerreiro;
+
+    if(nec == TipoNecromancer::ARQUEIRO)
+        return &this->arqueiro;
+
+    if(nec == TipoNecromancer::CAVALEIRO)
+        return &this->cavaleiro;
+
+    return nullptr;
 }
 
 bool Player::criar_pilar(TipoPilar pil){

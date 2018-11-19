@@ -30,10 +30,10 @@ LIBS = -lm -lSDL2 -lSDL2_image
 ########################## Listas com nomes dos arquivos de código ##########################
 # Define o local dos arquivos de código e arquivos de cabeçalho de código
 
-_HEADERS = Necromancer.hpp Bloco.hpp Recurso.hpp Pilar.hpp Mapa.hpp Player.hpp
+_HEADERS = Necromancer.hpp Bloco.hpp Recurso.hpp Pilar.hpp Mapa.hpp Player.hpp Controlador.hpp
 HEADERS = $(patsubst %,$(DIR_HEADERS)/%,$(_HEADERS))
 
-_OBJECTS = Necromancer.o Bloco.o Recurso.o Pilar.o main.o Mapa.o Player.o
+_OBJECTS = Necromancer.o Bloco.o Recurso.o Pilar.o main.o Mapa.o Player.o Controlador.o
 OBJECTS = $(patsubst %,$(DIR_OBJECTS)/%,$(_OBJECTS))
 
 _TESTS = Tests.cpp
@@ -53,7 +53,7 @@ $(PROJECT_EXE): $(OBJECTS)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 # Chama todos os arquivos objeto, gerando binários e criando o executável de teste, colocar aqui todos os módulos usados no teste
-$(TEST_EXE): $(TESTS) Necromancer.cpp Bloco.cpp Recurso.cpp Pilar.cpp Mapa.cpp Player.cpp
+$(TEST_EXE): $(TESTS) Necromancer.cpp Bloco.cpp Recurso.cpp Pilar.cpp Mapa.cpp Player.cpp Controlador.cpp
 	$(CC) -o $@ $^ $(CFLAGS)
 
 # MiniTutorial

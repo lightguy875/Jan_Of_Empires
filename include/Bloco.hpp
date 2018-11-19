@@ -12,7 +12,7 @@ class ColocavelEmBloco
 {
     public:
         bool vivo;
-        bool x, y;
+        unsigned short x, y, time;
         TipoConteudoBloco tipo;
         ColocavelEmBloco();
         bool mata();
