@@ -2,6 +2,7 @@
 #define CTRL_HPP
 #include <string>
 #include <list>
+#include <cmath>
 #include "Recurso.hpp"
 #include "Mapa.hpp"
 #include "Player.hpp"
@@ -32,6 +33,7 @@ class Controlador {
         bool criar_necromancer(Player*, TipoNecromancer, unsigned short, unsigned short);
         bool fortalecer_necromancer(Player*, TipoNecromancer);
         
+        bool matar(unsigned short, unsigned short);
         bool movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
 
         //temporarios

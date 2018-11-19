@@ -32,6 +32,8 @@ ColocavelEmBloco::ColocavelEmBloco(){
 bool ColocavelEmBloco::mata(){
     if(this->vivo) 
         this->vivo = false;
+        this->x = -1;
+        this->y = -1;
         return true;
 
     return false;

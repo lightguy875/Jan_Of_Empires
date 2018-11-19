@@ -67,6 +67,43 @@ bool Controlador::fortalecer_necromancer(Player *jog,TipoNecromancer nec){
     return jog->criar_necromancer(nec);
 }
 
+bool Controlador::matar(unsigned short X, unsigned short Y) {
+    if(this->mapa.vazio(X, Y))
+        return false;
+    if(this->mapa.ver(X, Y)->tipo == TipoConteudoBloco::RECURSO)
+        return false;
+    ColocavelEmBloco * vitima = this->mapa.retirar(X, Y);
+    vitima->mata();
+    return true;
+}
+
+bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
+    if(!(this->mapa.posicao_valida(x_orig, y_orig) && this->mapa.posicao_valida(x_dest, y_dest)))
+        return false;
+    if(abs(x_dest - x_orig) > 2 || abs(y_dest - y_orig) > 2)
+        return false;
+        
+    if(this->mapa.vazio(x_orig, y_orig))
+        return false;
+    if(this->mapa.ver(x_orig, y_orig)->tipo != TipoConteudoBloco::UNIDADE)
+        return false; 
+    if(this->mapa.ver(x_orig, y_orig)->time != jog->time)
+        return false;
+    
+    if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::UNIDADE)
+        return false; 
+    if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::PREDIO)
+        return false;
+    ColocavelEmBloco * unidade_movida = this->mapa.retirar(x_orig, y_orig);
+
+    if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::RECURSO) {
+        Recurso * rec = ((Recurso *) mapa.retirar(x_dest,y_dest));
+        jog->captar_recurso(rec->tipo_recurso);
+    }
+    this->mapa.inserir(unidade_movida, x_dest, y_dest);
+
+    return true;
+}
 
 
 

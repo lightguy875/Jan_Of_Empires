@@ -10,7 +10,7 @@
 #include "../include/Controlador.hpp"
 
 // TS001
-TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
+TEST_CASE("Teste da classe bloco","Teste checagem de tipo, sub tipo e bloco vazio")
 {
     Bloco bloco = Bloco();
     Necromancer guerr = Guerreiro();
@@ -36,7 +36,7 @@ TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
 }
 
 //TS002
-TEST_CASE("Teste do mapa", "teste inicial do mapa"){
+TEST_CASE("Teste da classe mapa", "teste inicial do mapa"){
     // vazio
     Mapa mapa = Mapa(25,25);
     REQUIRE(mapa.vazio(2,2) == true);
@@ -68,12 +68,13 @@ TEST_CASE("Teste do mapa", "teste inicial do mapa"){
 
 }
 
-
-TEST_CASE("Teste do Player", "Inicializacao") {
+//TS003
+TEST_CASE("Teste da classe Player", "Inicializacao") {
     // inicialização
     Player p1 = Player();
 
     // testes referentes a pilar
+    // criar pilar
     REQUIRE(p1.pilar_espada.vivo == true);
     REQUIRE(p1.criar_pilar(TipoPilar::ARCO) == false);  // sem metal o suficiente
     p1.metal = METAL_CRIAR_PILAR_ARCO;
@@ -82,6 +83,7 @@ TEST_CASE("Teste do Player", "Inicializacao") {
     p1.metal = METAL_CRIAR_PILAR_LANCA;
     REQUIRE(p1.criar_pilar(TipoPilar::LANCA) == true);
 
+    // fortalecer pilar, pilar vivo
     REQUIRE(p1.pilar_espada.hp == HP_INICIAL_PILAR_ESPADA);
     p1.metal = METAL_CRIAR_PILAR_ESPADA;
     p1.criar_pilar(TipoPilar::ESPADA);
@@ -156,16 +158,63 @@ TEST_CASE("Teste do Player", "Inicializacao") {
     REQUIRE(p1.criar_necromancer(TipoNecromancer::CAVALEIRO) == false);  // não existe pilar
     p1.ossos = 0;
 }
+
+// TS004
 TEST_CASE("Teste do Controlador", "Bla"){
     Controlador contr;
     REQUIRE(contr.novo_jogo(false)==true);
-    contr.jogador.metal=100;
-    contr.jogador.ossos=100;
-    REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::ARCO, 3,3)==true);
-    REQUIRE(contr.criar_necromancer(&contr.jogador, TipoNecromancer::ARQUEIRO, 2,2)==true);
+
+    // testes referentes a pilar
+    // criar pilar
+    REQUIRE(contr.jogador.pilar_espada.vivo == true);
+    REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::ARCO, 3, 3) == false);  // sem metal o suficiente
+    contr.jogador.metal = METAL_CRIAR_PILAR_ARCO;
+    REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::ARCO, 3, 3) == true);
+    REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::LANCA, 4, 5) == false);  // sem metal o suficiente
+    contr.jogador.metal = METAL_CRIAR_PILAR_LANCA;
+    REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::LANCA, 4, 5) == true);
+
+    // fortalecer pilar, pilar vivo
+    REQUIRE(contr.jogador.pilar_espada.hp == HP_INICIAL_PILAR_ESPADA);
+    contr.jogador.metal = METAL_CRIAR_PILAR_ESPADA;
+    contr.fortalecer_pilar(&contr.jogador, TipoPilar::ESPADA);
+    REQUIRE(contr.jogador.pilar_espada.hp == 2*HP_INICIAL_PILAR_ESPADA);
+    REQUIRE(contr.jogador.pilar_arco.hp == HP_INICIAL_PILAR_ARCO);
+    contr.jogador.metal = METAL_CRIAR_PILAR_ARCO;
+    contr.fortalecer_pilar(&contr.jogador, TipoPilar::ARCO);
+    REQUIRE(contr.jogador.pilar_arco.hp == 2*HP_INICIAL_PILAR_ARCO);
+    REQUIRE(contr.jogador.pilar_lanca.hp == HP_INICIAL_PILAR_LANCA);
+    contr.jogador.metal = METAL_CRIAR_PILAR_LANCA;
+    contr.fortalecer_pilar(&contr.jogador, TipoPilar::LANCA);
+    REQUIRE(contr.jogador.pilar_lanca.hp == 2*HP_INICIAL_PILAR_LANCA);
+
+    // testes referentes a necromancer
+    REQUIRE(contr.jogador.guerreiro.vivo == true);  // guerreiro vivo?
+
+    // para criar necromancer, pilares vivos
+    REQUIRE(contr.criar_necromancer(&contr.jogador, TipoNecromancer::ARQUEIRO, 2, 2) == false);  // sem ossos o suficiente
+    contr.jogador.ossos = OSSOS_CRIAR_ARQUEIRO;
+    REQUIRE(contr.criar_necromancer(&contr.jogador, TipoNecromancer::ARQUEIRO, 2, 2) == true);
+    REQUIRE(contr.criar_necromancer(&contr.jogador, TipoNecromancer::CAVALEIRO, 4, 4) == false);  // sem ossos o suficiente
+    contr.jogador.ossos = OSSOS_CRIAR_CAVALEIRO;
+    REQUIRE(contr.criar_necromancer(&contr.jogador, TipoNecromancer::CAVALEIRO, 4, 4) == true);
+
+    // para fortalecer necromancer, pilares vivos
+    REQUIRE(contr.jogador.guerreiro.mp == MP_INICIAL_GUERREIRO);
+    contr.jogador.ossos = OSSOS_CRIAR_GUERREIRO;
+    REQUIRE(contr.fortalecer_necromancer(&contr.jogador, TipoNecromancer::GUERREIRO) == true);
+    REQUIRE(contr.jogador.guerreiro.mp == 2*MP_INICIAL_GUERREIRO);
+    REQUIRE(contr.jogador.arqueiro.mp == MP_INICIAL_ARQUEIRO);
+    contr.jogador.ossos = OSSOS_CRIAR_ARQUEIRO;
+    REQUIRE(contr.fortalecer_necromancer(&contr.jogador, TipoNecromancer::ARQUEIRO) == true);
+    REQUIRE(contr.jogador.arqueiro.mp == 2*MP_INICIAL_ARQUEIRO);
+    REQUIRE(contr.jogador.cavaleiro.mp == MP_INICIAL_CAVALEIRO);
+    contr.jogador.ossos = OSSOS_CRIAR_CAVALEIRO;
+    REQUIRE(contr.fortalecer_necromancer(&contr.jogador, TipoNecromancer::CAVALEIRO) == true);
+    REQUIRE(contr.jogador.cavaleiro.mp == 2*MP_INICIAL_CAVALEIRO);
     
     // pra debugar
-    // contr.print_mapa();
+    contr.print_mapa();
 }
 
 

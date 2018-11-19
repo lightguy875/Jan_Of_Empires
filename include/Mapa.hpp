@@ -12,12 +12,12 @@ class Mapa{
     private:
         unsigned short tam_x;
         unsigned short tam_y;  
-        bool posicao_valida(unsigned short,unsigned short);      
 
     public:  
         Posicao cursor;
         MapaDeBlocos mapa; 
         Mapa(unsigned short,unsigned short);
+        bool posicao_valida(unsigned short,unsigned short);      
         bool vazio(unsigned short,unsigned short);
         bool inserir(ColocavelEmBloco *, unsigned short, unsigned short);
         ColocavelEmBloco* ver(unsigned short, unsigned short);

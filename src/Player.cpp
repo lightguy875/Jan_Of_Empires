@@ -62,7 +62,7 @@ Pilar* Player::pilar(TipoPilar pil){
         return &this->pilar_arco;
 
     if(pil == TipoPilar::LANCA)
-        return &this->pilar_arco;
+        return &this->pilar_lanca;
 
     if(pil == TipoPilar::ESPADA)
         return &this->pilar_espada;    
