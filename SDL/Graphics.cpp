@@ -9,6 +9,7 @@ Texture menu_screen;
 Texture credit_screen;
 Texture pause_screen;
 Texture round_screen;
+Texture knight, solider, archer;
 
 bool Graphics::init(){
     bool success = true;
@@ -74,6 +75,22 @@ bool Graphics::loadMedia(){
         printf( "Failed to load texture!\n" );
         success = false;
     }
+
+    if( !knight.loadFromFile( "../assets/knight.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
+    if( !solider.loadFromFile( "../assets/solider.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
+    if( !archer.loadFromFile( "../assets/archer.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
 
     menuButtons[0].setPositionSizeType(0,0,800,200, BUTTON_PLAY);
     menuButtons[1].setPositionSizeType(0,200,800,200,BUTTON_CREDITS);
