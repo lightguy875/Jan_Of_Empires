@@ -17,5 +17,6 @@ extern Texture credit_screen;
 extern Texture pause_screen;
 extern Texture round_screen;
 extern Texture knight, solider, archer;
+extern Texture map_screen;
 
 #endif
