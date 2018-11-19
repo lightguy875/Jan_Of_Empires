@@ -78,11 +78,12 @@ bool Controlador::matar(unsigned short X, unsigned short Y) {
 }
 
 bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
+    // TODO: REFATORAR!!!
     if(!(this->mapa.posicao_valida(x_orig, y_orig) && this->mapa.posicao_valida(x_dest, y_dest)))
         return false;
     if(abs(x_dest - x_orig) > 2 || abs(y_dest - y_orig) > 2)
         return false;
-        
+
     if(this->mapa.vazio(x_orig, y_orig))
         return false;
     if(this->mapa.ver(x_orig, y_orig)->tipo != TipoConteudoBloco::UNIDADE)
@@ -99,6 +100,7 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
     if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::RECURSO) {
         Recurso * rec = ((Recurso *) mapa.retirar(x_dest,y_dest));
         jog->captar_recurso(rec->tipo_recurso);
+        // TODO: TIRAR rec DA LISTA DE RECURSOS
     }
     this->mapa.inserir(unidade_movida, x_dest, y_dest);
 

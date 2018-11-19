@@ -160,7 +160,7 @@ TEST_CASE("Teste da classe Player", "Inicializacao") {
 }
 
 // TS004
-TEST_CASE("Teste do Controlador", "Bla"){
+TEST_CASE("Teste da classe Controlador - Basico", "Regras Básicas"){
     Controlador contr;
     REQUIRE(contr.novo_jogo(false)==true);
 
@@ -212,13 +212,20 @@ TEST_CASE("Teste do Controlador", "Bla"){
     contr.jogador.ossos = OSSOS_CRIAR_CAVALEIRO;
     REQUIRE(contr.fortalecer_necromancer(&contr.jogador, TipoNecromancer::CAVALEIRO) == true);
     REQUIRE(contr.jogador.cavaleiro.mp == 2*MP_INICIAL_CAVALEIRO);
-    
+
     // pra debugar
     contr.print_mapa();
 }
 
+// TS005
+TEST_CASE("Teste da classe Controlador - Movimentacao", "Regras de Movimentação"){
 
+}
 
+// TS006
+TEST_CASE("Teste da classe Controlador - Combate", "Regras de Combate"){
+
+}
 
 
 
