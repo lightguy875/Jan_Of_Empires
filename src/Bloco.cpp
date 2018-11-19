@@ -24,3 +24,23 @@ bool Bloco::limpa(){
     this->vazio=true; 
     return true;
 }
+
+
+ColocavelEmBloco::ColocavelEmBloco(){
+    this->vivo = true;
+}
+bool ColocavelEmBloco::mata(){
+    if(this->vivo) 
+        this->vivo = false;
+        return true;
+
+    return false;
+}
+
+bool ColocavelEmBloco::revive(){
+    if(this->vivo) 
+        return false;
+    
+    this->vivo = true;
+    return true;
+}

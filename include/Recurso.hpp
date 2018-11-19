@@ -2,6 +2,7 @@
 #define RECUR_HPP
 
 #include "Bloco.hpp"
+#include "Utils.hpp"
 
 enum class TipoRecurso{
     METAL = 10,
@@ -11,6 +12,7 @@ enum class TipoRecurso{
 class Recurso  : public ColocavelEmBloco
 { 
     public:
+        unsigned short qtde;
         TipoRecurso tipo_recurso;
         Recurso();
 }; 

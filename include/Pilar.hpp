@@ -2,6 +2,8 @@
 #define PILAR_HPP
 
 #include "Bloco.hpp"
+#include "Utils.hpp"
+
 
 enum class TipoPilar {
     ESPADA = 7,LANCA, ARCO
@@ -10,6 +12,7 @@ enum class TipoPilar {
 class Pilar : public ColocavelEmBloco
 { 
     public:
+        unsigned short hp;
         TipoPilar tipo_pilar;
         Pilar();
 }; 

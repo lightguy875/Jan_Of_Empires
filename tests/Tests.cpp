@@ -6,6 +6,8 @@
 #include "../include/Pilar.hpp"
 #include "../include/Bloco.hpp"
 #include "../include/Mapa.hpp"
+#include "../include/Player.hpp"
+#include "../include/Controlador.hpp"
 
 // TS001
 TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
@@ -33,21 +35,60 @@ TEST_CASE("Teste do bloco","Teste checagem de tipo, sub tipo e bloco vazio")
     
 }
 
+//TS002
 TEST_CASE("Teste do mapa", "teste inicial do mapa"){
-
+    // vazio
     Mapa mapa = Mapa(25,25);
     REQUIRE(mapa.vazio(2,2) == true);
     REQUIRE(mapa.vazio(-1,2) == false);
 
+    //inserir
     Recurso metal = Metal();
-    REQUIRE(mapa.inserir(&metal, 2,2) == true);
-    REQUIRE(mapa.inserir(&metal, 2,2) == false);
+    REQUIRE(mapa.inserir(&metal, 2,3) == true);
+    REQUIRE(mapa.inserir(&metal, 2,3) == false);
     REQUIRE(mapa.inserir(&metal, 25,25) == false);
     REQUIRE(mapa.inserir(&metal, 2,-2) == false);
-    REQUIRE(mapa.vazio(2,2) == false);
+    REQUIRE(metal.x == 2);
+    REQUIRE(metal.y == 3);
+    REQUIRE(mapa.vazio(2,3) == false);
 
-    REQUIRE( mapa.ver(2,2) == &metal);
-    REQUIRE( mapa.ver(2,2)->tipo == TipoConteudoBloco::RECURSO);
-    REQUIRE( ((Recurso *)mapa.ver(2,2))->tipo_recurso == TipoRecurso::METAL);
+
+    //ver
+    REQUIRE( mapa.ver(2,3) == &metal);
+    REQUIRE( mapa.ver(2,3)->tipo == TipoConteudoBloco::RECURSO);
+    REQUIRE( ((Recurso *)mapa.ver(2,3))->tipo_recurso == TipoRecurso::METAL);
+    REQUIRE(mapa.ver(2,2) == nullptr);
+    REQUIRE(mapa.vazio(2,3) == false);
+
+    //retirar
+    Recurso *retorno =  (Recurso *) mapa.retirar(2,3);
+    REQUIRE(retorno == &metal);
     REQUIRE(mapa.ver(2,3) == nullptr);
+    REQUIRE(mapa.vazio(2,3) == true);
+
 }
+
+TEST_CASE("Teste do Player", "Inicializacao"){
+    Player p1 = Player();
+    p1.ossos = 30;
+    REQUIRE(p1.criar_necromancer(TipoNecromancer::GUERREIRO)==true);
+    
+}
+
+TEST_CASE("Teste do Controlador", "Bla"){
+    Controlador contr;
+    REQUIRE(contr.novo_jogo(false)==true);
+    contr.jogador.metal=100;
+    contr.jogador.ossos=100;
+    REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::ARCO, 3,3)==true);
+    REQUIRE(contr.criar_necromancer(&contr.jogador, TipoNecromancer::ARQUEIRO, 2,2)==true);
+    
+    // pra debugar
+    // contr.print_mapa();
+}
+
+
+
+
+
+

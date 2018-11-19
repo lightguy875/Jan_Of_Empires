@@ -7,18 +7,19 @@ Necromancer::Necromancer(){
     this->tipo = TipoConteudoBloco::UNIDADE;
 }
 
+
 Guerreiro::Guerreiro(){
     this->tipo_necromancer = TipoNecromancer::GUERREIRO;
-    this->mp = 30;
+    this->mp = MP_INICIAL_GUERREIRO;
 }
 
 Cavaleiro::Cavaleiro(){
     this->tipo_necromancer = TipoNecromancer::CAVALEIRO;
-    this->mp = 50;
+    this->mp = MP_INICIAL_CAVALEIRO;
 }
 
 Arqueiro::Arqueiro(){
     this->tipo_necromancer = TipoNecromancer::ARQUEIRO;
-    this->mp = 60;
+    this->mp = MP_INICIAL_ARQUEIRO;
 }
 
