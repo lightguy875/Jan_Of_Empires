@@ -91,7 +91,7 @@ void Game::renderPlay(){
 
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_RenderClear( renderer );
-        map_screen.render(0,0);
+            map_screen.render(0,0);
             archer_play.render(&archer);
             SDL_RenderPresent( renderer );
     }
