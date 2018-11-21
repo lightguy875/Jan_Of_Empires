@@ -79,7 +79,9 @@ TEST_CASE("Teste da classe Player", "Inicializacao") {
     REQUIRE(p1.criar_pilar(TipoPilar::ARCO) == false);  // sem metal o suficiente
     p1.metal = METAL_CRIAR_PILAR_ARCO;
     REQUIRE(p1.criar_pilar(TipoPilar::ARCO) == true);
+    REQUIRE(p1.tem_pilar(TipoPilar::ARCO) == true);
     REQUIRE(p1.criar_pilar(TipoPilar::LANCA) == false);  // sem metal o suficiente
+    REQUIRE(p1.tem_pilar(TipoPilar::LANCA) == false); 
     p1.metal = METAL_CRIAR_PILAR_LANCA;
     REQUIRE(p1.criar_pilar(TipoPilar::LANCA) == true);
 
@@ -104,7 +106,9 @@ TEST_CASE("Teste da classe Player", "Inicializacao") {
     REQUIRE(p1.criar_necromancer(TipoNecromancer::ARQUEIRO) == false);  // sem ossos o suficiente
     p1.ossos = OSSOS_CRIAR_ARQUEIRO;
     REQUIRE(p1.criar_necromancer(TipoNecromancer::ARQUEIRO) == true);
+    REQUIRE(p1.tem_necromancer(TipoNecromancer::ARQUEIRO) == true); 
     REQUIRE(p1.criar_necromancer(TipoNecromancer::CAVALEIRO) == false);  // sem ossos o suficiente
+    REQUIRE(p1.tem_necromancer(TipoNecromancer::CAVALEIRO) == false);
     p1.ossos = OSSOS_CRIAR_CAVALEIRO;
     REQUIRE(p1.criar_necromancer(TipoNecromancer::CAVALEIRO) == true);
 
