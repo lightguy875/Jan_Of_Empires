@@ -112,6 +112,7 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
     }
     this->mapa.inserir(unidade_movida, x_dest, y_dest);
 
+    this->processa_movimento(x_dest,y_dest);
     return true;
 }
 
