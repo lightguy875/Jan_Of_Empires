@@ -77,8 +77,7 @@ bool Controlador::matar(unsigned short X, unsigned short Y) {
     return true;
 }
 
-bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
-    // TODO: REFATORAR!!!
+bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
     if(!(this->mapa.posicao_valida(x_orig, y_orig) && this->mapa.posicao_valida(x_dest, y_dest)))
         return false;
     if(abs(x_dest - x_orig) > 2 || abs(y_dest - y_orig) > 2)
@@ -95,6 +94,15 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
         return false; 
     if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::PREDIO)
         return false;
+
+    return true;
+}
+
+
+bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
+    if( !this->pode_movimentar(jog,x_orig,y_orig,x_dest,y_dest) )
+        return false;
+
     ColocavelEmBloco * unidade_movida = this->mapa.retirar(x_orig, y_orig);
 
     if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::RECURSO) {
@@ -107,8 +115,16 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
     return true;
 }
 
+void Controlador::processa_movimento(unsigned short x_dest, unsigned short y_dest){
+
+    //Gerou combate?
+        //processa combate (tira vida)
+    
+    //alguém ganhou?
+        //termina o jogo
 
 
+}
 
 
 void Controlador::print_recursos(){
@@ -127,16 +143,16 @@ void Controlador::print_mapa(){
     int i, j;
 
     std::cout << "  ";
-    for(j=0; j<MAPA_ALTURA; j++){
-        std::cout <<" "<< j;
-        if(j<10)std::cout <<" ";
+    for(i=0; i<MAPA_LARGURA; i++){
+        std::cout <<" "<< i;
+        if(i<10)std::cout <<" ";
     }
     std::cout << std::endl;
 
 
-    for(i=0; i<MAPA_LARGURA; i++){
-        std::cout << i << " ";
-        for(j=0; j<MAPA_ALTURA; j++){
+    for(j=0; j<MAPA_ALTURA; j++){
+        std::cout << j << " ";
+        for(i=0; i<MAPA_LARGURA; i++){
             if(this->mapa.vazio(i,j)) std::cout << "   ";
             else{
                 if(mapa.ver(i,j)->tipo == TipoConteudoBloco::RECURSO){

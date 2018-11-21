@@ -34,7 +34,9 @@ class Controlador {
         bool fortalecer_necromancer(Player*, TipoNecromancer);
         
         bool matar(unsigned short, unsigned short);
+        bool pode_movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
         bool movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
+        void processa_movimento(unsigned short,unsigned short);
 
         //temporarios
         void print_recursos();

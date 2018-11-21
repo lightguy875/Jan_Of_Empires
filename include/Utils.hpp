@@ -20,8 +20,8 @@ const unsigned short METAL_CRIAR_PILAR_ESPADA = 60;
 const unsigned short METAL_CRIAR_PILAR_ARCO = 60;
 const unsigned short METAL_CRIAR_PILAR_LANCA = 60;
 
-const unsigned short MAPA_LARGURA = 30;
-const unsigned short MAPA_ALTURA = 30;
+const unsigned short MAPA_LARGURA = 20;
+const unsigned short MAPA_ALTURA = 15;
 
 const unsigned short OSSOS_MAPA = 20;
 const unsigned short METAL_MAPA = 20;
