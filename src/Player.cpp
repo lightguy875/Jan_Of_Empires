@@ -85,6 +85,14 @@ Necromancer* Player::necromancer(TipoNecromancer nec){
     return nullptr;
 }
 
+bool Player::tem_pilar(TipoPilar pil){
+    return this->pilar(pil)->vivo;   
+}
+
+bool Player::tem_necromancer(TipoNecromancer nec){
+    return this->necromancer(nec)->vivo;
+}
+
 bool Player::criar_pilar(TipoPilar pil){
     if(pil == TipoPilar::ARCO){
         if(this->metal < METAL_CRIAR_PILAR_ARCO) 

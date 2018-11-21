@@ -23,7 +23,8 @@ class Player{
 
         bool criar_necromancer(TipoNecromancer);
         bool criar_pilar(TipoPilar);
-
+        bool tem_pilar(TipoPilar);
+        bool tem_necromancer(TipoNecromancer);
         Pilar* pilar(TipoPilar);
         Necromancer* necromancer(TipoNecromancer);
 
