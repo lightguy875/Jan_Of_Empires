@@ -80,7 +80,7 @@ bool Controlador::matar(unsigned short X, unsigned short Y) {
 bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
     if(!(this->mapa.posicao_valida(x_orig, y_orig) && this->mapa.posicao_valida(x_dest, y_dest)))
         return false;
-    if(abs(x_dest - x_orig) > 2 || abs(y_dest - y_orig) > 2)
+    if(abs(x_dest - x_orig) > RANGE_MOVIMENTO || abs(y_dest - y_orig) > RANGE_MOVIMENTO)
         return false;
 
     if(this->mapa.vazio(x_orig, y_orig))
