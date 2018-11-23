@@ -19,6 +19,8 @@ class Controlador {
         Player computador;
         Posicao cursor;
         std::list<Recurso> recursos;
+        bool jogo_terminou;
+        unsigned short vez;
 
 
         Controlador();
@@ -36,7 +38,11 @@ class Controlador {
         bool matar(unsigned short, unsigned short);
         bool pode_movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
         bool movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
-        void processa_movimento(unsigned short,unsigned short);
+        void processa_jogada();
+        void muda_vez();
+        void verifica_combate(unsigned short, unsigned short);
+        void realiza_combate(unsigned short , unsigned short ,unsigned short , unsigned short);
+        bool gerou_combate(unsigned short, unsigned short, unsigned short);
 
         //temporarios
         void print_recursos();

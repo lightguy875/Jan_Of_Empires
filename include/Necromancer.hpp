@@ -2,6 +2,7 @@
 #define NECRO_HPP
 
 #include "Bloco.hpp"
+#include "Pilar.hpp"
 #include "Utils.hpp"
 /*
     Classe Necromancer, que possui as coisas comuns entre todos os Necromancers.
@@ -19,6 +20,9 @@ class Necromancer  : public ColocavelEmBloco
         unsigned short mp; 
         TipoNecromancer tipo_necromancer;
         Necromancer();
+        unsigned short multiplicador(TipoPilar tipo);
+        unsigned short multiplicador(TipoNecromancer tipo);
+
 }; 
 
 

@@ -2,7 +2,8 @@
 #include <iostream>
 
 Controlador::Controlador() : mapa(MAPA_LARGURA, MAPA_ALTURA){
-
+    this->jogo_terminou = false;
+    this->vez=0;
 }
 void Controlador::preenche_recursos_iniciais(){
     unsigned short i;
@@ -112,18 +113,91 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
     }
     this->mapa.inserir(unidade_movida, x_dest, y_dest);
 
-    this->processa_movimento(x_dest,y_dest);
+    this->processa_jogada();
     return true;
 }
 
-void Controlador::processa_movimento(unsigned short x_dest, unsigned short y_dest){
+bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned short y){
+    if(!this->mapa.posicao_valida(x, y))
+        return false;
+    if(this->mapa.vazio(x,y)) 
+        return false;
+    if(this->mapa.ver(x, y)->tipo == TipoConteudoBloco::RECURSO) 
+        return false;
 
-    //Gerou combate?
-        //processa combate (tira vida)
-    
+    return this->mapa.ver(x,y)->time != time;
+}
+
+void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac,unsigned short x_vit, unsigned short y_vit ){
+    unsigned short dano_golpe;
+
+    Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac,y_atac);
+
+    ColocavelEmBloco *vitima = this->mapa.ver(x_vit, y_vit);
+    if(this->mapa.ver(x_vit, y_vit)->tipo==TipoConteudoBloco::UNIDADE){
+        TipoNecromancer tipo_vitima = ((Necromancer *) vitima)->tipo_necromancer;
+        dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima);
+        if( ((Necromancer *) vitima)->mp <= dano_golpe ){
+            this->matar(x_vit, y_vit);
+        
+        }
+        else
+        {
+            ((Necromancer *) vitima)->mp = ((Necromancer *) vitima)->mp - dano_golpe;
+        }
+    }
+    if(this->mapa.ver(x_vit, y_vit)->tipo==TipoConteudoBloco::PREDIO){
+        TipoPilar tipo_vitima = ((Pilar *) vitima)->tipo_pilar;
+        dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima);
+        if( ((Pilar *) vitima)->hp <= dano_golpe ){
+            this->matar(x_vit, y_vit);
+        
+        }
+        else
+        {
+            ((Pilar *) vitima)->hp = ((Pilar *) vitima)->hp - dano_golpe;
+        }
+    }
+}
+
+
+void Controlador::verifica_combate(unsigned short x, unsigned short y){
+
+    unsigned short time = this->mapa.ver(x,y)->time;
+    // Só é combate se tiver na vez do atacante
+    if(time != this->vez)
+        return;
+    // procura adversarios vizinhos e realiza combate se tiver
+    for(int i=x-RANGE_COMBATE; i<=x+RANGE_COMBATE; i++)
+        for (int j = y-RANGE_COMBATE; i <= y+RANGE_COMBATE; j++)                
+            if(this->gerou_combate(time, i,j))
+                this->realiza_combate(x,y,i,j);
+}
+
+
+void Controlador::muda_vez(){
+    if(this->vez==0){
+        this->vez=1;
+        return;
+    }
+
+    this->vez=0;
+}
+
+void Controlador::processa_jogada(){
+
+    unsigned short time;
+
+    // Varre todo o mapa procurando unidades vizinhas pra "combater"
+    for(int i=0; i<MAPA_LARGURA; i++){
+        for(int j=0; j<MAPA_ALTURA; j++){
+            if(!this->mapa.vazio(i,j) && mapa.ver(i,j)->tipo == TipoConteudoBloco::UNIDADE){
+                this->verifica_combate(i,j);       
+            }
+        }
+    }    
     //alguém ganhou?
-        //termina o jogo
-
+    this->muda_vez();
 
 }
 

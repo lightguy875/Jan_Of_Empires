@@ -40,17 +40,17 @@ const unsigned short Y_NECROMANCER_COMPUTADOR = MAPA_ALTURA - 2;
 
 const unsigned short DANO_DE_ATQ = 50;
 
-const unsigned short ESPADA_ARCO_ATQ_MULTIPICADOR = 1;
-const unsigned short ESPADA_ESPADA_ATQ_MULTIPICADOR = 2;
-const unsigned short ESPADA_LANCA_ATQ_MULTIPICADOR = 3;
+const unsigned short ESPADA_ARCO_ATQ_MULTIPLICADOR = 1;
+const unsigned short ESPADA_ESPADA_ATQ_MULTIPLICADOR = 2;
+const unsigned short ESPADA_LANCA_ATQ_MULTIPLICADOR = 3;
 
-const unsigned short LANCA_ESPADA_ATQ_MULTIPICADOR = 1;
-const unsigned short LANCA_LANCA_ATQ_MULTIPICADOR = 2;
-const unsigned short LANCA_ARCO_ATQ_MULTIPICADOR = 3;
+const unsigned short LANCA_ESPADA_ATQ_MULTIPLICADOR = 1;
+const unsigned short LANCA_LANCA_ATQ_MULTIPLICADOR = 2;
+const unsigned short LANCA_ARCO_ATQ_MULTIPLICADOR = 3;
 
-const unsigned short ARCO_LANCA_ATQ_MULTIPICADOR = 1;
-const unsigned short ARCO_ARCO_ATQ_MULTIPICADOR = 2;
-const unsigned short ARCO_ESPADA_ATQ_MULTIPICADOR = 3;
+const unsigned short ARCO_LANCA_ATQ_MULTIPLICADOR = 1;
+const unsigned short ARCO_ARCO_ATQ_MULTIPLICADOR = 2;
+const unsigned short ARCO_ESPADA_ATQ_MULTIPLICADOR = 3;
 
 const unsigned short RANGE_MOVIMENTO = 2;
 const unsigned short RANGE_COMBATE = 1;
