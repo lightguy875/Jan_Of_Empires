@@ -20,11 +20,12 @@ class Controlador {
         Posicao cursor;
         std::list<Recurso> recursos;
         bool jogo_terminou;
+        bool computador_joga;
         unsigned short vez;
 
 
         Controlador();
-        bool novo_jogo(bool);
+        bool novo_jogo(bool,bool);
         bool salvar_jogo(std::string path);
         bool carregar_jogo(std::string path);
 

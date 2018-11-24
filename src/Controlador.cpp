@@ -21,7 +21,7 @@ void Controlador::preenche_recursos_iniciais(){
     }   
 }
 
-bool Controlador::novo_jogo(bool recursos_aleatorios){
+bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga){
 
     this->mapa.inserir(&jogador.guerreiro, X_NECROMANCER_PLAYER, Y_NECROMANCER_PLAYER);
     this->mapa.inserir(&jogador.pilar_espada, X_PILAR_PLAYER, Y_PILAR_PLAYER);
@@ -31,6 +31,8 @@ bool Controlador::novo_jogo(bool recursos_aleatorios){
     if(recursos_aleatorios)
         this->preenche_recursos_iniciais();
     
+    this->computador_joga = computador_joga;
+
     this->computador.muda_time();
     return true;
 }
@@ -90,7 +92,8 @@ bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned s
         return false; 
     if(this->mapa.ver(x_orig, y_orig)->time != jog->time)
         return false;
-    
+    if(this->mapa.vazio(x_dest, y_dest))
+        return true;
     if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::UNIDADE)
         return false; 
     if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::PREDIO)
@@ -105,11 +108,17 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
         return false;
 
     ColocavelEmBloco * unidade_movida = this->mapa.retirar(x_orig, y_orig);
-
-    if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::RECURSO) {
-        Recurso * rec = ((Recurso *) mapa.retirar(x_dest,y_dest));
-        jog->captar_recurso(rec->tipo_recurso);
-        // TODO: TIRAR rec DA LISTA DE RECURSOS
+    if(!this->mapa.vazio(x_dest, y_dest)){
+        if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::RECURSO) {
+            Recurso * rec = ((Recurso *) mapa.retirar(x_dest,y_dest));
+            jog->captar_recurso(rec->tipo_recurso);
+            for(std::list<Recurso>::iterator i=this->recursos.begin(); i!=this->recursos.end(); ++i)
+                if(i->x == x_dest && i->y==y_dest){    
+                    //std::cout << "recurso retirado de  " <<i->x << " " << i->y << std::endl; 
+                    this->recursos.erase(i);
+                    break;
+                }
+        }
     }
     this->mapa.inserir(unidade_movida, x_dest, y_dest);
 
@@ -130,7 +139,7 @@ bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned 
 
 void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac,unsigned short x_vit, unsigned short y_vit ){
     unsigned short dano_golpe;
-
+    std::cout<<  "realizando combate em: "<< x_atac << " " << y_atac << " "<< x_vit << " " << y_vit <<std::endl;
     Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac,y_atac);
 
     ColocavelEmBloco *vitima = this->mapa.ver(x_vit, y_vit);
@@ -162,14 +171,14 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac,u
 
 
 void Controlador::verifica_combate(unsigned short x, unsigned short y){
-
+    //std::cout<<  "verificando combate em: "<< x << " " << y << std::endl;
     unsigned short time = this->mapa.ver(x,y)->time;
     // Só é combate se tiver na vez do atacante
     if(time != this->vez)
         return;
     // procura adversarios vizinhos e realiza combate se tiver
     for(int i=x-RANGE_COMBATE; i<=x+RANGE_COMBATE; i++)
-        for (int j = y-RANGE_COMBATE; i <= y+RANGE_COMBATE; j++)                
+        for (int j = y-RANGE_COMBATE; j <= y+RANGE_COMBATE; j++)                
             if(this->gerou_combate(time, i,j))
                 this->realiza_combate(x,y,i,j);
 }
@@ -196,14 +205,19 @@ void Controlador::processa_jogada(){
             }
         }
     }    
-    //alguém ganhou?
-    this->muda_vez();
+    // checar se alguém ganhou como consequência dessa jogada
+    
+    if(this->computador_joga){
+        this->muda_vez();   
+        // fazer função que realiza a jogada do computador AQUI
+    }
 
 }
 
 
 void Controlador::print_recursos(){
     
+    std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;    
     for (auto v : this->recursos){
         if(v.tipo_recurso == TipoRecurso::METAL)
             std::cout << "Metal";

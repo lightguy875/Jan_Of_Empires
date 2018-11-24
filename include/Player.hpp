@@ -30,6 +30,9 @@ class Player{
 
         bool captar_recurso(TipoRecurso);
         void muda_time();
+
+
+        void print_recursos(const char *);
 };
 
 #endif

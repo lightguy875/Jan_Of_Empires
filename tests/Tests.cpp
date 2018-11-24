@@ -166,7 +166,7 @@ TEST_CASE("Teste da classe Player", "Inicializacao") {
 // TS004
 TEST_CASE("Teste da classe Controlador - Basico", "Regras Básicas"){
     Controlador contr;
-    REQUIRE(contr.novo_jogo(false)==true);
+    REQUIRE(contr.novo_jogo(false,false)==true);
 
     /******************* TESTES DE CRIAÇÃO E FORTALECIMENTO *******************/
     // testes de criação e fortalecimento referentes a pilar
@@ -284,6 +284,38 @@ TEST_CASE("Teste da classe Controlador - Basico", "Regras Básicas"){
     REQUIRE(contr.matar(6, 6) == false); // não é possível matar recurso
 
     // pra debugar
+    //contr.print_mapa();
+}
+
+
+TEST_CASE("Teste da classe Controlador - Movimentacao", "Pegando Recursos"){
+    
+    Controlador contr;
+    REQUIRE(contr.novo_jogo(false,false)==true);
+ 
+    //insere recurso no mapa   
+    Recurso *rec = new Metal();
+    contr.mapa.inserir(rec, 2, 2);
+    contr.recursos.push_back(*rec);
+    Recurso *os = new Ossos();
+    contr.mapa.inserir(os, 3, 3);
+    contr.recursos.push_back(*os);
+
+    contr.print_recursos();
+    contr.jogador.print_recursos("Jogador");
+    contr.print_mapa();
+
+    REQUIRE(contr.pode_movimentar(&contr.jogador, 1,1,2,2)==true);
+    REQUIRE(contr.movimentar(&contr.jogador, 1,1,2,2)==true);
+    
+    contr.jogador.print_recursos("Jogador");
+    contr.print_recursos();
+    contr.print_mapa();
+    REQUIRE(contr.pode_movimentar(&contr.jogador, 2,2,3,3)==true);
+    REQUIRE(contr.movimentar(&contr.jogador, 2,2,3,3)==true);
+    
+    contr.jogador.print_recursos("Jogador");
+    contr.print_recursos();
     contr.print_mapa();
 }
 

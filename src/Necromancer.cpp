@@ -54,6 +54,7 @@ unsigned short Necromancer::multiplicador(TipoPilar tipo){
         if(tipo==TipoPilar::ARCO)
             return ESPADA_ARCO_ATQ_MULTIPLICADOR;
     }
+    return 0;
 }
 
 unsigned short Necromancer::multiplicador(TipoNecromancer tipo){
@@ -86,5 +87,6 @@ unsigned short Necromancer::multiplicador(TipoNecromancer tipo){
 
         if(tipo==TipoNecromancer::ARQUEIRO)
             return ESPADA_ARCO_ATQ_MULTIPLICADOR;
-    }    
+    }   
+    return 0; 
 }

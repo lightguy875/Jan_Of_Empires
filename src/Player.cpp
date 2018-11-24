@@ -1,5 +1,5 @@
 #include "../include/Player.hpp"
-
+#include <iostream>
 
 Player::Player(){
     
@@ -184,3 +184,16 @@ bool Player::criar_necromancer(TipoNecromancer nec){
 
     return true;  
 }
+
+
+
+void Player::print_recursos(const char* nome){
+
+    using namespace std;
+
+    cout << nome << " tem: ";
+    cout << this->metal << " de metal, ";
+    cout << this->ossos << " de ossos" << endl;
+
+}
+
