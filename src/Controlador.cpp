@@ -193,6 +193,38 @@ void Controlador::muda_vez(){
     this->vez=0;
 }
 
+bool Controlador::alguem_ganhou(){
+    if(this->recursos.size()==0){
+        if(this->jogador.pontuacao() > this->computador.pontuacao()){
+            this->jogo_terminou=true;
+            this->ganhou=0;
+            return true;
+        }
+        if(this->jogador.pontuacao() < this->computador.pontuacao()){
+            this->jogo_terminou=true;
+            this->ganhou=1;
+            return true;
+        }
+
+        this->jogo_terminou=true;
+        this->ganhou=-1;
+        return true;
+    }
+    
+    if(this->jogador.perdeu_jogo()){
+        this->jogo_terminou=true;
+        this->ganhou=1;
+        return true;
+    }
+    if(this->computador.perdeu_jogo()){
+        this->jogo_terminou=true;
+        this->ganhou=0;
+        return true;
+    }
+
+    return false;
+}
+
 void Controlador::processa_jogada(){
 
     unsigned short time;
@@ -205,13 +237,14 @@ void Controlador::processa_jogada(){
             }
         }
     }    
-    // checar se alguém ganhou como consequência dessa jogada
+    if(this->alguem_ganhou()){
+        return;
+    }
     
     if(this->computador_joga){
         this->muda_vez();   
-        // fazer função que realiza a jogada do computador AQUI
+        // funcao de jogada do computador aqui!
     }
-
 }
 
 
@@ -271,17 +304,6 @@ void Controlador::print_mapa(){
         std::cout << std::endl;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

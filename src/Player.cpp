@@ -197,3 +197,31 @@ void Player::print_recursos(const char* nome){
 
 }
 
+bool Player::perdeu_jogo(){
+    return !(this->guerreiro.vivo || this->pilar_espada.vivo ||
+    this->arqueiro.vivo || this->pilar_arco.vivo ||
+    this->cavaleiro.vivo || this->pilar_lanca.vivo);
+}
+
+unsigned short Player::pontuacao(){
+    unsigned short total = 0;
+
+    if(this->pilar_espada.vivo) 
+        total+=this->pilar_espada.hp;
+    if(this->pilar_arco.vivo)
+        total+=this->pilar_arco.hp;
+    if(this->pilar_lanca.vivo)
+        total+=this->pilar_lanca.hp;
+    if(this->guerreiro.vivo)
+        total+=this->guerreiro.mp;
+    if(this->arqueiro.vivo)
+        total+=this->arqueiro.mp;
+    if(this->cavaleiro.vivo) 
+        total+=this->cavaleiro.mp;
+
+    return total;
+}
+
+
+
+

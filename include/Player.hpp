@@ -30,7 +30,8 @@ class Player{
 
         bool captar_recurso(TipoRecurso);
         void muda_time();
-
+        bool perdeu_jogo();
+        unsigned short pontuacao();
 
         void print_recursos(const char *);
 };

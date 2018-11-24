@@ -20,6 +20,7 @@ class Controlador {
         Posicao cursor;
         std::list<Recurso> recursos;
         bool jogo_terminou;
+        int ganhou;
         bool computador_joga;
         unsigned short vez;
 
@@ -40,6 +41,7 @@ class Controlador {
         bool pode_movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
         bool movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
         void processa_jogada();
+        bool alguem_ganhou();
         void muda_vez();
         void verifica_combate(unsigned short, unsigned short);
         void realiza_combate(unsigned short , unsigned short ,unsigned short , unsigned short);

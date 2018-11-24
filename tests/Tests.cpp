@@ -288,7 +288,7 @@ TEST_CASE("Teste da classe Controlador - Basico", "Regras Básicas"){
 }
 
 
-TEST_CASE("Teste da classe Controlador - Movimentacao", "Pegando Recursos"){
+TEST_CASE("Teste da classe Controlador - Recursos", "Pegando Recursos"){
     
     Controlador contr;
     REQUIRE(contr.novo_jogo(false,false)==true);
