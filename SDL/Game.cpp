@@ -92,6 +92,9 @@ void Game::renderPlay(){
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_RenderClear( renderer );
             map_screen.render(0,0);
+            castle[0].render(5,0);
+            castle[1].render(125,0);
+            castle[2].render(200,0);
             archer_play.render(&archer);
             SDL_RenderPresent( renderer );
     }

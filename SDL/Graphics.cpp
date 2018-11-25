@@ -13,6 +13,7 @@ Texture knight, solider, archer;
 Texture map_screen;
 TTF_Font * font;
 Texture textActiveItem;
+Texture castle[3];
 
 bool Graphics::init(){
     bool success = true;
@@ -101,6 +102,19 @@ bool Graphics::loadMedia(){
     }
 
     if( !archer.loadFromFile( "../assets/archer.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
+    if (!castle[0].loadFromFile( "../assets/castle_solider.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+    if (!castle[1].loadFromFile( "../assets/archer_castle.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+    if (!castle[2].loadFromFile( "../assets/knight_castle.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }

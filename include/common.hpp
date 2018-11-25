@@ -24,5 +24,6 @@ extern Texture knight, solider, archer;
 extern Texture map_screen;
 extern TTF_Font * font;
 extern Texture textActiveItem;
+extern Texture castle[3];
 
 #endif
