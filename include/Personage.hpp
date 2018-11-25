@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #endif
 
+#include <SDL2/SDL_ttf.h>
 #include "common.hpp"
 
 class Personage {

@@ -36,23 +36,25 @@ void Personage::setWidthHeight(int x, int y){
 void Personage::move(int x, int y){
     position_x = x;
     position_y = y;
-    if (x < 0)
+    if (x < width/4)
     {
-        position_x = 0;
-    }else if(x > SCREEN_WIDTH){
-        position_x = SCREEN_WIDTH;
+        position_x = width/4 + 1;
+    }else if(x > SCREEN_WIDTH - width - (width/4)){
+        position_x = SCREEN_WIDTH - width - (width/4);
     }
 
     if (y < 0)
     {
         position_y = 0;
-    }else if(y > SCREEN_HEIGHT){
-        position_y = SCREEN_HEIGHT;
+    }else if(y > SCREEN_HEIGHT - height - 15){
+        position_y = SCREEN_HEIGHT - height -15;
     }
 }
 
 void Personage::render(Texture * texture){
     texture->render(position_x,position_y);
+    textActiveItem.loadFromRenderedText("O: 10 | M: 20");
+    textActiveItem.render(position_x-(width/4),position_y+height+3);
 }
 
 int Personage::getPositionX(){

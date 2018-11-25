@@ -22,6 +22,8 @@ class Texture {
         //carrega imagens de um arquivo
         bool loadFromFile( std::string path);
 
+        bool loadFromRenderedText( std::string text);
+
         //Desaloca textura
         void free();
 

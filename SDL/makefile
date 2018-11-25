@@ -9,7 +9,7 @@ LDIR =../SDL
 #DIR_TESTS=../Test
 
 #TEST_EXE= Reader_Test
-LIBS = -lm -lSDL2 -lSDL2_image
+LIBS = -lm -lSDL2 -lSDL2_ttf -lSDL2_image
 
 PROGRAM = SDL_main
 

@@ -4,6 +4,10 @@
 #include "Button.hpp"
 #include "Texture.hpp"
 
+#include <SDL2/SDL_ttf.h>
+
+using namespace std;
+
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
@@ -18,5 +22,7 @@ extern Texture pause_screen;
 extern Texture round_screen;
 extern Texture knight, solider, archer;
 extern Texture map_screen;
+extern TTF_Font * font;
+extern Texture textActiveItem;
 
 #endif

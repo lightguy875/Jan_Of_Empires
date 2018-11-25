@@ -92,3 +92,41 @@ int Texture::getHeight()
 {
     return mHeight;
 }
+
+bool Texture::loadFromRenderedText( std::string textureText)
+{
+    //Get rid of preexisting texture
+    free();
+
+    SDL_Color textColor = {255,255,255};
+
+    SDL_Texture* newTexture = NULL;
+
+    //Render text surface
+    SDL_Surface* textSurface = TTF_RenderText_Solid( font, textureText.c_str(), textColor );
+    if( textSurface == NULL )
+    {
+        printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+    }
+    else
+    {
+        //Create texture from surface pixels
+        newTexture = SDL_CreateTextureFromSurface( renderer, textSurface );
+        if( newTexture == NULL )
+        {
+            printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+        }
+        else
+        {
+            //Get image dimensions
+            mWidth = textSurface->w;
+            mHeight = textSurface->h;
+        }
+
+        //Get rid of old surface
+        SDL_FreeSurface( textSurface );
+    }
+
+    mTexture = newTexture;
+    return mTexture != NULL;
+}

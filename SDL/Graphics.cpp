@@ -11,6 +11,8 @@ Texture pause_screen;
 Texture round_screen;
 Texture knight, solider, archer;
 Texture map_screen;
+TTF_Font * font;
+Texture textActiveItem;
 
 bool Graphics::init(){
     bool success = true;
@@ -36,15 +38,21 @@ bool Graphics::init(){
             }
             else
             {
-                //inicializa a cor do renderer
-                SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-
-                //carregamento de png
-                int imgFlags = IMG_INIT_PNG;
-                if( !( IMG_Init( imgFlags ) & imgFlags ) )
+                if( TTF_Init() == -1 )
                 {
-                    printf( "Erro ao iniciar o SDL_Image \n Erro: %s\n", IMG_GetError() );
+                    printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
                     success = false;
+                }else{
+                    //inicializa a cor do renderer
+                    SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+
+                    //carregamento de png
+                    int imgFlags = IMG_INIT_PNG;
+                    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+                    {
+                        printf( "Erro ao iniciar o SDL_Image \n Erro: %s\n", IMG_GetError() );
+                        success = false;
+                    }
                 }
             }
         }
@@ -71,7 +79,7 @@ bool Graphics::loadMedia(){
         printf( "Failed to load texture!\n" );
         success = false;
     }
-    
+
     if( !map_screen.loadFromFile( "../assets/map.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
@@ -97,6 +105,7 @@ bool Graphics::loadMedia(){
         success = false;
     }
 
+    font = TTF_OpenFont("../assets/arial.ttf", 12);
 
     menuButtons[0].setPositionSizeType(0,0,800,200, BUTTON_PLAY);
     menuButtons[1].setPositionSizeType(0,200,800,200,BUTTON_CREDITS);
