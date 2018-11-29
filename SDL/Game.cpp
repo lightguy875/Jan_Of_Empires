@@ -64,11 +64,62 @@ void Game::renderCredits(){
     }
 }
 
+void box(){
+    const SDL_MessageBoxButtonData buttons[] = {
+        { /* .flags, .buttonid, .text */        0, 0, "no" },
+        { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
+        { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 2, "cancel" },
+    };
+    const SDL_MessageBoxColorScheme colorScheme = {
+        { /* .colors (.r, .g, .b) */
+            /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+            { 255,   0,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_TEXT] */
+            {   0, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+            { 255, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+            {   0,   0, 255 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+            { 255,   0, 255 }
+        }
+    };
+    const SDL_MessageBoxData messageboxdata = {
+        SDL_MESSAGEBOX_INFORMATION, /* .flags */
+        NULL, /* .window */
+        "example message box", /* .title */
+        "select a button", /* .message */
+        SDL_arraysize(buttons), /* .numbuttons */
+        buttons, /* .buttons */
+        &colorScheme /* .colorScheme */
+    };
+    int buttonid;
+    if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
+        SDL_Log("error displaying message box");
+    }
+    if (buttonid == -1) {
+        SDL_Log("no selection");
+    } else {
+        SDL_Log("selection was %s", buttons[buttonid].text);
+    }
+}
+
+void Game::renderStatus(int hp, int metal, int bones, int round){
+    textRound.loadFromRenderedText("ROUND: 1");
+    textRound.render(38,568);
+    textHP.loadFromRenderedText("HP: 300xp");
+    textHP.render(240,568);
+    textMetal .loadFromRenderedText("METAL: 40");
+    textMetal .render(444,568);
+    textBones.loadFromRenderedText("BONES: 30");
+    textBones.render(654,568);
+}
+
 void Game::renderPlay(){
     SDL_Event e;
     Personage archer_play;
-    archer_play.setPositionX(0);
-    archer_play.setPositionY(0);
+    archer_play.setPositionX(0+PLAYER_AREA_START_X);
+    archer_play.setPositionY(0+PLAYER_AREA_START_Y);
     archer_play.setWidthHeight(archer.getWidth(),archer.getHeight());
     while(gameRunning == GAME_PLAY){
 
@@ -92,9 +143,13 @@ void Game::renderPlay(){
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_RenderClear( renderer );
             map_screen.render(0,0);
-            castle[0].render(5,0);
-            castle[1].render(125,0);
-            castle[2].render(200,0);
+            castle_left[0].render(689,62);
+            castle_left[1].render(689,257);
+            castle_left[2].render(689,452);
+            castle_right[0].render(0,62);
+            castle_right[1].render(0,257);
+            castle_right[2].render(0,452);
+            renderStatus(0,0,0,0);
             archer_play.render(&archer);
             SDL_RenderPresent( renderer );
     }

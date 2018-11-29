@@ -12,8 +12,9 @@ Texture round_screen;
 Texture knight, solider, archer;
 Texture map_screen;
 TTF_Font * font;
-Texture textActiveItem;
-Texture castle[3];
+Texture textActiveItem,textHP, textBones, textMetal, textRound;
+Texture castle_left[3],castle_right[3];
+Texture bones[30],metal[30];
 
 bool Graphics::init(){
     bool success = true;
@@ -81,7 +82,7 @@ bool Graphics::loadMedia(){
         success = false;
     }
 
-    if( !map_screen.loadFromFile( "../assets/map.png" ) ) {
+    if( !map_screen.loadFromFile( "../assets/map_game.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
@@ -106,20 +107,45 @@ bool Graphics::loadMedia(){
         success = false;
     }
 
-    if (!castle[0].loadFromFile( "../assets/castle_solider.png" ) ) {
+    if (!castle_right[0].loadFromFile( "../assets/pilar_archer_right.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
-    if (!castle[1].loadFromFile( "../assets/archer_castle.png" ) ) {
+    if (!castle_right[1].loadFromFile( "../assets/pilar_knight_right.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
-    if (!castle[2].loadFromFile( "../assets/knight_castle.png" ) ) {
+    if (!castle_right[2].loadFromFile( "../assets/pilar_solider_right.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
 
-    font = TTF_OpenFont("../assets/arial.ttf", 12);
+    if (!castle_left[0].loadFromFile( "../assets/pilar_archer_left.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+    if (!castle_left[1].loadFromFile( "../assets/pilar_knight_left.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+    if (!castle_left[2].loadFromFile( "../assets/pilar_solider_left.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
+    for (int i = 0; i < 30; i++)
+    {
+        if (!bones[i].loadFromFile( "../assets/bones.png" ) ) {
+            printf( "Failed to load texture!\n" );
+            success = false;
+        }
+        if (!metal[i].loadFromFile( "../assets/metal.png" ) ) {
+            printf( "Failed to load texture!\n" );
+            success = false;
+        }
+    }
+
+    font = TTF_OpenFont("../assets/arial.ttf", 18);
 
     menuButtons[0].setPositionSizeType(0,0,800,200, BUTTON_PLAY);
     menuButtons[1].setPositionSizeType(0,200,800,200,BUTTON_CREDITS);

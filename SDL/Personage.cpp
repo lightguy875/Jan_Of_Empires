@@ -53,7 +53,7 @@ void Personage::move(int x, int y){
 
 void Personage::render(Texture * texture){
     texture->render(position_x,position_y);
-    textActiveItem.loadFromRenderedText("O: 10 | M: 20");
+    textActiveItem.loadFromRenderedText("P1");
     textActiveItem.render(position_x-(width/4),position_y+height+3);
 }
 
