@@ -143,12 +143,12 @@ void Game::renderPlay(){
             SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
             SDL_RenderClear( renderer );
             map_screen.render(0,0);
-            castle_left[0].render(689,62);
-            castle_left[1].render(689,257);
-            castle_left[2].render(689,452);
-            castle_right[0].render(0,62);
-            castle_right[1].render(0,257);
-            castle_right[2].render(0,452);
+            castle_left[0].render(760,120);
+            castle_left[1].render(760,280);
+            castle_left[2].render(760,440);
+            castle_right[0].render(0,120);
+            castle_right[1].render(0,280);
+            castle_right[2].render(0,440);
             renderStatus(0,0,0,0);
             archer_play.render(&archer);
             SDL_RenderPresent( renderer );
