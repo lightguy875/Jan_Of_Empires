@@ -19,7 +19,7 @@ DIR_GCOV = ../docs/gcov
 
 CC = g++ -std=c++11
 CFLAGS = -I$(DIR_HEADERS) -ftest-coverage -fprofile-arcs
-LIBS = -lm -lSDL2 -lSDL2_image
+LIBS = -lm -lSDL2 -lSDL2_ttf -lSDL2_image
 
 # Flags que vou precisar para o SDL (o usuário terá que instalar esses 4 pacotes)
 # Descomentar quando interface tiver pronta
@@ -30,10 +30,10 @@ LIBS = -lm -lSDL2 -lSDL2_image
 ########################## Listas com nomes dos arquivos de código ##########################
 # Define o local dos arquivos de código e arquivos de cabeçalho de código
 
-_HEADERS = Necromancer.hpp Bloco.hpp Recurso.hpp Pilar.hpp Mapa.hpp Player.hpp Controlador.hpp
+_HEADERS = Button.hpp Texture.hpp Graphics.hpp Game.hpp Necromancer.hpp Bloco.hpp Recurso.hpp Pilar.hpp Mapa.hpp Player.hpp Controlador.hpp
 HEADERS = $(patsubst %,$(DIR_HEADERS)/%,$(_HEADERS))
 
-_OBJECTS = Necromancer.o Bloco.o Recurso.o Pilar.o main.o Mapa.o Player.o Controlador.o
+_OBJECTS = Button.o Texture.o Graphics.o Game.o Necromancer.o Bloco.o Recurso.o Pilar.o main.o Mapa.o Player.o Controlador.o
 OBJECTS = $(patsubst %,$(DIR_OBJECTS)/%,$(_OBJECTS))
 
 _TESTS = Tests.cpp
@@ -83,7 +83,7 @@ test: $(TEST_EXE)
 	./$(TEST_EXE)
 	mv $(DIR_OBJECTS)/*.gcno $(DIR_SOURCES)
 
-cov:	
+cov:
 	gcov -n *.gcda > $(DIR_GCOV)/relatorio-gcov.txt
 	cat $(DIR_GCOV)/relatorio-gcov.txt
 	mv $(DIR_SOURCES)/*.gcno $(DIR_OBJECTS)
