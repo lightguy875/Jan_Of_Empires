@@ -153,7 +153,6 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac,u
     unsigned short dano_golpe;
     std::cout<<  "realizando combate em: "<< x_atac << " " << y_atac << " "<< x_vit << " " << y_vit <<std::endl;
     Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac,y_atac);
-
     ColocavelEmBloco *vitima = this->mapa.ver(x_vit, y_vit);
     if(this->mapa.ver(x_vit, y_vit)->tipo==TipoConteudoBloco::UNIDADE){
         TipoNecromancer tipo_vitima = ((Necromancer *) vitima)->tipo_necromancer;
@@ -260,8 +259,6 @@ void Controlador::processa_jogada(){
     if (this->vezes++ == 1){
         this->muda_vez();
         this->vezes = 0;
-        textHP.loadFromRenderedText("Select Neoc.");
-        textHP.render(180,568);
     }
 }
 
@@ -303,17 +300,6 @@ void Controlador::print_recursos(){
         textHP.loadFromRenderedText(xp_s);
         textHP.render(180,568);
     }
-
-    // std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
-    // for (auto v : this->recursos){
-    //     if(v.tipo_recurso == TipoRecurso::METAL)
-    //         std::cout << "Metal";
-    //     else if(v.tipo_recurso == TipoRecurso::OSSOS)
-    //         std::cout << "Ossos";
-    //
-    //     std::cout << " X:" << v.x << " Y:" << v.y << std::endl;
-    // }
-
 }
 
 void Controlador::print_mapa(){

@@ -11,11 +11,12 @@ Texture pause_screen;
 Texture round_screen;
 Texture knight[2], solider[2], archer[2];
 Texture map_screen;
+Texture ganhou_screen[2];
 TTF_Font * font;
 Texture textActiveItem,textHP, textBones, textMetal, textRound;
 Texture pilar_archer[2],pilar_knight[2],pilar_solider[2];
 Texture bones[20],metal[20];
-int ativo_x_jog, ativo_y_jog, ativo_x_cpu, ativo_y_cpu;;
+int ativo_x_jog, ativo_y_jog, ativo_x_cpu, ativo_y_cpu,ganhou_time;
 
 bool Graphics::init(){
     bool success = true;
@@ -131,6 +132,7 @@ bool Graphics::loadMedia(){
         printf( "Failed to load texture!\n" );
         success = false;
     }
+
     if (!pilar_solider[0].loadFromFile( "../assets/pilar_solider_time1.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
@@ -140,11 +142,21 @@ bool Graphics::loadMedia(){
         printf( "Failed to load texture!\n" );
         success = false;
     }
+
     if (!pilar_knight[1].loadFromFile( "../assets/pilar_knight_time2.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
     if (!pilar_solider[1].loadFromFile( "../assets/pilar_solider_time2.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+
+    if (!ganhou_screen[0].loadFromFile( "../assets/ganhouP1.png" ) ) {
+        printf( "Failed to load texture!\n" );
+        success = false;
+    }
+    if (!ganhou_screen[1].loadFromFile( "../assets/ganhouP2.png" ) ) {
         printf( "Failed to load texture!\n" );
         success = false;
     }
