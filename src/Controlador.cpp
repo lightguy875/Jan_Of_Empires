@@ -7,6 +7,7 @@
 Controlador::Controlador() : mapa(MAPA_LARGURA, MAPA_ALTURA){
     this->jogo_terminou = false;
     this->vez=0;
+    this->vezes = 0;
 }
 void Controlador::preenche_recursos_iniciais(){
     unsigned short i;
@@ -33,6 +34,11 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga){
 
     jogador.guerreiro.setAtivo(true);
     computador.guerreiro.setAtivo(true);
+
+    ativo_x_jog = X_NECROMANCER_PLAYER;
+    ativo_y_jog = Y_NECROMANCER_PLAYER;
+    ativo_x_cpu = X_NECROMANCER_COMPUTADOR;
+    ativo_y_cpu = Y_NECROMANCER_COMPUTADOR;
 
     if(recursos_aleatorios)
         this->preenche_recursos_iniciais();
@@ -91,7 +97,6 @@ bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned s
         return false;
     if(abs(x_dest - x_orig) > RANGE_MOVIMENTO || abs(y_dest - y_orig) > RANGE_MOVIMENTO)
         return false;
-
     if(this->mapa.vazio(x_orig, y_orig))
         return false;
     if(this->mapa.ver(x_orig, y_orig)->tipo != TipoConteudoBloco::UNIDADE)
@@ -112,7 +117,6 @@ bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned s
 bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest){
     if( !this->pode_movimentar(jog,x_orig,y_orig,x_dest,y_dest) )
         return false;
-
     ColocavelEmBloco * unidade_movida = this->mapa.retirar(x_orig, y_orig);
     if(!this->mapa.vazio(x_dest, y_dest)){
         if(this->mapa.ver(x_dest, y_dest)->tipo == TipoConteudoBloco::RECURSO) {
@@ -251,6 +255,10 @@ void Controlador::processa_jogada(){
         this->muda_vez();
         // funcao de jogada do computador aqui!
     }
+    if (this->vezes++ == 1){
+        this->muda_vez();
+        this->vezes = 0;
+    }
 }
 
 
@@ -259,7 +267,7 @@ void Controlador::print_recursos(){
     std::ostringstream xp;
     unsigned short x = 0;
 
-    if (vez == 1 ){
+    if (vez == 0 ){
         if (jogador.guerreiro.ativo) {
             x = jogador.guerreiro.mp;
         }else if(jogador.arqueiro.ativo) {
@@ -299,26 +307,29 @@ void Controlador::print_mapa(){
         for(i=0; i<MAPA_LARGURA; i++){
             if(!this->mapa.vazio(i,j)){
                 if(mapa.ver(i,j)->tipo == TipoConteudoBloco::RECURSO){
-                    if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::METAL)
+                    if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::METAL){
                         metal[metal_c++].render(i*40,j*40);
-                    else if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::OSSOS)
+                    }else if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::OSSOS){
                         bones[ossos_c++].render(i*40,j*40);
+                    }
                 }
                 if(mapa.ver(i,j)->tipo == TipoConteudoBloco::UNIDADE){
-                    if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO)
+                    if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO){
                         knight[mapa.ver(i,j)->time].render(i*40,j*40);
-                    else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO)
+                    }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO){
                         solider[mapa.ver(i,j)->time].render(i*40,j*40);
-                    else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
+                    }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO){
                         archer[mapa.ver(i,j)->time].render(i*40,j*40);
+                    }
                 }
                 if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
-                    if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA)
+                    if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA){
                          pilar_knight[mapa.ver(i,j)->time].render(i*40,j*40);
-                    else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA)
+                    }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA){
                         pilar_solider[mapa.ver(i,j)->time].render(i*40,j*40);
-                    else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO)
+                    }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO){
                         pilar_archer[mapa.ver(i,j)->time].render(i*40,j*40);
+                    }
                 }
             }
         }

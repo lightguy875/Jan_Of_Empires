@@ -15,6 +15,7 @@ TTF_Font * font;
 Texture textActiveItem,textHP, textBones, textMetal, textRound;
 Texture pilar_archer[2],pilar_knight[2],pilar_solider[2];
 Texture bones[20],metal[20];
+int ativo_x_jog, ativo_y_jog, ativo_x_cpu, ativo_y_cpu;;
 
 bool Graphics::init(){
     bool success = true;
@@ -148,7 +149,7 @@ bool Graphics::loadMedia(){
         success = false;
     }
 
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < 20; i++)
     {
         if (!bones[i].loadFromFile( "../assets/bones.png" ) ) {
             printf( "Failed to load texture!\n" );

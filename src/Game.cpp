@@ -1,6 +1,8 @@
 #include "../include/Game.hpp"
 #include "../include/Controlador.hpp"
 #include <cstdio>
+#include <string>
+#include <sstream>
 
 Game::Game(){
     gameRunning = GAME_MENU;
@@ -104,8 +106,16 @@ void box(){
     }
 }
 
-void Game::renderStatus(int round){
-    textRound.loadFromRenderedText("ROUND: 1");
+void Game::renderStatus(int time){
+    std::ostringstream time_s;
+    if (time == 0){
+        time_s << "TIME: " << 1;
+    }else{
+        time_s << "TIME: " << 2;
+    }
+    std::string t = time_s.str();
+
+    textRound.loadFromRenderedText(t);
     textRound.render(38,568);
 }
 
@@ -123,7 +133,43 @@ void handle_events_elements(Controlador * controlador,SDL_Event * e) {
                     else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
                         ((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40);
                 }
+                // if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
+                //     if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA){
+                //          pilar_knight[mapa.ver(i,j)->time].render(i*40,j*40);
+                //     }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA){
+                //         pilar_solider[mapa.ver(i,j)->time].render(i*40,j*40);
+                //     }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO){
+                //         pilar_archer[mapa.ver(i,j)->time].render(i*40,j*40);
+                //     }
+                // }
             }
+        }
+    }
+}
+
+void movimentar_ativo(Controlador * controlador,SDL_Event * e){
+    if( e->type == SDL_MOUSEBUTTONDOWN )
+    {
+        int x, y;
+        SDL_GetMouseState( &x, &y );
+        switch( e->type ) {
+            case SDL_MOUSEBUTTONDOWN:
+                if (controlador->vez == 0){
+                    if (controlador->movimentar(&controlador->jogador, ativo_x_jog,ativo_y_jog, x/40, y/40)){
+                        ativo_x_jog = x/40;
+                        ativo_y_jog = y/40;
+                    }else{
+                        printf("movimento invalido\n");
+                    }
+                }else{
+                    if (controlador->movimentar(&controlador->computador, ativo_x_cpu,ativo_y_cpu, x/40, y/40)){
+                        ativo_x_cpu = x/40;
+                        ativo_y_cpu = y/40;
+                    }else{
+                        printf("movimento invalido\n");
+                    }
+                }
+            break;
         }
     }
 }
@@ -152,6 +198,7 @@ void Game::renderPlay(){
                         gameRunning = GAME_PAUSE;
                     }
                 }
+                movimentar_ativo(&controlador, &e);
                 handle_events_elements(&controlador, &e);
                 // archer_play.handleEvent(&e);
             }
@@ -161,12 +208,12 @@ void Game::renderPlay(){
             map_screen.render(0,0);
             controlador.print_mapa();
             controlador.print_recursos();
-            if (controlador.vez == 1){
+            if (controlador.vez == 0){
                 controlador.jogador.print_recursos("Jogador 1");
             }else{
-                controlador.jogador.print_recursos("Jogador 2");
+                controlador.computador.print_recursos("Jogador 2");
             }
-            renderStatus(0);
+            renderStatus(controlador.vez);
             // archer_play.render(&archer);
             SDL_RenderPresent( renderer );
     }
