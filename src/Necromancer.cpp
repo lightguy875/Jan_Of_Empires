@@ -7,7 +7,7 @@ Necromancer::Necromancer(){
     this->tipo = TipoConteudoBloco::UNIDADE;
 }
 
-void Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
+bool Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
     if( e->type == SDL_MOUSEBUTTONDOWN )
     {
         //Get mouse position
@@ -27,10 +27,12 @@ void Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
             switch( e->type )
             {
                 case SDL_MOUSEBUTTONDOWN:
+                    return true;
                 break;
             }
         }
     }
+    return false;
 }
 
 

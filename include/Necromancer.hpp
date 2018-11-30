@@ -29,7 +29,7 @@ class Necromancer  : public ColocavelEmBloco
         Necromancer();
         unsigned short multiplicador(TipoPilar tipo);
         unsigned short multiplicador(TipoNecromancer tipo);
-        void handleEvent(SDL_Event * e, int x, int y);
+        bool handleEvent(SDL_Event * e, int x, int y);
 
 };
 

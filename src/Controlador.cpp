@@ -52,9 +52,11 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga){
 
 bool Controlador::criar_pilar(Player *jog,TipoPilar pil, unsigned short x, unsigned short y){
     if(jog->pilar(pil)->vivo) return false;
+    printf("Criou pilar\n");
     if(!this->mapa.vazio(x,y)) return false;
+    printf("Mapa vazio\n");
     if(!jog->criar_pilar(pil)) return false;
-
+    printf("Criacar\n");
     this->mapa.inserir(jog->pilar(pil), x, y);
 
     return true;
@@ -258,6 +260,8 @@ void Controlador::processa_jogada(){
     if (this->vezes++ == 1){
         this->muda_vez();
         this->vezes = 0;
+        textHP.loadFromRenderedText("Select Neoc.");
+        textHP.render(180,568);
     }
 }
 
@@ -279,22 +283,27 @@ void Controlador::print_recursos(){
             y = jogador.pilar_lanca.hp;
         }
     }else{
-        if (jogador.guerreiro.ativo) {
-            x = jogador.guerreiro.mp;
-            y = jogador.pilar_espada.hp;
-        }else if(jogador.arqueiro.ativo) {
-            x = jogador.arqueiro.mp;
-            y = jogador.pilar_arco.hp;
-        }else if (jogador.cavaleiro.ativo){
-            x = jogador.cavaleiro.mp;
-            y = jogador.pilar_lanca.hp;
+        if (computador.guerreiro.ativo) {
+            x = computador.guerreiro.mp;
+            y = computador.pilar_espada.hp;
+        }else if(computador.arqueiro.ativo) {
+            x = computador.arqueiro.mp;
+            y = computador.pilar_arco.hp;
+        }else if (computador.cavaleiro.ativo){
+            x = computador.cavaleiro.mp;
+            y = computador.pilar_lanca.hp;
         }
     }
-    xp << "HP_N: " << x << "        HP_P: " << y;
-    std::string xp_s = xp.str();
+    if (x == 0 && y == 0){
+        textHP.loadFromRenderedText("Select Neoc.");
+        textHP.render(180,568);
+    }else{
+        xp << "HP_N: " << x << "        HP_P: " << y;
+        std::string xp_s = xp.str();
+        textHP.loadFromRenderedText(xp_s);
+        textHP.render(180,568);
+    }
 
-    textHP.loadFromRenderedText(xp_s);
-    textHP.render(180,568);
     // std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
     // for (auto v : this->recursos){
     //     if(v.tipo_recurso == TipoRecurso::METAL)
