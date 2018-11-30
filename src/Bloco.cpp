@@ -21,7 +21,7 @@ bool Bloco::preenche(ColocavelEmBloco *c){
 bool Bloco::limpa(){
     if(this->vazio) return false;
     this->conteudo = nullptr;
-    this->vazio=true; 
+    this->vazio=true;
     return true;
 }
 
@@ -29,8 +29,13 @@ bool Bloco::limpa(){
 ColocavelEmBloco::ColocavelEmBloco(){
     this->vivo = true;
 }
+
+void ColocavelEmBloco::setAtivo(bool a){
+    ativo = a;
+}
+
 bool ColocavelEmBloco::mata(){
-    if(this->vivo) 
+    if(this->vivo)
         this->vivo = false;
         this->x = -1;
         this->y = -1;
@@ -40,9 +45,9 @@ bool ColocavelEmBloco::mata(){
 }
 
 bool ColocavelEmBloco::revive(){
-    if(this->vivo) 
+    if(this->vivo)
         return false;
-    
+
     this->vivo = true;
     return true;
 }

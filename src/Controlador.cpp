@@ -1,5 +1,7 @@
 #include "../include/Controlador.hpp"
 #include "../include/common.hpp"
+#include <string>
+#include <sstream>
 #include <iostream>
 
 Controlador::Controlador() : mapa(MAPA_LARGURA, MAPA_ALTURA){
@@ -28,6 +30,9 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga){
     this->mapa.inserir(&jogador.pilar_espada, X_PILAR_PLAYER, Y_PILAR_PLAYER);
     this->mapa.inserir(&computador.guerreiro, X_NECROMANCER_COMPUTADOR, Y_NECROMANCER_COMPUTADOR);
     this->mapa.inserir(&computador.pilar_espada, X_PILAR_COMPUTADOR, Y_PILAR_COMPUTADOR);
+
+    jogador.guerreiro.setAtivo(true);
+    computador.guerreiro.setAtivo(true);
 
     if(recursos_aleatorios)
         this->preenche_recursos_iniciais();
@@ -250,16 +255,42 @@ void Controlador::processa_jogada(){
 
 
 void Controlador::print_recursos(){
+    using namespace std;
+    std::ostringstream xp;
+    unsigned short x = 0;
 
-    std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
-    for (auto v : this->recursos){
-        if(v.tipo_recurso == TipoRecurso::METAL)
-            std::cout << "Metal";
-        else if(v.tipo_recurso == TipoRecurso::OSSOS)
-            std::cout << "Ossos";
-
-        std::cout << " X:" << v.x << " Y:" << v.y << std::endl;
+    if (vez == 1 ){
+        if (jogador.guerreiro.ativo) {
+            x = jogador.guerreiro.mp;
+        }else if(jogador.arqueiro.ativo) {
+            x = jogador.arqueiro.mp;
+        }else if (jogador.cavaleiro.ativo){
+            x = jogador.cavaleiro.mp;
+        }
+    }else{
+        if (jogador.guerreiro.ativo) {
+            x = jogador.guerreiro.mp;
+        }else if(jogador.arqueiro.ativo) {
+            x = jogador.arqueiro.mp;
+        }else if (jogador.cavaleiro.ativo){
+            x = jogador.cavaleiro.mp;
+        }
     }
+    xp << "HP: " << x;
+    std::string xp_s = xp.str();
+
+    textHP.loadFromRenderedText(xp_s);
+    textHP.render(240,568);
+    // std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
+    // for (auto v : this->recursos){
+    //     if(v.tipo_recurso == TipoRecurso::METAL)
+    //         std::cout << "Metal";
+    //     else if(v.tipo_recurso == TipoRecurso::OSSOS)
+    //         std::cout << "Ossos";
+    //
+    //     std::cout << " X:" << v.x << " Y:" << v.y << std::endl;
+    // }
+
 }
 
 void Controlador::print_mapa(){

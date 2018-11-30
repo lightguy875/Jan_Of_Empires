@@ -104,15 +104,28 @@ void box(){
     }
 }
 
-void Game::renderStatus(int hp, int metal, int bones, int round){
+void Game::renderStatus(int round){
     textRound.loadFromRenderedText("ROUND: 1");
     textRound.render(38,568);
-    textHP.loadFromRenderedText("HP: 300xp");
-    textHP.render(240,568);
-    textMetal .loadFromRenderedText("METAL: 40");
-    textMetal .render(444,568);
-    textBones.loadFromRenderedText("BONES: 30");
-    textBones.render(654,568);
+}
+
+void handle_events_elements(Controlador * controlador,SDL_Event * e) {
+    Mapa mapa = controlador->mapa;
+    int i, j;
+    for(j=0; j<14; j++){
+        for(i=0; i<20; i++){
+            if(!mapa.vazio(i,j)){
+                if(mapa.ver(i,j)->tipo == TipoConteudoBloco::UNIDADE){
+                    if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO)
+                        ((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40);
+                    else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO)
+                        ((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40);
+                    else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
+                        ((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40);
+                }
+            }
+        }
+    }
 }
 
 void Game::renderPlay(){
@@ -139,6 +152,7 @@ void Game::renderPlay(){
                         gameRunning = GAME_PAUSE;
                     }
                 }
+                handle_events_elements(&controlador, &e);
                 // archer_play.handleEvent(&e);
             }
 
@@ -146,7 +160,13 @@ void Game::renderPlay(){
             SDL_RenderClear( renderer );
             map_screen.render(0,0);
             controlador.print_mapa();
-            renderStatus(0,0,0,0);
+            controlador.print_recursos();
+            if (controlador.vez == 1){
+                controlador.jogador.print_recursos("Jogador 1");
+            }else{
+                controlador.jogador.print_recursos("Jogador 2");
+            }
+            renderStatus(0);
             // archer_play.render(&archer);
             SDL_RenderPresent( renderer );
     }

@@ -1,19 +1,22 @@
 #include "../include/Player.hpp"
 #include <iostream>
+#include <string>
+#include <sstream>
+#include "../include/common.hpp"
 
 Player::Player(){
-    
+
     this->metal = 0;
     this->ossos = 0;
     this->time = 0;
-    
+
     this->guerreiro = Guerreiro();
     this->pilar_espada = PilarEspada();
 
     this->arqueiro = Arqueiro();
     this->arqueiro.mata();
-    
-    this->cavaleiro = Cavaleiro();    
+
+    this->cavaleiro = Cavaleiro();
     this->cavaleiro.mata();
 
     this->pilar_arco = PilarArco();
@@ -32,12 +35,12 @@ Player::Player(){
 }
 
 void Player::muda_time(){
-    
+
     if( this->time == 0 )
         this->time = 1;
     else
         this->time = 0;
-    
+
     this->guerreiro.time= this->time;
     this->arqueiro.time= this->time;
     this->cavaleiro.time= this->time;
@@ -65,7 +68,7 @@ Pilar* Player::pilar(TipoPilar pil){
         return &this->pilar_lanca;
 
     if(pil == TipoPilar::ESPADA)
-        return &this->pilar_espada;    
+        return &this->pilar_espada;
 
     return nullptr;
 }
@@ -86,7 +89,7 @@ Necromancer* Player::necromancer(TipoNecromancer nec){
 }
 
 bool Player::tem_pilar(TipoPilar pil){
-    return this->pilar(pil)->vivo;   
+    return this->pilar(pil)->vivo;
 }
 
 bool Player::tem_necromancer(TipoNecromancer nec){
@@ -95,7 +98,7 @@ bool Player::tem_necromancer(TipoNecromancer nec){
 
 bool Player::criar_pilar(TipoPilar pil){
     if(pil == TipoPilar::ARCO){
-        if(this->metal < METAL_CRIAR_PILAR_ARCO) 
+        if(this->metal < METAL_CRIAR_PILAR_ARCO)
             return false;
 
         this->metal -= METAL_CRIAR_PILAR_ARCO;
@@ -106,9 +109,9 @@ bool Player::criar_pilar(TipoPilar pil){
             this->pilar_arco.hp += HP_INICIAL_PILAR_ARCO;
         }
     }
-    
+
     if(pil == TipoPilar::LANCA){
-        if(this->metal < METAL_CRIAR_PILAR_LANCA) 
+        if(this->metal < METAL_CRIAR_PILAR_LANCA)
             return false;
 
         this->metal -= METAL_CRIAR_PILAR_LANCA;
@@ -121,7 +124,7 @@ bool Player::criar_pilar(TipoPilar pil){
     }
 
     if(pil == TipoPilar::ESPADA){
-        if(this->metal < METAL_CRIAR_PILAR_ESPADA) 
+        if(this->metal < METAL_CRIAR_PILAR_ESPADA)
             return false;
 
         this->metal -= METAL_CRIAR_PILAR_ESPADA;
@@ -132,14 +135,14 @@ bool Player::criar_pilar(TipoPilar pil){
             this->pilar_espada.hp += HP_INICIAL_PILAR_ESPADA;
         }
     }
-    return true;  
+    return true;
 }
 
 bool Player::criar_necromancer(TipoNecromancer nec){
     if(nec == TipoNecromancer::GUERREIRO){
         if(!this->pilar_espada.vivo)
             return false;
-        if(this->ossos < OSSOS_CRIAR_GUERREIRO) 
+        if(this->ossos < OSSOS_CRIAR_GUERREIRO)
             return false;
 
         this->ossos -= OSSOS_CRIAR_GUERREIRO;
@@ -150,11 +153,11 @@ bool Player::criar_necromancer(TipoNecromancer nec){
             this->guerreiro.mp += MP_INICIAL_GUERREIRO;
         }
     }
-    
+
     if(nec == TipoNecromancer::CAVALEIRO){
         if(!this->pilar_lanca.vivo)
             return false;
-        if(this->ossos < OSSOS_CRIAR_CAVALEIRO) 
+        if(this->ossos < OSSOS_CRIAR_CAVALEIRO)
             return false;
 
         this->ossos -= OSSOS_CRIAR_CAVALEIRO;
@@ -170,7 +173,7 @@ bool Player::criar_necromancer(TipoNecromancer nec){
     if(nec == TipoNecromancer::ARQUEIRO){
         if(!this->pilar_arco.vivo)
             return false;
-        if(this->ossos < OSSOS_CRIAR_ARQUEIRO) 
+        if(this->ossos < OSSOS_CRIAR_ARQUEIRO)
             return false;
 
         this->ossos -= OSSOS_CRIAR_ARQUEIRO;
@@ -182,7 +185,7 @@ bool Player::criar_necromancer(TipoNecromancer nec){
         }
     }
 
-    return true;  
+    return true;
 }
 
 
@@ -191,9 +194,22 @@ void Player::print_recursos(const char* nome){
 
     using namespace std;
 
-    cout << nome << " tem: ";
-    cout << this->metal << " de metal, ";
-    cout << this->ossos << " de ossos" << endl;
+    // cout << nome << " tem: ";
+    // cout << this->metal << " de metal, ";
+    // cout << this->ossos << " de ossos" << endl;
+
+    std::ostringstream metal_s,bones_s;
+
+    metal_s << "METAL: " << this->metal;
+    std::string m = metal_s.str();
+
+    bones_s << "BONES: " << this->ossos;
+    std::string o = bones_s.str();
+
+    textMetal .loadFromRenderedText(m);
+    textMetal .render(444,568);
+    textBones.loadFromRenderedText(o);
+    textBones.render(654,568);
 
 }
 
@@ -206,7 +222,7 @@ bool Player::perdeu_jogo(){
 unsigned short Player::pontuacao(){
     unsigned short total = 0;
 
-    if(this->pilar_espada.vivo) 
+    if(this->pilar_espada.vivo)
         total+=this->pilar_espada.hp;
     if(this->pilar_arco.vivo)
         total+=this->pilar_arco.hp;
@@ -216,12 +232,8 @@ unsigned short Player::pontuacao(){
         total+=this->guerreiro.mp;
     if(this->arqueiro.vivo)
         total+=this->arqueiro.mp;
-    if(this->cavaleiro.vivo) 
+    if(this->cavaleiro.vivo)
         total+=this->cavaleiro.mp;
 
     return total;
 }
-
-
-
-

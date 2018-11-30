@@ -7,6 +7,33 @@ Necromancer::Necromancer(){
     this->tipo = TipoConteudoBloco::UNIDADE;
 }
 
+void Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
+    if( e->type == SDL_MOUSEBUTTONDOWN )
+    {
+        //Get mouse position
+        int x, y;
+        SDL_GetMouseState( &x, &y );
+        //Check if mouse is in Button
+        bool inside = false;
+        if (y > position_y && y < (position_y + 40))
+        {
+            if (x > position_x && x < (position_x + 40))
+            {
+                inside = true;
+            }
+        }
+        if (inside)
+        {
+            switch( e->type )
+            {
+                case SDL_MOUSEBUTTONDOWN:
+                    printf("Clicou no arqueiro\n");
+                break;
+            }
+        }
+    }
+}
+
 
 Guerreiro::Guerreiro(){
     this->tipo_necromancer = TipoNecromancer::GUERREIRO;
@@ -87,6 +114,6 @@ unsigned short Necromancer::multiplicador(TipoNecromancer tipo){
 
         if(tipo==TipoNecromancer::ARQUEIRO)
             return ESPADA_ARCO_ATQ_MULTIPLICADOR;
-    }   
-    return 0; 
+    }
+    return 0;
 }

@@ -58,7 +58,6 @@ void Button::handleEvent(SDL_Event* e, Game * game){
             }
         }
     }
-
 }
 
 void Button::setPositionX(int x){

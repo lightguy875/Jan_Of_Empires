@@ -33,7 +33,7 @@ class Game{
     void renderPause();
     void renderPlay();
     void renderRoundPause();
-    void renderStatus(int hp, int metal, int bones, int round);
+    void renderStatus(int round);
 
 };
 
