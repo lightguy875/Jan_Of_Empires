@@ -66,11 +66,41 @@ void Game::renderCredits(){
     }
 }
 
-void box(){
+void boxWarning(string text){
+    const SDL_MessageBoxColorScheme colorScheme = {
+        { /* .colors (.r, .g, .b) */
+            /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+            { 255,   0,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_TEXT] */
+            {   0, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+            { 255, 255,   0 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+            {   0,   0, 255 },
+            /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+            { 255,   0, 255 }
+        }
+    };
+    const SDL_MessageBoxData messageboxdata = {
+        SDL_MESSAGEBOX_INFORMATION, /* .flags */
+        NULL, /* .window */
+        "Atencao", /* .title */
+        text.c_str(), /* .message */
+        0, /* .numbuttons */
+        NULL, /* .buttons */
+        &colorScheme /* .colorScheme */
+    };
+    int buttonid;
+    if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
+        SDL_Log("error displaying message box");
+    }
+}
+
+int boxPilar(){
     const SDL_MessageBoxButtonData buttons[] = {
-        { /* .flags, .buttonid, .text */        0, 0, "no" },
-        { SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
-        { SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT, 2, "cancel" },
+        { /* .flags, .buttonid, .text */        0, 0, "Cancelar" },
+        { 0, 1, "Fortalecer Pilar" },
+        { 0, 2, "Fortalecer Necromancer" },
     };
     const SDL_MessageBoxColorScheme colorScheme = {
         { /* .colors (.r, .g, .b) */
@@ -89,8 +119,8 @@ void box(){
     const SDL_MessageBoxData messageboxdata = {
         SDL_MESSAGEBOX_INFORMATION, /* .flags */
         NULL, /* .window */
-        "example message box", /* .title */
-        "select a button", /* .message */
+        "Central de Controle do Pilar", /* .title */
+        "Selecione uma opção:", /* .message */
         SDL_arraysize(buttons), /* .numbuttons */
         buttons, /* .buttons */
         &colorScheme /* .colorScheme */
@@ -101,8 +131,54 @@ void box(){
     }
     if (buttonid == -1) {
         SDL_Log("no selection");
+        return CANCEL;
     } else {
+        switch (buttonid)
+        {
+        case 1:
+            return BUTTON_FORT_PILAR;
+            break;
+        case 2:
+            return BUTTON_FORT_NECRO;
+            break;
+        }
         SDL_Log("selection was %s", buttons[buttonid].text);
+    }
+    return CANCEL;
+}
+
+void action_pilar_option(int option, Controlador * controlador, TipoPilar tipo_p, TipoNecromancer tipo_n ){
+    switch (option){
+    case BUTTON_FORT_PILAR:
+        if (controlador->vez == 0){
+            if (controlador->fortalecer_pilar(&controlador->jogador,tipo_p)){
+                boxWarning("Pilar fortalecido!");
+            }else{
+                boxWarning("Recursos insuficientes!");
+            }
+        }else{
+            if (controlador->fortalecer_pilar(&controlador->computador,tipo_p)){
+                boxWarning("Pilar fortalecido!");
+            }else{
+                boxWarning("Recursos insuficientes!");
+            }
+        }
+        break;
+    case BUTTON_FORT_NECRO:
+        if (controlador->vez == 0){
+            if (controlador->fortalecer_necromancer(&controlador->jogador,tipo_n)){
+                boxWarning("Necromancer fortalecido!");
+            }else{
+                boxWarning("Recursos insuficientes!");
+            }
+        }else{
+            if (controlador->fortalecer_necromancer(&controlador->computador,tipo_n)){
+                boxWarning("Necromancer fortalecido!");
+            }else{
+                boxWarning("Recursos insuficientes!");
+            }
+        }
+        break;
     }
 }
 
@@ -133,15 +209,21 @@ void handle_events_elements(Controlador * controlador,SDL_Event * e) {
                     else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
                         ((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40);
                 }
-                // if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
-                //     if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA){
-                //          pilar_knight[mapa.ver(i,j)->time].render(i*40,j*40);
-                //     }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA){
-                //         pilar_solider[mapa.ver(i,j)->time].render(i*40,j*40);
-                //     }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO){
-                //         pilar_archer[mapa.ver(i,j)->time].render(i*40,j*40);
-                //     }
-                // }
+                if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
+                    if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA){
+                         if (((Pilar *)mapa.ver(i,j))->handleEvent(e,i*40,j*40) && ((Pilar *)mapa.ver(i,j))->time == controlador->vez){
+                            action_pilar_option(boxPilar(),controlador, TipoPilar::ESPADA, TipoNecromancer::GUERREIRO);
+                         }
+                    }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA){
+                        if (((Pilar *)mapa.ver(i,j))->handleEvent(e,i*40,j*40) && ((Pilar *)mapa.ver(i,j))->time == controlador->vez){
+                           action_pilar_option(boxPilar(),controlador, TipoPilar::LANCA, TipoNecromancer::CAVALEIRO);
+                        }
+                    }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO){
+                        if (((Pilar *)mapa.ver(i,j))->handleEvent(e,i*40,j*40) && ((Pilar *)mapa.ver(i,j))->time == controlador->vez){
+                            action_pilar_option(boxPilar(),controlador, TipoPilar::ARCO, TipoNecromancer::ARQUEIRO);
+                        }
+                    }
+                }
             }
         }
     }
@@ -158,15 +240,11 @@ void movimentar_ativo(Controlador * controlador,SDL_Event * e){
                     if (controlador->movimentar(&controlador->jogador, ativo_x_jog,ativo_y_jog, x/40, y/40)){
                         ativo_x_jog = x/40;
                         ativo_y_jog = y/40;
-                    }else{
-                        printf("movimento invalido\n");
                     }
                 }else{
                     if (controlador->movimentar(&controlador->computador, ativo_x_cpu,ativo_y_cpu, x/40, y/40)){
                         ativo_x_cpu = x/40;
                         ativo_y_cpu = y/40;
-                    }else{
-                        printf("movimento invalido\n");
                     }
                 }
             break;

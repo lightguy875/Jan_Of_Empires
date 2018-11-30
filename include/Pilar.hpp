@@ -3,6 +3,7 @@
 
 #include "Bloco.hpp"
 #include "Utils.hpp"
+#include "common.hpp"
 
 
 enum class TipoPilar {
@@ -10,31 +11,32 @@ enum class TipoPilar {
 };
 
 class Pilar : public ColocavelEmBloco
-{ 
+{
     public:
         unsigned short hp;
         TipoPilar tipo_pilar;
         Pilar();
-}; 
-   
-   
+        bool handleEvent(SDL_Event * e, int position_x, int position_y);
+};
+
+
 class PilarEspada : public Pilar
-{ 
-    public: 
-        PilarEspada();  
-}; 
+{
+    public:
+        PilarEspada();
+};
 
-   
+
 class PilarLanca : public Pilar
-{ 
-    public: 
+{
+    public:
         PilarLanca();
-}; 
+};
 
-   
-class PilarArco: public Pilar 
-{ 
-    public: 
+
+class PilarArco: public Pilar
+{
+    public:
         PilarArco();
-}; 
+};
 #endif

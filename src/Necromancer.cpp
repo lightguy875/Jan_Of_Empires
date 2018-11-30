@@ -27,7 +27,6 @@ void Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
             switch( e->type )
             {
                 case SDL_MOUSEBUTTONDOWN:
-                    printf("Clicou no arqueiro\n");
                 break;
             }
         }

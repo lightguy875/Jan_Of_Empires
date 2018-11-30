@@ -265,30 +265,36 @@ void Controlador::processa_jogada(){
 void Controlador::print_recursos(){
     using namespace std;
     std::ostringstream xp;
-    unsigned short x = 0;
+    unsigned short x = 0, y = 0;
 
     if (vez == 0 ){
         if (jogador.guerreiro.ativo) {
             x = jogador.guerreiro.mp;
+            y = jogador.pilar_espada.hp;
         }else if(jogador.arqueiro.ativo) {
             x = jogador.arqueiro.mp;
+            y = jogador.pilar_arco.hp;
         }else if (jogador.cavaleiro.ativo){
             x = jogador.cavaleiro.mp;
+            y = jogador.pilar_lanca.hp;
         }
     }else{
         if (jogador.guerreiro.ativo) {
             x = jogador.guerreiro.mp;
+            y = jogador.pilar_espada.hp;
         }else if(jogador.arqueiro.ativo) {
             x = jogador.arqueiro.mp;
+            y = jogador.pilar_arco.hp;
         }else if (jogador.cavaleiro.ativo){
             x = jogador.cavaleiro.mp;
+            y = jogador.pilar_lanca.hp;
         }
     }
-    xp << "HP: " << x;
+    xp << "HP_N: " << x << "        HP_P: " << y;
     std::string xp_s = xp.str();
 
     textHP.loadFromRenderedText(xp_s);
-    textHP.render(240,568);
+    textHP.render(180,568);
     // std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
     // for (auto v : this->recursos){
     //     if(v.tipo_recurso == TipoRecurso::METAL)
