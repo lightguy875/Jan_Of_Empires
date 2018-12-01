@@ -275,16 +275,22 @@ void Controlador::processa_jogada() {
         }
         if (jogador.pilar_arco.vivo){
             criar_necromancer(&jogador, TipoNecromancer::ARQUEIRO,position_x,position_y);
+            #ifdef PROD
             ativo_x_jog = position_x;
             ativo_y_jog = position_y;
+            #endif
         }else if (jogador.pilar_espada.vivo){
             criar_necromancer(&jogador, TipoNecromancer::GUERREIRO,position_x,position_y);
+            #ifdef PROD
             ativo_x_jog = position_x;
             ativo_y_jog = position_y;
+            #endif
         }else if (jogador.pilar_lanca.vivo){
             criar_necromancer(&jogador, TipoNecromancer::CAVALEIRO,position_x,position_y);
+            #ifdef PROD
             ativo_x_jog = position_x;
             ativo_y_jog = position_y;
+            #endif
         }
     }
 
@@ -298,16 +304,22 @@ void Controlador::processa_jogada() {
         }
         if (computador.pilar_arco.vivo){
             criar_necromancer(&computador, TipoNecromancer::ARQUEIRO,position_x,position_y);
+            #ifdef PROD
             ativo_x_cpu = position_x;
             ativo_y_cpu = position_y;
+            #endif
         }else if (computador.pilar_espada.vivo){
             criar_necromancer(&computador, TipoNecromancer::GUERREIRO,position_x,position_y);
+            #ifdef PROD
             ativo_x_cpu = position_x;
             ativo_y_cpu = position_y;
+            #endif
         }else if (computador.pilar_lanca.vivo){
             criar_necromancer(&computador, TipoNecromancer::CAVALEIRO,position_x,position_y);
+            #ifdef PROD
             ativo_x_cpu = position_x;
             ativo_y_cpu = position_y;
+            #endif
         }
     }
 }
