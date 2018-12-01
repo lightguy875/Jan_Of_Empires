@@ -1,84 +1,80 @@
-#include "../include/Game.hpp"
-#include "../include/Controlador.hpp"
+//// "Copyright 2018 Jan_of_Empires"
 #include <cstdio>
 #include <string>
 #include <sstream>
+#include "../include/Game.hpp"
+#include "../include/Controlador.hpp"
 
-Game::Game(){
+Game::Game() {
     gameRunning = GAME_MENU;
 }
 
 
-GameState Game::getGameRunning(){
+GameState Game::getGameRunning() {
     return gameRunning;
 }
 
-void Game::setGameRunning(GameState gameState){
+void Game::setGameRunning(GameState gameState) {
     gameRunning = gameState;
 }
 
-void Game::renderMenu(){
+void Game::renderMenu() {
     SDL_Event e;
 
-    while(gameRunning == GAME_MENU){
-
-            //Handle events on queue
-            while( SDL_PollEvent( &e ) != 0 ) {
-                //User requests quit
-                if( e.type == SDL_QUIT )
-                {
+    while (gameRunning == GAME_MENU) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
                     gameRunning = GAME_QUIT;
-                }else{
-                    for (int i = 0; i < TOTAL_MENU_BUTTONS; ++i)
-                    {
-                        menuButtons[i].handleEvent( &e , this);
+                } else {
+                    for (int i = 0; i < TOTAL_MENU_BUTTONS; ++i) {
+                        menuButtons[i].handleEvent(&e, this);
                     }
                 }
             }
 
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( renderer );
-            menu_screen.render(0,0);
-            SDL_RenderPresent( renderer );
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            menu_screen.render(0, 0);
+            SDL_RenderPresent(renderer);
     }
 }
 
-void Game::renderCredits(){
+void Game::renderCredits() {
     SDL_Event e;
 
-    while(gameRunning == GAME_CREDITS){
-
-            //Handle events on queue
-            while( SDL_PollEvent( &e ) != 0 ) {
-                //User requests quit
-                if( e.type == SDL_QUIT )
-                {
+    while (gameRunning == GAME_CREDITS) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
                     gameRunning = GAME_QUIT;
-                }else{
-                    creditsBackButton.handleEvent( &e , this);
+                } else {
+                    creditsBackButton.handleEvent(&e , this);
                 }
             }
 
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( renderer );
-            credit_screen.render(0,0);
-            SDL_RenderPresent( renderer );
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            credit_screen.render(0, 0);
+            SDL_RenderPresent(renderer);
     }
 }
 
-void boxWarning(string text){
+void boxWarning(string text) {
     const SDL_MessageBoxColorScheme colorScheme = {
         { /* .colors (.r, .g, .b) */
             /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-            { 255,   0,   0 },
+            {255,   0,   0},
             /* [SDL_MESSAGEBOX_COLOR_TEXT] */
-            {   0, 255,   0 },
+            {0, 255,   0},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
-            { 255, 255,   0 },
+            {255, 255,   0},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
-            {   0,   0, 255 },
+            {0,   0, 255},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
-            { 255,   0, 255 }
+            {255,   0, 255}
         }
     };
     const SDL_MessageBoxData messageboxdata = {
@@ -96,7 +92,7 @@ void boxWarning(string text){
     }
 }
 
-void boxCriarPilar(Controlador * controlador){
+void boxCriarPilar(Controlador * controlador) {
     const SDL_MessageBoxButtonData buttons[] = {
         { /* .flags, .buttonid, .text */        0, 0, "Cancelar" },
         { 0, 1, "Criar Pilar Lança" },
@@ -126,61 +122,59 @@ void boxCriarPilar(Controlador * controlador){
         buttons, /* .buttons */
         &colorScheme /* .colorScheme */
     };
-    int buttonid, position_x = (rand()%MAPA_LARGURA),position_y=(rand()%MAPA_ALTURA);
+    int buttonid, position_x = (rand()%MAPA_LARGURA), position_y = (rand()%MAPA_ALTURA);
     if (SDL_ShowMessageBox(&messageboxdata, &buttonid) < 0) {
         SDL_Log("error displaying message box");
     }
     if (buttonid == -1) {
         SDL_Log("no selection");
     } else {
-        while(!controlador->mapa.vazio(position_x,position_y)){
+        while (!controlador->mapa.vazio(position_x, position_y)) {
             position_x = (rand()%MAPA_LARGURA);
             position_y = (rand()%MAPA_ALTURA);
         }
-        switch (buttonid)
-        {
+        switch (buttonid) {
         case 1:
             if (controlador->vez == 0) {
-                if (controlador->criar_pilar(&controlador->jogador, TipoPilar::LANCA, position_x, position_y)){
+                if (controlador->criar_pilar(&controlador->jogador, TipoPilar::LANCA, position_x, position_y)) {
                     boxWarning("Necromancer fortalecido!");
-                }else{
+                } else {
                     boxWarning("Recursos insuficientes!");
                 }
-            }else{
-                if (controlador->criar_pilar(&controlador->computador, TipoPilar::LANCA, position_x, position_y)){
+            } else {
+                if (controlador->criar_pilar(&controlador->computador, TipoPilar::LANCA, position_x, position_y)) {
                     boxWarning("Necromancer fortalecido!");
-                }else{
+                } else {
                     boxWarning("Recursos insuficientes!");
                 }
             }
             break;
         case 2:
             if (controlador->vez == 0) {
-                if (controlador->criar_pilar(&controlador->jogador, TipoPilar::ARCO, position_x, position_y)){
+                if (controlador->criar_pilar(&controlador->jogador, TipoPilar::ARCO, position_x, position_y)) {
                     boxWarning("Necromancer fortalecido!");
-                }else{
+                } else {
                     boxWarning("Recursos insuficientes!");
                 }
-            }else{
-                if (controlador->criar_pilar(&controlador->computador, TipoPilar::ARCO, position_x, position_y)){
+            } else {
+                if (controlador->criar_pilar(&controlador->computador, TipoPilar::ARCO, position_x, position_y)) {
                     boxWarning("Necromancer fortalecido!");
-                }else{
+                } else {
                     boxWarning("Recursos insuficientes!");
                 }
             }
             break;
         case 3:
             if (controlador->vez == 0) {
-
-                if (controlador->criar_pilar(&controlador->jogador, TipoPilar::ESPADA, position_x, position_y)){
+                if (controlador->criar_pilar(&controlador->jogador, TipoPilar::ESPADA, position_x, position_y)) {
                     boxWarning("Necromancer fortalecido!");
-                }else{
+                } else {
                     boxWarning("Recursos insuficientes!");
                 }
-            }else{
-                if (controlador->criar_pilar(&controlador->computador, TipoPilar::ESPADA, position_x, position_y)){
+            } else {
+                if (controlador->criar_pilar(&controlador->computador, TipoPilar::ESPADA, position_x, position_y)) {
                     boxWarning("Necromancer fortalecido!");
-                }else{
+                } else {
                     boxWarning("Recursos insuficientes!");
                 }
             }
@@ -191,14 +185,14 @@ void boxCriarPilar(Controlador * controlador){
 }
 
 
-void boxCriarNecro(Controlador * controlador, TipoPilar tipo_p){
-    int position_x = (rand()%MAPA_LARGURA),position_y=(rand()%MAPA_ALTURA);
-    while(!controlador->mapa.vazio(position_x,position_y)){
+void boxCriarNecro(Controlador * controlador, TipoPilar tipo_p) {
+    int position_x = (rand()%MAPA_LARGURA), position_y = (rand()%MAPA_ALTURA);
+    while (!controlador->mapa.vazio(position_x, position_y)) {
         position_x = (rand()%MAPA_LARGURA);
         position_y = (rand()%MAPA_ALTURA);
     }
     TipoNecromancer tipo_n;
-    switch (tipo_p){
+    switch (tipo_p) {
     case TipoPilar::ARCO:
         tipo_n = TipoNecromancer::ARQUEIRO;
         break;
@@ -209,28 +203,28 @@ void boxCriarNecro(Controlador * controlador, TipoPilar tipo_p){
         tipo_n = TipoNecromancer::GUERREIRO;
         break;
     }
-    while(!controlador->mapa.vazio(position_x,position_y)){
+    while (!controlador->mapa.vazio(position_x, position_y)) {
         position_x = (rand()%MAPA_LARGURA);
         position_y = (rand()%MAPA_ALTURA);
     }
 
     if (controlador->vez == 0) {
-        if (controlador->criar_necromancer(&controlador->jogador, tipo_n, position_x, position_y)){
+        if (controlador->criar_necromancer(&controlador->jogador, tipo_n, position_x, position_y)) {
             boxWarning("Necromancer criado!");
-        }else{
+        } else {
             boxWarning("Recursos insuficientes!");
         }
-    }else{
-        if (controlador->criar_necromancer(&controlador->computador, tipo_n, position_x, position_y)){
+    } else {
+        if (controlador->criar_necromancer(&controlador->computador, tipo_n, position_x, position_y)) {
             boxWarning("Necromancer criado!");
-        }else{
+        } else {
             boxWarning("Recursos insuficientes!");
         }
     }
 }
 
 
-int boxPilar(){
+int boxPilar() {
     const SDL_MessageBoxButtonData buttons[] = {
         { /* .flags, .buttonid, .text */        0, 0, "Cancelar" },
         { 0, 1, "Fortalecer Pilar" },
@@ -241,15 +235,15 @@ int boxPilar(){
     const SDL_MessageBoxColorScheme colorScheme = {
         { /* .colors (.r, .g, .b) */
             /* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-            { 255,   0,   0 },
+            {255,   0, 0},
             /* [SDL_MESSAGEBOX_COLOR_TEXT] */
-            {   0, 255,   0 },
+            {0, 255, 0},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
-            { 255, 255,   0 },
+            {255, 255, 0},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
-            {   0,   0, 255 },
+            {0, 0, 255},
             /* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
-            { 255,   0, 255 }
+            {255, 0, 255}
         }
     };
     const SDL_MessageBoxData messageboxdata = {
@@ -269,8 +263,7 @@ int boxPilar(){
         SDL_Log("no selection");
         return CANCEL;
     } else {
-        switch (buttonid)
-        {
+        switch (buttonid) {
         case 1:
             return BUTTON_FORT_PILAR;
             break;
@@ -288,34 +281,34 @@ int boxPilar(){
     return CANCEL;
 }
 
-void action_pilar_option(int option, Controlador * controlador, TipoPilar tipo_p, TipoNecromancer tipo_n ){
-    switch (option){
+void action_pilar_option(int option, Controlador * controlador, TipoPilar tipo_p, TipoNecromancer tipo_n) {
+    switch (option) {
     case BUTTON_FORT_PILAR:
-        if (controlador->vez == 0){
-            if (controlador->fortalecer_pilar(&controlador->jogador,tipo_p)){
+        if (controlador->vez == 0) {
+            if (controlador->fortalecer_pilar(&controlador->jogador, tipo_p)) {
                 boxWarning("Pilar fortalecido!");
-            }else{
+            } else {
                 boxWarning("Recursos insuficientes!");
             }
-        }else{
-            if (controlador->fortalecer_pilar(&controlador->computador,tipo_p)){
+        } else {
+            if (controlador->fortalecer_pilar(&controlador->computador, tipo_p)) {
                 boxWarning("Pilar fortalecido!");
-            }else{
+            } else {
                 boxWarning("Recursos insuficientes!");
             }
         }
         break;
     case BUTTON_FORT_NECRO:
-        if (controlador->vez == 0){
-            if (controlador->fortalecer_necromancer(&controlador->jogador,tipo_n)){
+        if (controlador->vez == 0) {
+            if (controlador->fortalecer_necromancer(&controlador->jogador, tipo_n)) {
                 boxWarning("Necromancer fortalecido!");
-            }else{
+            } else {
                 boxWarning("Recursos insuficientes!");
             }
-        }else{
-            if (controlador->fortalecer_necromancer(&controlador->computador,tipo_n)){
+        } else {
+            if (controlador->fortalecer_necromancer(&controlador->computador, tipo_n)) {
                 boxWarning("Necromancer fortalecido!");
-            }else{
+            } else {
                 boxWarning("Recursos insuficientes!");
             }
         }
@@ -329,30 +322,81 @@ void action_pilar_option(int option, Controlador * controlador, TipoPilar tipo_p
     }
 }
 
-void Game::renderStatus(int time){
+void Game::renderStatus(int time) {
     std::ostringstream time_s;
-    if (time == 0){
+    if (time == 0) {
         time_s << "TIME: " << 1;
-    }else{
+    } else {
         time_s << "TIME: " << 2;
     }
     std::string t = time_s.str();
 
     textRound.loadFromRenderedText(t);
-    textRound.render(38,568);
+    textRound.render(38, 568);
 }
 
-void handle_necro_ativo(Controlador * controlador,SDL_Event * e,int i, int j){
+<<<<<<< HEAD
+void handle_events_elements(Controlador * controlador, SDL_Event * e) {
     Mapa mapa = controlador->mapa;
-    if(((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40)){
-        if (controlador->vez == 0){
-            ((Necromancer *)mapa.ver(ativo_x_jog,ativo_y_jog))->setAtivo(false);
-            ((Necromancer *)mapa.ver(i,j))->setAtivo(true);
+    int i, j;
+    for (j = 0; j < 14; j++) {
+        for (i = 0; i < 20; i++) {
+            if (!mapa.vazio(i, j)) {
+                if (mapa.ver(i, j)->tipo == TipoConteudoBloco::UNIDADE) {
+                    if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::GUERREIRO) {
+                        if (((Necromancer *)mapa.ver(i, j))->handleEvent(e, i*40, j*40)) {
+                            if (controlador->vez == 0) {
+                                ((Necromancer *)mapa.ver(ativo_x_jog, ativo_y_jog))->setAtivo(false);
+                                ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
+                                ativo_x_jog = i;
+                                ativo_y_jog = j;
+                            } else {
+                                ((Necromancer *)mapa.ver(ativo_x_cpu, ativo_y_cpu))->setAtivo(false);
+                                ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
+                                ativo_x_cpu = i;
+                                ativo_y_cpu = j;
+                            }
+                        }
+                    } else if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
+                        if (((Necromancer *)mapa.ver(i, j))->handleEvent(e, i*40, j*40)) {
+                            if (controlador->vez == 0) {
+                                ((Necromancer *)mapa.ver(ativo_x_jog, ativo_y_jog))->setAtivo(false);
+                                ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
+                                ativo_x_jog = i;
+                                ativo_y_jog = j;
+                            } else {
+                                ((Necromancer *)mapa.ver(ativo_x_cpu, ativo_y_cpu))->setAtivo(false);
+                                ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
+                                ativo_x_cpu = i;
+                                ativo_y_cpu = j;
+                            }
+                        }
+                    } else if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::CAVALEIRO) {
+                        if (((Necromancer *)mapa.ver(i, j))->handleEvent(e, i*40, j*40)) {
+                            if (controlador->vez == 0) {
+                                ((Necromancer *)mapa.ver(ativo_x_jog, ativo_y_jog))->setAtivo(false);
+                                ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
+                                ativo_x_jog = i;
+                                ativo_y_jog = j;
+                            } else {
+                                ((Necromancer *)mapa.ver(ativo_x_cpu, ativo_y_cpu))->setAtivo(false);
+                                ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
+                                ativo_x_cpu = i;
+                                ativo_y_cpu = j;
+                            }
+                        }
+
+void handle_necro_ativo(Controlador * controlador, SDL_Event * e, int i, int j) {
+    Mapa mapa = controlador->mapa;
+    if (((Necromancer *)mapa.ver(i, j))->handleEvent(e, i*40, j*40)) {
+        if (controlador->vez == 0) {
+            ((Necromancer *)mapa.ver(ativo_x_jog, ativo_y_jog))->setAtivo(false);
+            ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
             ativo_x_jog = i;
             ativo_y_jog = j;
-        }else{
-            ((Necromancer *)mapa.ver(ativo_x_cpu,ativo_y_cpu))->setAtivo(false);
-            ((Necromancer *)mapa.ver(i,j))->setAtivo(true);
+        } else {
+            ((Necromancer *)mapa.ver(ativo_x_cpu, ativo_y_cpu))->setAtivo(false);
+            ((Necromancer *)mapa.ver(i, j))->setAtivo(true);
             ativo_x_cpu = i;
             ativo_y_cpu = j;
         }
@@ -360,33 +404,33 @@ void handle_necro_ativo(Controlador * controlador,SDL_Event * e,int i, int j){
 }
 
 
-void handle_events_elements(Controlador * controlador,SDL_Event * e) {
+void handle_events_elements(Controlador * controlador, SDL_Event * e) {
     Mapa mapa = controlador->mapa;
     int i, j;
-    for(j=0; j<14; j++){
-        for(i=0; i<20; i++){
-            if(!mapa.vazio(i,j)){
-                if(mapa.ver(i,j)->tipo == TipoConteudoBloco::UNIDADE){
-                    if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO){
-                        handle_necro_ativo(controlador,e,i,j);
-                    }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO){
-                        handle_necro_ativo(controlador,e,i,j);
-                    }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO){
-                        handle_necro_ativo(controlador,e,i,j);
+    for (j = 0; j < 14; j++) {
+        for (i=0; i < 20; i++) {
+            if (!mapa.vazio(i, j)) {
+                if (mapa.ver(i, j)->tipo == TipoConteudoBloco::UNIDADE) {
+                    if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::GUERREIRO) {
+                        handle_necro_ativo(controlador, e, i, j);
+                    } else if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
+                        handle_necro_ativo(controlador, e, i, j);
+                    } else if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::CAVALEIRO) {
+                        handle_necro_ativo(controlador, e, i, j);
                     }
                 }
-                if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
-                    if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA){
-                         if (((Pilar *)mapa.ver(i,j))->handleEvent(e,i*40,j*40) && ((Pilar *)mapa.ver(i,j))->time == controlador->vez){
-                            action_pilar_option(boxPilar(),controlador, TipoPilar::ESPADA, TipoNecromancer::GUERREIRO);
+                if (mapa.ver(i, j)->tipo == TipoConteudoBloco::PREDIO) {
+                    if (((Pilar *)mapa.ver(i, j))->tipo_pilar == TipoPilar::ESPADA) {
+                         if (((Pilar *)mapa.ver(i, j))->handleEvent(e, i*40, j*40) && ((Pilar *)mapa.ver(i, j))->time == controlador->vez) {
+                            action_pilar_option(boxPilar(), controlador, TipoPilar::ESPADA, TipoNecromancer::GUERREIRO);
                          }
-                    }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA){
-                        if (((Pilar *)mapa.ver(i,j))->handleEvent(e,i*40,j*40) && ((Pilar *)mapa.ver(i,j))->time == controlador->vez){
-                           action_pilar_option(boxPilar(),controlador, TipoPilar::LANCA, TipoNecromancer::CAVALEIRO);
+                    } else if (((Pilar *)mapa.ver(i, j))->tipo_pilar == TipoPilar::LANCA) {
+                        if (((Pilar *)mapa.ver(i, j))->handleEvent(e, i*40, j*40) && ((Pilar *)mapa.ver(i, j))->time == controlador->vez) {
+                           action_pilar_option(boxPilar(), controlador, TipoPilar::LANCA, TipoNecromancer::CAVALEIRO);
                         }
-                    }else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO){
-                        if (((Pilar *)mapa.ver(i,j))->handleEvent(e,i*40,j*40) && ((Pilar *)mapa.ver(i,j))->time == controlador->vez){
-                            action_pilar_option(boxPilar(),controlador, TipoPilar::ARCO, TipoNecromancer::ARQUEIRO);
+                    } else if (((Pilar *)mapa.ver(i, j))->tipo_pilar == TipoPilar::ARCO) {
+                        if (((Pilar *)mapa.ver(i, j))->handleEvent(e, i*40, j*40) && ((Pilar *)mapa.ver(i, j))->time == controlador->vez) {
+                            action_pilar_option(boxPilar(), controlador, TipoPilar::ARCO, TipoNecromancer::ARQUEIRO);
                         }
                     }
                 }
@@ -395,20 +439,19 @@ void handle_events_elements(Controlador * controlador,SDL_Event * e) {
     }
 }
 
-void movimentar_ativo(Controlador * controlador,SDL_Event * e){
-    if( e->type == SDL_MOUSEBUTTONDOWN )
-    {
+void movimentar_ativo(Controlador * controlador, SDL_Event * e) {
+    if (e->type == SDL_MOUSEBUTTONDOWN) {
         int x, y;
-        SDL_GetMouseState( &x, &y );
-        switch( e->type ) {
+        SDL_GetMouseState(&x, &y);
+        switch (e->type) {
             case SDL_MOUSEBUTTONDOWN:
-                if (controlador->vez == 0){
-                    if (controlador->movimentar(&controlador->jogador, ativo_x_jog,ativo_y_jog, x/40, y/40)){
+                if (controlador->vez == 0) {
+                    if (controlador->movimentar(&controlador->jogador, ativo_x_jog, ativo_y_jog, x/40, y/40)) {
                         ativo_x_jog = x/40;
                         ativo_y_jog = y/40;
                     }
-                }else{
-                    if (controlador->movimentar(&controlador->computador, ativo_x_cpu,ativo_y_cpu, x/40, y/40)){
+                } else {
+                    if (controlador->movimentar(&controlador->computador,  ativo_x_cpu, ativo_y_cpu, x/40, y/40)) {
                         ativo_x_cpu = x/40;
                         ativo_y_cpu = y/40;
                     }
@@ -418,129 +461,129 @@ void movimentar_ativo(Controlador * controlador,SDL_Event * e){
     }
 }
 
-void Game::renderPlay(){
+void Game::renderPlay() {
     SDL_Event e;
     Controlador controlador;
-    controlador.novo_jogo(true,false);
-    while(gameRunning == GAME_PLAY){
-
-            //Handle events on queue
-            while( SDL_PollEvent( &e ) != 0 ) {
-                //User requests quit
-                if( e.type == SDL_QUIT )
-                {
+    controlador.novo_jogo(true, false);
+    while (gameRunning == GAME_PLAY) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
                     gameRunning = GAME_QUIT;
-                }
-                else if( e.type == SDL_KEYDOWN )
-                {
-                    if (e.key.keysym.sym == SDLK_ESCAPE)
-                    {
+                } else if (e.type == SDL_KEYDOWN) {
+                    if (e.key.keysym.sym == SDLK_ESCAPE) {
                         gameRunning = GAME_PAUSE;
                     }
                 }
                 movimentar_ativo(&controlador, &e);
                 handle_events_elements(&controlador, &e);
             }
-            if (controlador.alguem_ganhou()){
+<<<<<<< HEAD
+            if (controlador.alguem_ganhou()) {
+                gameRunning = GAME_GANHOU;
+=======
+            if (controlador.alguem_ganhou()) {
+>>>>>>> 726d3dc7cd6e5663f623ba9c0f8d86738c18069d
                 ganhou_time = controlador.ganhou;
                 gameRunning = GAME_GANHOU;
                 break;
             }
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( renderer );
-            map_screen.render(0,0);
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            map_screen.render(0, 0);
             controlador.print_mapa();
             controlador.print_recursos();
-            if (controlador.vez == 0){
+            if (controlador.vez == 0) {
                 controlador.jogador.print_recursos("Jogador 1");
-            }else{
+            } else {
                 controlador.computador.print_recursos("Jogador 2");
             }
             renderStatus(controlador.vez);
-            SDL_RenderPresent( renderer );
+            SDL_RenderPresent(renderer);
     }
 }
 
-void Game::renderPause(){
+void Game::renderPause() {
     SDL_Event e;
 
-    while(gameRunning == GAME_PAUSE){
-
-            //Handle events on queue
-            while( SDL_PollEvent( &e ) != 0 ) {
-                //User requests quit
-                if( e.type == SDL_QUIT )
-                {
+    while (gameRunning == GAME_PAUSE) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
                     gameRunning = GAME_QUIT;
                 }
-                pauseButton[0].handleEvent( &e, this);
-                pauseButton[1].handleEvent( &e, this);
+                pauseButton[0].handleEvent(&e, this);
+                pauseButton[1].handleEvent(&e, this);
             }
 
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( renderer );
-            pause_screen.render(0,0);
-            SDL_RenderPresent( renderer );
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            pause_screen.render(0, 0);
+            SDL_RenderPresent(renderer);
     }
 }
 
-void Game::renderRoundPause(){
+void Game::renderRoundPause() {
     SDL_Event e;
 
-    while(gameRunning == GAME_ROUND_PAUSE){
-
-            //Handle events on queue
-            while( SDL_PollEvent( &e ) != 0 ) {
-                //User requests quit
-                if( e.type == SDL_QUIT )
-                {
+    while (gameRunning == GAME_ROUND_PAUSE) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
                     gameRunning = GAME_QUIT;
                 }
             }
 
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( renderer );
-            round_screen.render(0,0);
-            SDL_RenderPresent( renderer );
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            round_screen.render(0, 0);
+            SDL_RenderPresent(renderer);
             SDL_Delay(3000);
             gameRunning = GAME_PLAY;
     }
 }
 
-void Game::renderGanhou(){
+void Game::renderGanhou() {
     SDL_Event e;
-    while(gameRunning == GAME_GANHOU){
-
-            //Handle events on queue
-            while( SDL_PollEvent( &e ) != 0 ) {
-                //User requests quit
-                if( e.type == SDL_QUIT )
-                {
+<<<<<<< HEAD
+    while (gameRunning == GAME_ROUND_PAUSE) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
+=======
+    while (gameRunning == GAME_GANHOU) {
+            // Handle events on queue
+            while ( SDL_PollEvent(&e \) != 0 ) {
+                // User requests quit
+                if ( e.type == SDL_QUIT ) {
+>>>>>>> 726d3dc7cd6e5663f623ba9c0f8d86738c18069d
                     gameRunning = GAME_QUIT;
                 }
             }
 
-            SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-            SDL_RenderClear( renderer );
-            if (ganhou_time == 0){
-                ganhou_screen[0].render(0,0);
-            }else{
-                ganhou_screen[1].render(0,0);
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            if (ganhou_time == 0) {
+                ganhou_screen[0].render(0, 0);
+            } else {
+                ganhou_screen[1].render(0, 0);
             }
-            SDL_RenderPresent( renderer );
+            SDL_RenderPresent(renderer);
             SDL_Delay(4500);
             gameRunning = GAME_MENU;
     }
 }
 
 
-void Game::playGame(GameState gameState){
+void Game::playGame(GameState gameState) {
     gameRunning = gameState;
 
-    while (gameRunning != GAME_QUIT)
-    {
-        switch (gameRunning)
-        {
+    while (gameRunning != GAME_QUIT) {
+        switch (gameRunning) {
         case GAME_MENU:
             renderMenu();
             break;
