@@ -1,7 +1,28 @@
 //// "Copyright 2018 Jan_of_Empires"
+/**
+ * @file main.cpp
+ * @author Alex Siqueira (siqueiralex@github.com)
+ * @author Alexander André (Alexander-1995@github.com)
+ * @author Arthur Veiga (arthurveiga@github.com)
+ * @author Matheus Veleci (matheusvsantos@github.com)
+ * @author Luis Luz (lightguy875@github.com)
+ * @brief 
+ * @version 0.1
+ * @date 2018-12-01
+ * 
+ * @copyright Copyright (c) 2018
+ * 
+ */
 #include "../include/Game.hpp"
 #include "../include/Graphics.hpp"
 
+/**
+ * @brief 
+ * 
+ * @param argc 
+ * @param args 
+ * @return int 
+ */
 int main(int argc, char *args[]) {
     Graphics *graphics = new Graphics();
     Game *game = new Game();

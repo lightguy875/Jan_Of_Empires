@@ -1,3 +1,18 @@
+//// "Copyright 2018 Jan_of_Empires"
+/**
+ * @file common.hpp
+ * @author Alex Siqueira (siqueiralex@github.com)
+ * @author Alexander André (Alexander-1995@github.com)
+ * @author Arthur Veiga (arthurveiga@github.com)
+ * @author Matheus Veleci (matheusvsantos@github.com)
+ * @author Luis Luz (lightguy875@github.com)
+ * @brief 
+ * @version 0.1
+ * @date 2018-12-01
+ * 
+ * @copyright Copyright (c) 2018
+ * 
+ */
 #ifndef TEXTURE_BUTTON_HPP
 #define TEXTURE_BUTTON_HPP
 

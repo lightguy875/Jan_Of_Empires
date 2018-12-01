@@ -1,10 +1,28 @@
 //// "Copyright 2018 Jan_of_Empires"
+/**
+ * @file Player.cpp
+ * @author Alex Siqueira (siqueiralex@github.com)
+ * @author Alexander André (Alexander-1995@github.com)
+ * @author Arthur Veiga (arthurveiga@github.com)
+ * @author Matheus Veleci (matheusvsantos@github.com)
+ * @author Luis Luz (lightguy875@github.com)
+ * @brief 
+ * @version 0.1
+ * @date 2018-12-01
+ * 
+ * @copyright Copyright (c) 2018
+ * 
+ */
 #include "../include/Player.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
 #include "../include/common.hpp"
 
+/**
+ * @brief Construct a new Player:: Player object
+ * 
+ */
 Player::Player() {
     this->metal = 0;
     this->ossos = 0;
@@ -33,6 +51,10 @@ Player::Player() {
     this->pilar_lanca.time = 0;
 }
 
+/**
+ * @brief 
+ * 
+ */
 void Player::muda_time() {
     if (this->time == 0)
         this->time = 1;
@@ -47,6 +69,13 @@ void Player::muda_time() {
     this->pilar_lanca.time = this->time;
 }
 
+/**
+ * @brief 
+ * 
+ * @param rec 
+ * @return true 
+ * @return false 
+ */
 bool Player::captar_recurso(TipoRecurso rec) {
     if (rec == TipoRecurso::METAL) {
         this->metal = this->metal + QUANTIDADE_METAL_POR_ITEM;
@@ -57,7 +86,12 @@ bool Player::captar_recurso(TipoRecurso rec) {
     return true;
 }
 
-
+/**
+ * @brief 
+ * 
+ * @param pil 
+ * @return Pilar* 
+ */
 Pilar* Player::pilar(TipoPilar pil) {
     if (pil == TipoPilar::ARCO)
         return &this->pilar_arco;
@@ -71,8 +105,12 @@ Pilar* Player::pilar(TipoPilar pil) {
     return nullptr;
 }
 
-
-
+/**
+ * @brief 
+ * 
+ * @param nec 
+ * @return Necromancer* 
+ */
 Necromancer* Player::necromancer(TipoNecromancer nec) {
     if (nec == TipoNecromancer::GUERREIRO)
         return &this->guerreiro;
@@ -86,14 +124,35 @@ Necromancer* Player::necromancer(TipoNecromancer nec) {
     return nullptr;
 }
 
+/**
+ * @brief 
+ * 
+ * @param pil 
+ * @return true 
+ * @return false 
+ */
 bool Player::tem_pilar(TipoPilar pil) {
     return this->pilar(pil)->vivo;
 }
 
+/**
+ * @brief 
+ * 
+ * @param nec 
+ * @return true 
+ * @return false 
+ */
 bool Player::tem_necromancer(TipoNecromancer nec) {
     return this->necromancer(nec)->vivo;
 }
 
+/**
+ * @brief 
+ * 
+ * @param pil 
+ * @return true 
+ * @return false 
+ */
 bool Player::criar_pilar(TipoPilar pil) {
     if (pil == TipoPilar::ARCO) {
         if (this->metal < METAL_CRIAR_PILAR_ARCO)
@@ -136,6 +195,13 @@ bool Player::criar_pilar(TipoPilar pil) {
     return true;
 }
 
+/**
+ * @brief 
+ * 
+ * @param nec 
+ * @return true 
+ * @return false 
+ */
 bool Player::criar_necromancer(TipoNecromancer nec) {
     if (nec == TipoNecromancer::GUERREIRO) {
         if (!this->pilar_espada.vivo)
@@ -186,8 +252,11 @@ bool Player::criar_necromancer(TipoNecromancer nec) {
     return true;
 }
 
-
-
+/**
+ * @brief 
+ * 
+ * @param nome 
+ */
 void Player::print_recursos(const char* nome) {
     using namespace std;
 
@@ -211,12 +280,23 @@ void Player::print_recursos(const char* nome) {
     #endif
 }
 
+/**
+ * @brief 
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Player::perdeu_jogo() {
     return !(this->guerreiro.vivo || this->pilar_espada.vivo ||
     this->arqueiro.vivo || this->pilar_arco.vivo ||
     this->cavaleiro.vivo || this->pilar_lanca.vivo);
 }
 
+/**
+ * @brief 
+ * 
+ * @return unsigned short 
+ */
 unsigned short Player::pontuacao() {
     unsigned short total = 0;
 

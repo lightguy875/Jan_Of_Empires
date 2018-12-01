@@ -1,3 +1,8 @@
+//// "Copyright 2018 Jan_of_Empires"
+/**
+ * @brief 
+ * 
+ */
 #ifndef UTILS_HPP
 #define UTILS_HPP
 

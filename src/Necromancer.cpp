@@ -1,14 +1,42 @@
 //// "Copyright 2018 Jan_of_Empires"
+/**
+ * @file Necromancer.cpp
+ * @author Alex Siqueira (siqueiralex@github.com)
+ * @author Alexander André (Alexander-1995@github.com)
+ * @author Arthur Veiga (arthurveiga@github.com)
+ * @author Matheus Veleci (matheusvsantos@github.com)
+ * @author Luis Luz (lightguy875@github.com)
+ * @brief 
+ * @version 0.1
+ * @date 2018-12-01
+ * 
+ * @copyright Copyright (c) 2018
+ * 
+ */
 #include "../include/Necromancer.hpp"
 /*
     Setando diferentes valores iniciais de mp
     de acordo com o tipo de necromancer
 */
+
+/**
+ * @brief Construct a new Necromancer:: Necromancer object
+ * 
+ */
 Necromancer::Necromancer() {
     this->tipo = TipoConteudoBloco::UNIDADE;
 }
 
 #ifdef PROD
+/**
+ * @brief 
+ * 
+ * @param e 
+ * @param position_x 
+ * @param position_y 
+ * @return true 
+ * @return false 
+ */
 bool Necromancer::handleEvent(SDL_Event * e, int position_x, int position_y) {
     if (e->type == SDL_MOUSEBUTTONDOWN) {
         // Get mouse position
@@ -33,22 +61,39 @@ bool Necromancer::handleEvent(SDL_Event * e, int position_x, int position_y) {
 }
 #endif
 
-
+/**
+ * @brief Construct a new Guerreiro:: Guerreiro object
+ * 
+ */
 Guerreiro::Guerreiro() {
     this->tipo_necromancer = TipoNecromancer::GUERREIRO;
     this->mp = MP_INICIAL_GUERREIRO;
 }
 
+/**
+ * @brief Construct a new Cavaleiro:: Cavaleiro object
+ * 
+ */
 Cavaleiro::Cavaleiro() {
     this->tipo_necromancer = TipoNecromancer::CAVALEIRO;
     this->mp = MP_INICIAL_CAVALEIRO;
 }
 
+/**
+ * @brief Construct a new Arqueiro:: Arqueiro object
+ * 
+ */
 Arqueiro::Arqueiro() {
     this->tipo_necromancer = TipoNecromancer::ARQUEIRO;
     this->mp = MP_INICIAL_ARQUEIRO;
 }
 
+/**
+ * @brief 
+ * 
+ * @param tipo 
+ * @return unsigned short 
+ */
 unsigned short Necromancer::multiplicador(TipoPilar tipo) {
     if (this->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
         if (tipo == TipoPilar::ESPADA)
@@ -83,6 +128,12 @@ unsigned short Necromancer::multiplicador(TipoPilar tipo) {
     return 0;
 }
 
+/**
+ * @brief 
+ * 
+ * @param tipo 
+ * @return unsigned short 
+ */
 unsigned short Necromancer::multiplicador(TipoNecromancer tipo) {
     if (this->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
         if (tipo == TipoNecromancer::GUERREIRO)
