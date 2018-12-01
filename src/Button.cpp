@@ -1,14 +1,14 @@
+//// "Copyright 2018 Jan_of_Empires"
 #include "../include/Button.hpp"
 
-
-Button::Button(){
+Button::Button() {
     position_x = 0;
     position_y = 0;
     button_width = 0;
     button_height = 0;
 }
 
-void Button::setPositionSizeType(int x, int y, int width, int height, ButtonType type){
+void Button::setPositionSizeType(int x, int y, int width, int height, ButtonType type) {
     position_x = x;
     position_y = y;
     button_width = width;
@@ -16,29 +16,23 @@ void Button::setPositionSizeType(int x, int y, int width, int height, ButtonType
     buttonType = type;
 }
 
-void Button::handleEvent(SDL_Event* e, Game * game){
-    if( e->type == SDL_MOUSEBUTTONDOWN )
-    {
-        //Get mouse position
+void Button::handleEvent(SDL_Event* e, Game * game) {
+    if (e->type == SDL_MOUSEBUTTONDOWN) {
+        // Get mouse position
         int x, y;
-        SDL_GetMouseState( &x, &y );
-        //Check if mouse is in Button
+        SDL_GetMouseState(&x, &y);
+        // Check if mouse is in Button
         bool inside = false;
-        if (y > position_y && y < (position_y + button_height))
-        {
-            if (x > position_x && x < (position_x + button_width))
-            {
+        if (y > position_y && y < (position_y + button_height)) {
+            if (x > position_x && x < (position_x + button_width)) {
                 inside = true;
             }
         }
 
-        if (inside)
-        {
-            switch( e->type )
-            {
+        if (inside) {
+            switch (e->type) {
                 case SDL_MOUSEBUTTONDOWN:
-                    switch (buttonType)
-                    {
+                    switch (buttonType) {
                     case BUTTON_PLAY:
                         game->setGameRunning(GAME_PLAY);
                         break;
@@ -60,42 +54,42 @@ void Button::handleEvent(SDL_Event* e, Game * game){
     }
 }
 
-void Button::setPositionX(int x){
+void Button::setPositionX(int x) {
     position_x = x;
 }
 
-void Button::setPositionY(int y){
+void Button::setPositionY(int y) {
     position_y = y;
 }
 
-void Button::setGeneralButtonWidth(int width){
+void Button::setGeneralButtonWidth(int width) {
     button_width = width;
 }
 
-void Button::setGeneralButtonHeight(int height){
+void Button::setGeneralButtonHeight(int height) {
     button_height = height;
 }
 
-int Button::getPositionX(){
+int Button::getPositionX() {
     return position_x;
 }
 
-int Button::getPositionY(){
+int Button::getPositionY() {
     return position_y;
 }
 
-int Button::getGeneralButtonWidth(){
+int Button::getGeneralButtonWidth() {
     return button_width;
 }
 
-int Button::getGeneralButtonHeight(){
+int Button::getGeneralButtonHeight() {
     return button_height;
 }
 
-void Button::setButtonType(ButtonType type){
+void Button::setButtonType(ButtonType type) {
     buttonType = type;
 }
 
-ButtonType Button::getButtonType(){
+ButtonType Button::getButtonType() {
     return buttonType;
 }
