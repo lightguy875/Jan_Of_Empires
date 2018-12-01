@@ -254,9 +254,68 @@ void Controlador::processa_jogada() {
         this->muda_vez();
         // funcao de jogada do computador aqui!
     }
+
     if (this->vezes++ == 1) {
         this->muda_vez();
         this->vezes = 0;
+    }
+
+    if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo && jogador.ossos < OSSOS_CRIAR_ARQUEIRO){
+        this->vez = 1;
+    }else if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo && jogador.ossos && jogador.ossos >= OSSOS_CRIAR_ARQUEIRO){
+        int position_x = (rand()%MAPA_LARGURA),position_y=(rand()%MAPA_ALTURA);
+        while(!mapa.vazio(position_x,position_y)){
+            position_x = (rand()%MAPA_LARGURA);
+            position_y = (rand()%MAPA_ALTURA);
+        }
+        if (jogador.pilar_arco.vivo){
+            criar_necromancer(&jogador, TipoNecromancer::ARQUEIRO,position_x,position_y);
+            #ifdef PROD
+            ativo_x_jog = position_x;
+            ativo_y_jog = position_y;
+            #endif
+        }else if (jogador.pilar_espada.vivo){
+            criar_necromancer(&jogador, TipoNecromancer::GUERREIRO,position_x,position_y);
+            #ifdef PROD
+            ativo_x_jog = position_x;
+            ativo_y_jog = position_y;
+            #endif
+        }else if (jogador.pilar_lanca.vivo){
+            criar_necromancer(&jogador, TipoNecromancer::CAVALEIRO,position_x,position_y);
+            #ifdef PROD
+            ativo_x_jog = position_x;
+            ativo_y_jog = position_y;
+            #endif
+        }
+    }
+
+    if (!computador.arqueiro.vivo && !computador.cavaleiro.vivo && !computador.guerreiro.vivo && computador.ossos < OSSOS_CRIAR_ARQUEIRO){
+        this->vez = 0;
+    }else if (!computador.arqueiro.vivo && !computador.cavaleiro.vivo && !computador.guerreiro.vivo && computador.ossos && computador.ossos >= OSSOS_CRIAR_ARQUEIRO){
+        int position_x = (rand()%MAPA_LARGURA),position_y=(rand()%MAPA_ALTURA);
+        while(!mapa.vazio(position_x,position_y)){
+            position_x = (rand()%MAPA_LARGURA);
+            position_y = (rand()%MAPA_ALTURA);
+        }
+        if (computador.pilar_arco.vivo){
+            criar_necromancer(&computador, TipoNecromancer::ARQUEIRO,position_x,position_y);
+            #ifdef PROD
+            ativo_x_cpu = position_x;
+            ativo_y_cpu = position_y;
+            #endif
+        }else if (computador.pilar_espada.vivo){
+            criar_necromancer(&computador, TipoNecromancer::GUERREIRO,position_x,position_y);
+            #ifdef PROD
+            ativo_x_cpu = position_x;
+            ativo_y_cpu = position_y;
+            #endif
+        }else if (computador.pilar_lanca.vivo){
+            criar_necromancer(&computador, TipoNecromancer::CAVALEIRO,position_x,position_y);
+            #ifdef PROD
+            ativo_x_cpu = position_x;
+            ativo_y_cpu = position_y;
+            #endif
+        }
     }
 }
 

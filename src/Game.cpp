@@ -335,6 +335,7 @@ void Game::renderStatus(int time) {
     textRound.render(38, 568);
 }
 
+<<<<<<< HEAD
 void handle_events_elements(Controlador * controlador, SDL_Event * e) {
     Mapa mapa = controlador->mapa;
     int i, j;
@@ -384,6 +385,38 @@ void handle_events_elements(Controlador * controlador, SDL_Event * e) {
                                 ativo_y_cpu = j;
                             }
                         }
+
+void handle_necro_ativo(Controlador * controlador,SDL_Event * e,int i, int j){
+    Mapa mapa = controlador->mapa;
+    if(((Necromancer *)mapa.ver(i,j))->handleEvent(e,i*40,j*40)){
+        if (controlador->vez == 0){
+            ((Necromancer *)mapa.ver(ativo_x_jog,ativo_y_jog))->setAtivo(false);
+            ((Necromancer *)mapa.ver(i,j))->setAtivo(true);
+            ativo_x_jog = i;
+            ativo_y_jog = j;
+        }else{
+            ((Necromancer *)mapa.ver(ativo_x_cpu,ativo_y_cpu))->setAtivo(false);
+            ((Necromancer *)mapa.ver(i,j))->setAtivo(true);
+            ativo_x_cpu = i;
+            ativo_y_cpu = j;
+        }
+    }
+}
+
+
+void handle_events_elements(Controlador * controlador,SDL_Event * e) {
+    Mapa mapa = controlador->mapa;
+    int i, j;
+    for (j = 0; j < 14; j++) {
+        for (i=0; i < 20; i++) {
+            if (!mapa.vazio(i, j)) {
+                if (mapa.ver(i, j)->tipo == TipoConteudoBloco::UNIDADE){
+                    if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO){
+                        handle_necro_ativo(controlador,e,i,j);
+                    }else if (((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO){
+                        handle_necro_ativo(controlador,e,i,j);
+                    }else if (((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO){
+                        handle_necro_ativo(controlador,e,i,j);
                     }
                 }
                 if (mapa.ver(i, j)->tipo == TipoConteudoBloco::PREDIO) {
@@ -446,9 +479,15 @@ void Game::renderPlay() {
                 movimentar_ativo(&controlador, &e);
                 handle_events_elements(&controlador, &e);
             }
+<<<<<<< HEAD
             if (controlador.alguem_ganhou()) {
                 gameRunning = GAME_GANHOU;
+=======
+            if (controlador.alguem_ganhou()){
+>>>>>>> 726d3dc7cd6e5663f623ba9c0f8d86738c18069d
                 ganhou_time = controlador.ganhou;
+                gameRunning = GAME_GANHOU;
+                break;
             }
             SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
             SDL_RenderClear(renderer);
@@ -509,11 +548,21 @@ void Game::renderRoundPause() {
 
 void Game::renderGanhou() {
     SDL_Event e;
+<<<<<<< HEAD
     while (gameRunning == GAME_ROUND_PAUSE) {
             // Handle events on queue
             while (SDL_PollEvent(&e) != 0) {
                 // User requests quit
                 if (e.type == SDL_QUIT) {
+=======
+    while(gameRunning == GAME_GANHOU){
+
+            //Handle events on queue
+            while( SDL_PollEvent( &e ) != 0 ) {
+                //User requests quit
+                if( e.type == SDL_QUIT )
+                {
+>>>>>>> 726d3dc7cd6e5663f623ba9c0f8d86738c18069d
                     gameRunning = GAME_QUIT;
                 }
             }
