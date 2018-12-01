@@ -152,7 +152,7 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
     unsigned short dano_golpe;
     std::cout<<  "realizando combate em: "<< x_atac << " " << y_atac << " "<< x_vit << " " << y_vit <<std::endl;
     Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac,y_atac);
-    
+
     ColocavelEmBloco *vitima = this->mapa.ver(x_vit, y_vit);
     TipoNecromancer tipo_vitima_nec = ((Necromancer *) vitima)->tipo_necromancer;
     TipoPilar tipo_vitima_pil = ((Pilar *) vitima)->tipo_pilar;
@@ -171,7 +171,7 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
             dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_pil);
             if( ((Pilar *) vitima)->hp <= dano_golpe ){
                 this->matar(x_vit, y_vit);
-            
+
             }
             else
             {
@@ -259,9 +259,18 @@ void Controlador::processa_jogada() {
         this->muda_vez();
         // funcao de jogada do computador aqui!
     }
+
     if (this->vezes++ == 1) {
         this->muda_vez();
         this->vezes = 0;
+    }
+
+    if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo){
+        this->vez = 1;
+    }
+
+    if (!computador.arqueiro.vivo && !computador.cavaleiro.vivo && !computador.guerreiro.vivo){
+        this->vez = 0;
     }
 }
 
