@@ -161,6 +161,7 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
             dano_golpe = DANO_DE_ATQ * atacante->multiplicador(tipo_vitima_nec);
             if (((Necromancer *) vitima)->mp <= dano_golpe) {
                 this->matar(x_vit, y_vit);
+                ((Necromancer *) vitima)->mp = 0;
             } else {
                 ((Necromancer *) vitima)->mp = ((Necromancer *) vitima)->mp - dano_golpe;
             }
