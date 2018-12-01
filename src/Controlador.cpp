@@ -318,9 +318,9 @@ void Controlador::print_mapa(){
                     if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO){
                         knight[mapa.ver(i,j)->time].render(i*40,j*40);
                     }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO){
-                        solider[mapa.ver(i,j)->time].render(i*40,j*40);
-                    }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO){
                         archer[mapa.ver(i,j)->time].render(i*40,j*40);
+                    }else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO){
+                        solider[mapa.ver(i,j)->time].render(i*40,j*40);
                     }
                 }
                 if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
