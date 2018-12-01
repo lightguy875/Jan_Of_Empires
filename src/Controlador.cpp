@@ -158,7 +158,7 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
     TipoPilar tipo_vitima_pil = ((Pilar *) vitima)->tipo_pilar;
     switch ((int) this->mapa.ver(x_vit, y_vit)->tipo) {
         case (int) TipoConteudoBloco::UNIDADE:
-            dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_nec);
+            dano_golpe = DANO_DE_ATQ * atacante->multiplicador(tipo_vitima_nec);
             if (((Necromancer *) vitima)->mp <= dano_golpe) {
                 this->matar(x_vit, y_vit);
             } else {
@@ -166,7 +166,7 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
             }
             break;
         case (int) TipoConteudoBloco::PREDIO:
-            dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_pil);
+            dano_golpe = DANO_DE_ATQ * atacante->multiplicador(tipo_vitima_pil);
             if (((Pilar *) vitima)->hp <= dano_golpe) {
                 this->matar(x_vit, y_vit);
             } else {

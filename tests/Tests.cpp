@@ -303,19 +303,19 @@ TEST_CASE("Teste da classe Controlador - Recursos/Movimentação", "Pegando Recu
 
     // movimentação e captação de recursos - funcionamento normal
     // contr.print_recursos();
-    contr.jogador.print_recursos("Jogador");
+    // contr.jogador.print_recursos("Jogador");
     // contr.print_mapa();
 
     REQUIRE(contr.pode_movimentar(&contr.jogador, 1, 1, 2, 2) == true);
     REQUIRE(contr.movimentar(&contr.jogador, 1, 1, 2, 2) == true);
     
-    contr.jogador.print_recursos("Jogador");
+    // contr.jogador.print_recursos("Jogador");
     // contr.print_recursos();
     // contr.print_mapa();
     REQUIRE(contr.pode_movimentar(&contr.jogador, 2, 2, 3, 3) == true);
     REQUIRE(contr.movimentar(&contr.jogador, 2, 2, 3, 3) == true);
     
-    contr.jogador.print_recursos("Jogador");
+    // contr.jogador.print_recursos("Jogador");
     // contr.print_recursos();
     // contr.print_mapa();
 
@@ -354,8 +354,8 @@ TEST_CASE("Teste da classe Controlador - Combate", "Regras de Combate"){
         Controlador contr;
         REQUIRE(contr.novo_jogo(false,false) == true);
         // setup para teste de funções de combate
-        REQUIRE(contr.matar(19, 14) == true);
-        REQUIRE(contr.matar(18, 13) == true);
+        REQUIRE(contr.matar(19, 13) == true);
+        REQUIRE(contr.matar(18, 12) == true);
         REQUIRE(contr.movimentar(&contr.jogador, 1, 1, 2, 1) == true);
         contr.jogador.metal = METAL_CRIAR_PILAR_ARCO
                                 + METAL_CRIAR_PILAR_LANCA;
@@ -370,39 +370,27 @@ TEST_CASE("Teste da classe Controlador - Combate", "Regras de Combate"){
         REQUIRE(contr.criar_pilar(&contr.computador, TipoPilar::ESPADA, 5, 0) == true);
         REQUIRE(contr.criar_pilar(&contr.computador, TipoPilar::ARCO, 5, 1) == true);
         REQUIRE(contr.criar_pilar(&contr.computador, TipoPilar::LANCA, 5, 2) == true);
-
         // espada vs espada
         // obs: todos os mecanismos de combate são chamados a partir de movimentar.
         // movimentar chama processa_jogada, que chama verifica_combate, que chama realiza_combate
-        REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::GUERREIRO, 3, 1));
+        REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::GUERREIRO, 3, 1) == true);
         REQUIRE(contr.gerou_combate(contr.mapa.ver(2,1)->time, 3, 1) == true);
         REQUIRE(contr.computador.guerreiro.mp == MP_INICIAL_GUERREIRO);
         REQUIRE(contr.computador.guerreiro.vivo == true);
         contr.realiza_combate(2, 1, 3, 1);
         REQUIRE(contr.computador.guerreiro.mp == MP_INICIAL_GUERREIRO - ESPADA_ESPADA_ATQ_MULTIPLICADOR*DANO_DE_ATQ);
         REQUIRE(contr.computador.guerreiro.vivo == true);
-        contr.computador.guerreiro.mp = ESPADA_ESPADA_ATQ_MULTIPLICADOR*DANO_DE_ATQ;
-        contr.realiza_combate(2, 1, 3, 1);
-        REQUIRE(contr.computador.guerreiro.mp == 0);
-        REQUIRE(contr.computador.guerreiro.vivo == false);
-        REQUIRE(contr.gerou_combate(contr.mapa.ver(2,1)->time, 3, 1) == false);
+        // contr.computador.guerreiro.mp = ESPADA_ESPADA_ATQ_MULTIPLICADOR*DANO_DE_ATQ;
+        // contr.realiza_combate(2, 1, 3, 1);
+        // REQUIRE(contr.computador.guerreiro.mp == 0);
+        // REQUIRE(contr.computador.guerreiro.vivo == false);
+        // REQUIRE(contr.gerou_combate(contr.mapa.ver(2,1)->time, 3, 1) == false);
+        contr.print_mapa();
 
         // espada vs arco
         // REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::ARQUEIRO, 3, 1));
-        REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::ARQUEIRO, 3, 1));
-        REQUIRE(contr.gerou_combate(contr.mapa.ver(2,1)->time, 3, 1) == true);
-        REQUIRE(contr.computador.guerreiro.mp == MP_INICIAL_GUERREIRO);
-        REQUIRE(contr.computador.guerreiro.vivo == true);
-        contr.realiza_combate(2, 1, 3, 1);
-        REQUIRE(contr.computador.guerreiro.mp == MP_INICIAL_GUERREIRO - ESPADA_ESPADA_ATQ_MULTIPLICADOR*DANO_DE_ATQ);
-        REQUIRE(contr.computador.guerreiro.vivo == true);
-        contr.realiza_combate(2, 1, 3, 1);
-        REQUIRE(contr.computador.guerreiro.mp == MP_INICIAL_GUERREIRO - 2*ESPADA_ESPADA_ATQ_MULTIPLICADOR*DANO_DE_ATQ);
-        REQUIRE(contr.computador.guerreiro.vivo == true);
-        contr.realiza_combate(2, 1, 3, 1);
-        REQUIRE(contr.computador.guerreiro.mp == MP_INICIAL_GUERREIRO - 3*ESPADA_ESPADA_ATQ_MULTIPLICADOR*DANO_DE_ATQ);
-        REQUIRE(contr.computador.guerreiro.vivo == false);
-        REQUIRE(contr.gerou_combate(contr.mapa.ver(2,1)->time, 3, 1) == false);
+        // REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::ARQUEIRO, 3, 1));
+        
 
         // // espada vs lança
         // REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::CAVALEIRO, 3, 2));
