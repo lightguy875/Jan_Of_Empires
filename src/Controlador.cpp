@@ -6,12 +6,12 @@
  * @author Arthur Veiga (arthurveiga@github.com)
  * @author Matheus Veleci (matheusvsantos@github.com)
  * @author Luis Luz (lightguy875@github.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2018-12-01
- * 
+ *
  * @copyright Copyright (c) 2018
- * 
+ *
  */
 #include <string>
 #include <sstream>
@@ -21,7 +21,7 @@
 
 /**
  * @brief Construct a new Controlador:: Controlador object
- * 
+ *
  */
 Controlador::Controlador() : mapa(MAPA_LARGURA, MAPA_ALTURA) {
     this->jogo_terminou = false;
@@ -29,8 +29,8 @@ Controlador::Controlador() : mapa(MAPA_LARGURA, MAPA_ALTURA) {
     this->vezes = 0;
 }
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void Controlador::preenche_recursos_iniciais() {
     unsigned short i;
@@ -49,12 +49,12 @@ void Controlador::preenche_recursos_iniciais() {
 }
 
 /**
- * @brief 
- * 
- * @param recursos_aleatorios 
- * @param computador_joga 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param recursos_aleatorios
+ * @param computador_joga
+ * @return true
+ * @return false
  */
 bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga) {
     this->mapa.inserir(&jogador.guerreiro, X_NECROMANCER_PLAYER, Y_NECROMANCER_PLAYER);
@@ -82,14 +82,14 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga) {
 }
 
 /**
- * @brief 
- * 
- * @param jog 
- * @param pil 
- * @param x 
- * @param y 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param jog
+ * @param pil
+ * @param x
+ * @param y
+ * @return true
+ * @return false
  */
 bool Controlador::criar_pilar(Player *jog, TipoPilar pil, unsigned short x, unsigned short y) {
     if (jog->pilar(pil)->vivo) return false;
@@ -101,14 +101,14 @@ bool Controlador::criar_pilar(Player *jog, TipoPilar pil, unsigned short x, unsi
 }
 
 /**
- * @brief 
- * 
- * @param jog 
- * @param nec 
- * @param x 
- * @param y 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param jog
+ * @param nec
+ * @param x
+ * @param y
+ * @return true
+ * @return false
  */
 bool Controlador::criar_necromancer(Player *jog, TipoNecromancer nec, unsigned short x, unsigned short y) {
     if (jog->necromancer(nec)->vivo) return false;
@@ -121,12 +121,12 @@ bool Controlador::criar_necromancer(Player *jog, TipoNecromancer nec, unsigned s
 }
 
 /**
- * @brief 
- * 
- * @param jog 
- * @param pil 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param jog
+ * @param pil
+ * @return true
+ * @return false
  */
 bool Controlador::fortalecer_pilar(Player *jog, TipoPilar pil) {
     if (!jog->pilar(pil)->vivo) return false;
@@ -135,12 +135,12 @@ bool Controlador::fortalecer_pilar(Player *jog, TipoPilar pil) {
 }
 
 /**
- * @brief 
- * 
- * @param jog 
- * @param nec 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param jog
+ * @param nec
+ * @return true
+ * @return false
  */
 bool Controlador::fortalecer_necromancer(Player *jog, TipoNecromancer nec) {
     if (!jog->necromancer(nec)->vivo) return false;
@@ -149,12 +149,12 @@ bool Controlador::fortalecer_necromancer(Player *jog, TipoNecromancer nec) {
 }
 
 /**
- * @brief 
- * 
- * @param X 
- * @param Y 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param X
+ * @param Y
+ * @return true
+ * @return false
  */
 bool Controlador::matar(unsigned short X, unsigned short Y) {
     if (this->mapa.vazio(X, Y))
@@ -167,15 +167,15 @@ bool Controlador::matar(unsigned short X, unsigned short Y) {
 }
 
 /**
- * @brief 
- * 
- * @param jog 
- * @param x_orig 
- * @param y_orig 
- * @param x_dest 
- * @param y_dest 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param jog
+ * @param x_orig
+ * @param y_orig
+ * @param x_dest
+ * @param y_dest
+ * @return true
+ * @return false
  */
 bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest) {
     if (!(this->mapa.posicao_valida(x_orig, y_orig) && this->mapa.posicao_valida(x_dest, y_dest)))
@@ -199,15 +199,15 @@ bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned s
 }
 
 /**
- * @brief 
- * 
- * @param jog 
- * @param x_orig 
- * @param y_orig 
- * @param x_dest 
- * @param y_dest 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param jog
+ * @param x_orig
+ * @param y_orig
+ * @param x_dest
+ * @param y_dest
+ * @return true
+ * @return false
  */
 bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest) {
     if ( !this->pode_movimentar(jog, x_orig, y_orig, x_dest, y_dest) )
@@ -232,13 +232,13 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
 }
 
 /**
- * @brief 
- * 
- * @param time 
- * @param x 
- * @param y 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @param time
+ * @param x
+ * @param y
+ * @return true
+ * @return false
  */
 bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned short y) {
     if (!this->mapa.posicao_valida(x, y))
@@ -252,12 +252,12 @@ bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned 
 }
 
 /**
- * @brief 
- * 
- * @param x_atac 
- * @param y_atac 
- * @param x_vit 
- * @param y_vit 
+ * @brief
+ *
+ * @param x_atac
+ * @param y_atac
+ * @param x_vit
+ * @param y_vit
  */
 void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, unsigned short x_vit, unsigned short y_vit ) {
     unsigned short dano_golpe;
@@ -292,10 +292,10 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
 }
 
 /**
- * @brief 
- * 
- * @param x 
- * @param y 
+ * @brief
+ *
+ * @param x
+ * @param y
  */
 void Controlador::verifica_combate(unsigned short x, unsigned short y) {
     // std::cout<<  "verificando combate em: "<< x << " " << y << std::endl;
@@ -311,8 +311,8 @@ void Controlador::verifica_combate(unsigned short x, unsigned short y) {
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void Controlador::muda_vez() {
     if (this->vez == 0) {
@@ -324,10 +324,10 @@ void Controlador::muda_vez() {
 }
 
 /**
- * @brief 
- * 
- * @return true 
- * @return false 
+ * @brief
+ *
+ * @return true
+ * @return false
  */
 bool Controlador::alguem_ganhou() {
     if (this->recursos.size() == 0) {
@@ -362,8 +362,8 @@ bool Controlador::alguem_ganhou() {
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void Controlador::processa_jogada() {
     unsigned short time;
@@ -392,7 +392,7 @@ void Controlador::processa_jogada() {
 
     if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo && jogador.ossos < OSSOS_CRIAR_ARQUEIRO){
         this->vez = 1;
-    }else if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo && jogador.ossos && jogador.ossos >= OSSOS_CRIAR_ARQUEIRO){
+    }else if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo && jogador.ossos >= OSSOS_CRIAR_ARQUEIRO){
         int position_x = (rand()%MAPA_LARGURA),position_y=(rand()%MAPA_ALTURA);
         while(!mapa.vazio(position_x,position_y)){
             position_x = (rand()%MAPA_LARGURA);
@@ -421,7 +421,7 @@ void Controlador::processa_jogada() {
 
     if (!computador.arqueiro.vivo && !computador.cavaleiro.vivo && !computador.guerreiro.vivo && computador.ossos < OSSOS_CRIAR_ARQUEIRO){
         this->vez = 0;
-    }else if (!computador.arqueiro.vivo && !computador.cavaleiro.vivo && !computador.guerreiro.vivo && computador.ossos && computador.ossos >= OSSOS_CRIAR_ARQUEIRO){
+    }else if (!computador.arqueiro.vivo && !computador.cavaleiro.vivo && !computador.guerreiro.vivo && computador.ossos >= OSSOS_CRIAR_ARQUEIRO){
         int position_x = (rand()%MAPA_LARGURA),position_y=(rand()%MAPA_ALTURA);
         while(!mapa.vazio(position_x,position_y)){
             position_x = (rand()%MAPA_LARGURA);
@@ -450,8 +450,8 @@ void Controlador::processa_jogada() {
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void Controlador::print_recursos() {
     using namespace std;
@@ -505,8 +505,8 @@ void Controlador::print_recursos() {
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void Controlador::print_mapa() {
     #ifdef PROD
