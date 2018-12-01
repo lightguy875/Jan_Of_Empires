@@ -7,6 +7,7 @@ Necromancer::Necromancer(){
     this->tipo = TipoConteudoBloco::UNIDADE;
 }
 
+#ifdef PROD
 bool Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
     if( e->type == SDL_MOUSEBUTTONDOWN )
     {
@@ -34,6 +35,7 @@ bool Necromancer::handleEvent(SDL_Event * e,int position_x, int position_y){
     }
     return false;
 }
+#endif
 
 
 Guerreiro::Guerreiro(){

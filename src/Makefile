@@ -46,7 +46,7 @@ TESTS = $(patsubst %,$(DIR_TESTS)/%,$(_TESTS))
 
 # Gera arquivos objeto para todos os .cpp que estão localizados no mesmo diretório do makefile e em seguida compila
 $(DIR_OBJECTS)/%.o: %.cpp $(HEADERS)
-	$(CC) -c -o $@ $< $(CFLAGS) $(LIBS)
+	$(CC) -c -o $@ $< $(CFLAGS) -D PROD $(LIBS)
 
 # Chama todos os arquivos objeto, gerando binários e criando o executável
 $(PROJECT_EXE): $(OBJECTS)
@@ -54,7 +54,7 @@ $(PROJECT_EXE): $(OBJECTS)
 
 # Chama todos os arquivos objeto, gerando binários e criando o executável de teste, colocar aqui todos os módulos usados no teste
 $(TEST_EXE): $(TESTS) Necromancer.cpp Bloco.cpp Recurso.cpp Pilar.cpp Mapa.cpp Player.cpp Controlador.cpp
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS) -D TEST
 
 # MiniTutorial
 # all: library.cpp main.cpp

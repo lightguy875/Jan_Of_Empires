@@ -35,10 +35,12 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga) {
     jogador.guerreiro.setAtivo(true);
     computador.guerreiro.setAtivo(true);
 
+    #ifdef PROD
     ativo_x_jog = X_NECROMANCER_PLAYER;
     ativo_y_jog = Y_NECROMANCER_PLAYER;
     ativo_x_cpu = X_NECROMANCER_COMPUTADOR;
     ativo_y_cpu = Y_NECROMANCER_COMPUTADOR;
+    #endif
 
     if (recursos_aleatorios)
         this->preenche_recursos_iniciais();
@@ -258,6 +260,7 @@ void Controlador::processa_jogada() {
 
 void Controlador::print_recursos() {
     using namespace std;
+    #ifdef PROD
     std::ostringstream xp;
     unsigned short x = 0, y = 0;
 
@@ -293,9 +296,22 @@ void Controlador::print_recursos() {
         textHP.loadFromRenderedText(xp_s);
         textHP.render(180, 568);
     }
+    #else
+    std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
+    for (auto v : this->recursos){
+        if(v.tipo_recurso == TipoRecurso::METAL)
+            std::cout << "Metal";
+        else if(v.tipo_recurso == TipoRecurso::OSSOS)
+            std::cout << "Ossos";
+
+        std::cout << " X:" << v.x << " Y:" << v.y << std::endl;
+    }
+    #endif
+
 }
 
 void Controlador::print_mapa() {
+    #ifdef PROD
     int i, j, ossos_c = 0, metal_c = 0;
     for (j = 0; j < MAPA_ALTURA; j++) {
         for (i = 0; i < MAPA_LARGURA; i++) {
@@ -328,6 +344,49 @@ void Controlador::print_mapa() {
             }
         }
     }
+    #else
+    int i, j;
+
+       std::cout << "  ";
+       for(i=0; i<MAPA_LARGURA; i++){
+           std::cout <<" "<< i;
+           if(i<10)std::cout <<" ";
+       }
+       std::cout << std::endl;
+
+
+       for(j=0; j<MAPA_ALTURA; j++){
+           std::cout << j << " ";
+           for(i=0; i<MAPA_LARGURA; i++){
+               if(this->mapa.vazio(i,j)) std::cout << "   ";
+               else{
+                   if(mapa.ver(i,j)->tipo == TipoConteudoBloco::RECURSO){
+                       if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::METAL)
+                           std::cout << " M ";
+                       else if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::OSSOS)
+                           std::cout << " O ";
+                   }
+                   if(mapa.ver(i,j)->tipo == TipoConteudoBloco::UNIDADE){
+                       if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO)
+                           std::cout << "NG" << mapa.ver(i,j)->time;
+                       else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO)
+                           std::cout << "NA" << mapa.ver(i,j)->time;
+                       else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
+                           std::cout << "NC" << mapa.ver(i,j)->time;
+                   }
+                   if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
+                       if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA)
+                           std::cout << "PE" << mapa.ver(i,j)->time;
+                       else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA)
+                           std::cout << "PL" << mapa.ver(i,j)->time;
+                       else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO)
+                           std::cout << "PA" << mapa.ver(i,j)->time;
+                   }
+               }
+           }
+           std::cout << std::endl;
+       }
+    #endif
 }
 
 

@@ -7,6 +7,7 @@ Pilar::Pilar(){
     this->tipo = TipoConteudoBloco::PREDIO;
 }
 
+#ifdef PROD
 bool Pilar::handleEvent(SDL_Event * e, int position_x, int position_y){
     if( e->type == SDL_MOUSEBUTTONDOWN )
     {
@@ -34,6 +35,7 @@ bool Pilar::handleEvent(SDL_Event * e, int position_x, int position_y){
     }
     return false;
 }
+#endif
 
 PilarLanca::PilarLanca(){
     this->tipo_pilar = TipoPilar::LANCA;

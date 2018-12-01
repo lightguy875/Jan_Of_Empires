@@ -194,10 +194,7 @@ void Player::print_recursos(const char* nome){
 
     using namespace std;
 
-    // cout << nome << " tem: ";
-    // cout << this->metal << " de metal, ";
-    // cout << this->ossos << " de ossos" << endl;
-
+    #ifdef PROD
     std::ostringstream metal_s,bones_s;
 
     metal_s << "METAL: " << this->metal;
@@ -210,6 +207,11 @@ void Player::print_recursos(const char* nome){
     textMetal .render(444,568);
     textBones.loadFromRenderedText(o);
     textBones.render(654,568);
+    #else
+    cout << nome << " tem: ";
+    cout << this->metal << " de metal, ";
+    cout << this->ossos << " de ossos" << endl;
+    #endif
 
 }
 
