@@ -54,11 +54,8 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga) {
 
 bool Controlador::criar_pilar(Player *jog, TipoPilar pil, unsigned short x, unsigned short y) {
     if (jog->pilar(pil)->vivo) return false;
-    printf("Criou pilar\n");
     if (!this->mapa.vazio(x, y)) return false;
-    printf("Mapa vazio\n");
     if (!jog->criar_pilar(pil)) return false;
-    printf("Criacar\n");
     this->mapa.inserir(jog->pilar(pil), x, y);
 
     return true;
