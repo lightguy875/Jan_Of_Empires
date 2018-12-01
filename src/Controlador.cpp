@@ -151,30 +151,25 @@ bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned 
 void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, unsigned short x_vit, unsigned short y_vit ) {
     unsigned short dano_golpe;
     std::cout<<  "realizando combate em: "<< x_atac << " " << y_atac << " "<< x_vit << " " << y_vit <<std::endl;
-    Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac,y_atac);
+    Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac, y_atac);
 
     ColocavelEmBloco *vitima = this->mapa.ver(x_vit, y_vit);
     TipoNecromancer tipo_vitima_nec = ((Necromancer *) vitima)->tipo_necromancer;
     TipoPilar tipo_vitima_pil = ((Pilar *) vitima)->tipo_pilar;
-    switch((int) this->mapa.ver(x_vit, y_vit)->tipo){
+    switch ((int) this->mapa.ver(x_vit, y_vit)->tipo) {
         case (int) TipoConteudoBloco::UNIDADE:
             dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_nec);
-            if( ((Necromancer *) vitima)->mp <= dano_golpe ){
+            if (((Necromancer *) vitima)->mp <= dano_golpe) {
                 this->matar(x_vit, y_vit);
-            }
-            else
-            {
+            } else {
                 ((Necromancer *) vitima)->mp = ((Necromancer *) vitima)->mp - dano_golpe;
             }
             break;
         case (int) TipoConteudoBloco::PREDIO:
             dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_pil);
-            if( ((Pilar *) vitima)->hp <= dano_golpe ){
+            if (((Pilar *) vitima)->hp <= dano_golpe) {
                 this->matar(x_vit, y_vit);
-
-            }
-            else
-            {
+            } else {
                 ((Pilar *) vitima)->hp = ((Pilar *) vitima)->hp - dano_golpe;
             }
             break;
@@ -365,16 +360,15 @@ void Controlador::print_recursos() {
     }
     #else
     std::cout<<  "Quantidade de  recursos no mapa: "<< this->recursos.size() << std::endl;
-    for (auto v : this->recursos){
-        if(v.tipo_recurso == TipoRecurso::METAL)
+    for (auto v : this->recursos) {
+        if (v.tipo_recurso == TipoRecurso::METAL)
             std::cout << "Metal";
-        else if(v.tipo_recurso == TipoRecurso::OSSOS)
+        else if (v.tipo_recurso == TipoRecurso::OSSOS)
             std::cout << "Ossos";
 
         std::cout << " X:" << v.x << " Y:" << v.y << std::endl;
     }
     #endif
-
 }
 
 void Controlador::print_mapa() {
@@ -415,39 +409,39 @@ void Controlador::print_mapa() {
     int i, j;
 
        std::cout << "  ";
-       for(i=0; i<MAPA_LARGURA; i++){
+       for (i=0; i < MAPA_LARGURA; i++) {
            std::cout <<" "<< i;
-           if(i<10)std::cout <<" ";
+           if (i < 10) std::cout <<" ";
        }
        std::cout << std::endl;
 
 
-       for(j=0; j<MAPA_ALTURA; j++){
+       for (j = 0; j < MAPA_ALTURA; j++) {
            std::cout << j << " ";
-           for(i=0; i<MAPA_LARGURA; i++){
-               if(this->mapa.vazio(i,j)) std::cout << "   ";
-               else{
-                   if(mapa.ver(i,j)->tipo == TipoConteudoBloco::RECURSO){
-                       if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::METAL)
+           for (i = 0; i < MAPA_LARGURA; i++) {
+               if (this->mapa.vazio(i, j)) std::cout << "   ";
+               else {
+                   if (mapa.ver(i, j)->tipo == TipoConteudoBloco::RECURSO) {
+                       if (((Recurso *)mapa.ver(i, j))->tipo_recurso == TipoRecurso::METAL)
                            std::cout << " M ";
-                       else if(((Recurso *)mapa.ver(i,j))->tipo_recurso == TipoRecurso::OSSOS)
+                       else if (((Recurso *)mapa.ver(i, j))->tipo_recurso == TipoRecurso::OSSOS)
                            std::cout << " O ";
                    }
-                   if(mapa.ver(i,j)->tipo == TipoConteudoBloco::UNIDADE){
-                       if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::GUERREIRO)
-                           std::cout << "NG" << mapa.ver(i,j)->time;
-                       else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::ARQUEIRO)
-                           std::cout << "NA" << mapa.ver(i,j)->time;
-                       else if(((Necromancer *)mapa.ver(i,j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
-                           std::cout << "NC" << mapa.ver(i,j)->time;
+                   if (mapa.ver(i, j)->tipo == TipoConteudoBloco::UNIDADE) {
+                       if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::GUERREIRO)
+                           std::cout << "NG" << mapa.ver(i, j)->time;
+                       else if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::ARQUEIRO)
+                           std::cout << "NA" << mapa.ver(i, j)->time;
+                       else if (((Necromancer *)mapa.ver(i, j))->tipo_necromancer == TipoNecromancer::CAVALEIRO)
+                           std::cout << "NC" << mapa.ver(i, j)->time;
                    }
-                   if(mapa.ver(i,j)->tipo == TipoConteudoBloco::PREDIO){
-                       if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA)
-                           std::cout << "PE" << mapa.ver(i,j)->time;
-                       else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::LANCA)
-                           std::cout << "PL" << mapa.ver(i,j)->time;
-                       else if(((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ARCO)
-                           std::cout << "PA" << mapa.ver(i,j)->time;
+                   if (mapa.ver(i, j)->tipo == TipoConteudoBloco::PREDIO) {
+                       if (((Pilar *)mapa.ver(i,j))->tipo_pilar == TipoPilar::ESPADA)
+                           std::cout << "PE" << mapa.ver(i, j)->time;
+                       else if (((Pilar *)mapa.ver(i, j))->tipo_pilar == TipoPilar::LANCA)
+                           std::cout << "PL" << mapa.ver(i, j)->time;
+                       else if (((Pilar *)mapa.ver(i, j))->tipo_pilar == TipoPilar::ARCO)
+                           std::cout << "PA" << mapa.ver(i, j)->time;
                    }
                }
            }
