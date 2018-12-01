@@ -302,28 +302,28 @@ TEST_CASE("Teste da classe Controlador - Recursos/Movimentação", "Pegando Recu
     contr.recursos.push_back(*os);
 
     // movimentação e captação de recursos - funcionamento normal
-    contr.print_recursos();
+    // contr.print_recursos();
     contr.jogador.print_recursos("Jogador");
-    contr.print_mapa();
+    // contr.print_mapa();
 
     REQUIRE(contr.pode_movimentar(&contr.jogador, 1, 1, 2, 2) == true);
     REQUIRE(contr.movimentar(&contr.jogador, 1, 1, 2, 2) == true);
     
     contr.jogador.print_recursos("Jogador");
-    contr.print_recursos();
-    contr.print_mapa();
+    // contr.print_recursos();
+    // contr.print_mapa();
     REQUIRE(contr.pode_movimentar(&contr.jogador, 2, 2, 3, 3) == true);
     REQUIRE(contr.movimentar(&contr.jogador, 2, 2, 3, 3) == true);
     
     contr.jogador.print_recursos("Jogador");
-    contr.print_recursos();
-    contr.print_mapa();
+    // contr.print_recursos();
+    // contr.print_mapa();
 
     // organizar jogo para mais situações de teste
     REQUIRE(contr.pode_movimentar(&contr.jogador, 3, 3, 1, 1) == true);
     REQUIRE(contr.movimentar(&contr.jogador, 3, 3, 1, 1) == true);
-    contr.print_recursos();
-    contr.print_mapa();
+    // contr.print_recursos();
+    // contr.print_mapa();
     contr.jogador.metal = METAL_CRIAR_PILAR_ARCO;
     contr.jogador.ossos = OSSOS_CRIAR_ARQUEIRO;
     REQUIRE(contr.criar_pilar(&contr.jogador, TipoPilar::ARCO, 0, 1) == true);
@@ -343,8 +343,8 @@ TEST_CASE("Teste da classe Controlador - Recursos/Movimentação", "Pegando Recu
     REQUIRE(contr.pode_movimentar(&contr.jogador, 1, 1, 0, 2) == false); // bloco onde quero mover não é vazio: unidade
     REQUIRE(contr.movimentar(&contr.jogador, 1, 1, 0, 2) == false);
 
-    contr.print_recursos();
-    contr.print_mapa();
+    // contr.print_recursos();
+    // contr.print_mapa();
 }   
 
 
@@ -369,6 +369,11 @@ TEST_CASE("Teste da classe Controlador - Combate", "Regras de Combate"){
     REQUIRE(contr.criar_pilar(&contr.computador, TipoPilar::LANCA, 6, 2) == true);
     REQUIRE(contr.criar_necromancer(&contr.computador, TipoNecromancer::CAVALEIRO, 5, 2));
 
+    // espada vs espada
+    // obs: todos os mecanismos de combate são chamados a partir de movimentar.
+    // movimentar chama processa_jogada, que chama verifica_combate, que chama realiza_combate
+    REQUIRE(contr.movimentar(&contr.computador, 5, 0, 3, 0) == true);
+    REQUIRE(contr.computador.guerreiro.mp == 0);
 
     contr.print_mapa();
 }
