@@ -1,0 +1,492 @@
+\hypertarget{class_player}{}\section{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}\label{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}} 
+\mbox{\hyperlink{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}{Player}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_player}{Player}}\+:\+: \mbox{\hyperlink{class_player}{Player}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a118c76695a9c1f362a5371381bfe5be3}{criar\+\_\+necromancer}} (Tipo\+Necromancer)
+\item 
+bool \mbox{\hyperlink{class_player_a23fda6bb2c90d8033dc6ae07d1f27964}{criar\+\_\+pilar}} (Tipo\+Pilar)
+\item 
+bool \mbox{\hyperlink{class_player_a063de6da853c618adcf8392ba639327c}{tem\+\_\+pilar}} (Tipo\+Pilar)
+\item 
+bool \mbox{\hyperlink{class_player_aeff8c71e2c3e1a7529ec2190de0ac4cd}{tem\+\_\+necromancer}} (Tipo\+Necromancer)
+\item 
+\mbox{\hyperlink{class_pilar}{Pilar}} $\ast$ \mbox{\hyperlink{class_player_aa953125244cebb04b2363ae102c5fbf6}{pilar}} (Tipo\+Pilar)
+\item 
+\mbox{\hyperlink{class_necromancer}{Necromancer}} $\ast$ \mbox{\hyperlink{class_player_a560ffc698994e73527433dd2bf4d2c0d}{necromancer}} (Tipo\+Necromancer)
+\item 
+bool \mbox{\hyperlink{class_player_a66d2bc18dfc9b913109761a95126f086}{captar\+\_\+recurso}} (Tipo\+Recurso)
+\item 
+\mbox{\Hypertarget{class_player_a2e69197c9ec7cebcc4e2a618c0342fbb}\label{class_player_a2e69197c9ec7cebcc4e2a618c0342fbb}} 
+void {\bfseries muda\+\_\+time} ()
+\item 
+bool \mbox{\hyperlink{class_player_aad208bab9f9f88af5ac34ebe7c31dc61}{perdeu\+\_\+jogo}} ()
+\item 
+unsigned short \mbox{\hyperlink{class_player_a945277689283bc50bd3afef306bf9740}{pontuacao}} ()
+\item 
+void \mbox{\hyperlink{class_player_a7086da1dce5a9de1c2cf29a15ace5a7d}{print\+\_\+recursos}} (const char $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a953244bbf0e0326076c22ba47c11a7cb}\label{class_player_a953244bbf0e0326076c22ba47c11a7cb}} 
+unsigned short {\bfseries time}
+\item 
+\mbox{\Hypertarget{class_player_a33608a1ac91b463c5d4f0d75e6ed8724}\label{class_player_a33608a1ac91b463c5d4f0d75e6ed8724}} 
+unsigned short {\bfseries metal}
+\item 
+\mbox{\Hypertarget{class_player_a147e27fdd4a9e19654ed924e14eced3a}\label{class_player_a147e27fdd4a9e19654ed924e14eced3a}} 
+unsigned short {\bfseries ossos}
+\item 
+\mbox{\Hypertarget{class_player_a22564346bf7ddc4a9d6c99a265459067}\label{class_player_a22564346bf7ddc4a9d6c99a265459067}} 
+\mbox{\hyperlink{class_guerreiro}{Guerreiro}} {\bfseries guerreiro}
+\item 
+\mbox{\Hypertarget{class_player_a92dffc00e1f3e6ad24bd0e9432f336cf}\label{class_player_a92dffc00e1f3e6ad24bd0e9432f336cf}} 
+\mbox{\hyperlink{class_cavaleiro}{Cavaleiro}} {\bfseries cavaleiro}
+\item 
+\mbox{\Hypertarget{class_player_a9aeeec934470acf8f4eda1841abf4ed2}\label{class_player_a9aeeec934470acf8f4eda1841abf4ed2}} 
+\mbox{\hyperlink{class_arqueiro}{Arqueiro}} {\bfseries arqueiro}
+\item 
+\mbox{\Hypertarget{class_player_a1b5158c5e932c8f782bb249680188301}\label{class_player_a1b5158c5e932c8f782bb249680188301}} 
+\mbox{\hyperlink{class_pilar_espada}{Pilar\+Espada}} {\bfseries pilar\+\_\+espada}
+\item 
+\mbox{\Hypertarget{class_player_a2b30942a91b8d0342ec6e00d1f3a32f6}\label{class_player_a2b30942a91b8d0342ec6e00d1f3a32f6}} 
+\mbox{\hyperlink{class_pilar_arco}{Pilar\+Arco}} {\bfseries pilar\+\_\+arco}
+\item 
+\mbox{\Hypertarget{class_player_a7b3f7a6b8ca2194cfb0af6dc783d790c}\label{class_player_a7b3f7a6b8ca2194cfb0af6dc783d790c}} 
+\mbox{\hyperlink{class_pilar_lanca}{Pilar\+Lanca}} {\bfseries pilar\+\_\+lanca}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file Player.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_a66d2bc18dfc9b913109761a95126f086}\label{class_player_a66d2bc18dfc9b913109761a95126f086}} 
+\index{Player@{Player}!captar\+\_\+recurso@{captar\+\_\+recurso}}
+\index{captar\+\_\+recurso@{captar\+\_\+recurso}!Player@{Player}}
+\subsubsection{\texorpdfstring{captar\+\_\+recurso()}{captar\_recurso()}}
+{\footnotesize\ttfamily bool Player\+::captar\+\_\+recurso (\begin{DoxyParamCaption}\item[{Tipo\+Recurso}]{rec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em rec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file Player.\+cpp.
+
+
+\begin{DoxyCode}
+79                                            \{
+80     \textcolor{keywordflow}{if} (rec == TipoRecurso::METAL) \{
+81         this->metal = this->metal + QUANTIDADE\_METAL\_POR\_ITEM;
+82     \}
+83     \textcolor{keywordflow}{if} (rec == TipoRecurso::OSSOS) \{
+84         this->ossos = this->ossos + QUANTIDADE\_OSSOS\_POR\_ITEM;
+85     \}
+86     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+87 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_a118c76695a9c1f362a5371381bfe5be3}\label{class_player_a118c76695a9c1f362a5371381bfe5be3}} 
+\index{Player@{Player}!criar\+\_\+necromancer@{criar\+\_\+necromancer}}
+\index{criar\+\_\+necromancer@{criar\+\_\+necromancer}!Player@{Player}}
+\subsubsection{\texorpdfstring{criar\+\_\+necromancer()}{criar\_necromancer()}}
+{\footnotesize\ttfamily bool Player\+::criar\+\_\+necromancer (\begin{DoxyParamCaption}\item[{Tipo\+Necromancer}]{nec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 205 of file Player.\+cpp.
+
+
+
+Referenced by Controlador\+::criar\+\_\+necromancer(), and Controlador\+::fortalecer\+\_\+necromancer().
+
+
+\begin{DoxyCode}
+205                                                   \{
+206     \textcolor{keywordflow}{if} (nec == TipoNecromancer::GUERREIRO) \{
+207         \textcolor{keywordflow}{if} (!this->pilar\_espada.vivo)
+208             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+209         \textcolor{keywordflow}{if} (this->ossos < OSSOS\_CRIAR\_GUERREIRO)
+210             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+211 
+212         this->ossos -= OSSOS\_CRIAR\_GUERREIRO;
+213         \textcolor{keywordflow}{if} (!this->guerreiro.vivo) \{
+214             this->guerreiro.\mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}}();
+215             this->guerreiro.mp = MP\_INICIAL\_GUERREIRO;
+216         \} \textcolor{keywordflow}{else} \{
+217             this->guerreiro.mp += MP\_INICIAL\_GUERREIRO;
+218         \}
+219     \}
+220 
+221     \textcolor{keywordflow}{if} (nec == TipoNecromancer::CAVALEIRO) \{
+222         \textcolor{keywordflow}{if} (!this->pilar\_lanca.vivo)
+223             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+224         \textcolor{keywordflow}{if} (this->ossos < OSSOS\_CRIAR\_CAVALEIRO)
+225             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+226 
+227         this->ossos -= OSSOS\_CRIAR\_CAVALEIRO;
+228 
+229         \textcolor{keywordflow}{if} (!this->cavaleiro.vivo) \{
+230             this->cavaleiro.\mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}}();
+231             this->cavaleiro.mp = MP\_INICIAL\_CAVALEIRO;
+232         \} \textcolor{keywordflow}{else} \{
+233             this->cavaleiro.mp += MP\_INICIAL\_CAVALEIRO;
+234         \}
+235     \}
+236 
+237     \textcolor{keywordflow}{if} (nec == TipoNecromancer::ARQUEIRO) \{
+238         \textcolor{keywordflow}{if} (!this->pilar\_arco.vivo)
+239             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+240         \textcolor{keywordflow}{if} (this->ossos < OSSOS\_CRIAR\_ARQUEIRO)
+241             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+242 
+243         this->ossos -= OSSOS\_CRIAR\_ARQUEIRO;
+244         \textcolor{keywordflow}{if} (!this->arqueiro.vivo) \{
+245             this->arqueiro.\mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}}();
+246             this->arqueiro.mp = MP\_INICIAL\_ARQUEIRO;
+247         \} \textcolor{keywordflow}{else} \{
+248             this->arqueiro.mp += MP\_INICIAL\_ARQUEIRO;
+249         \}
+250     \}
+251 
+252     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+253 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_a23fda6bb2c90d8033dc6ae07d1f27964}\label{class_player_a23fda6bb2c90d8033dc6ae07d1f27964}} 
+\index{Player@{Player}!criar\+\_\+pilar@{criar\+\_\+pilar}}
+\index{criar\+\_\+pilar@{criar\+\_\+pilar}!Player@{Player}}
+\subsubsection{\texorpdfstring{criar\+\_\+pilar()}{criar\_pilar()}}
+{\footnotesize\ttfamily bool Player\+::criar\+\_\+pilar (\begin{DoxyParamCaption}\item[{Tipo\+Pilar}]{pil }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em pil} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 156 of file Player.\+cpp.
+
+
+
+Referenced by Controlador\+::criar\+\_\+pilar(), and Controlador\+::fortalecer\+\_\+pilar().
+
+
+\begin{DoxyCode}
+156                                       \{
+157     \textcolor{keywordflow}{if} (pil == TipoPilar::ARCO) \{
+158         \textcolor{keywordflow}{if} (this->metal < METAL\_CRIAR\_PILAR\_ARCO)
+159             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+160 
+161         this->metal -= METAL\_CRIAR\_PILAR\_ARCO;
+162         \textcolor{keywordflow}{if} (!this->pilar\_arco.vivo) \{
+163             this->pilar\_arco.\mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}}();
+164             this->pilar\_arco.hp = HP\_INICIAL\_PILAR\_ARCO;
+165         \} \textcolor{keywordflow}{else} \{
+166             this->pilar\_arco.hp += HP\_INICIAL\_PILAR\_ARCO;
+167         \}
+168     \}
+169 
+170     \textcolor{keywordflow}{if} (pil == TipoPilar::LANCA) \{
+171         \textcolor{keywordflow}{if} (this->metal < METAL\_CRIAR\_PILAR\_LANCA)
+172             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+173 
+174         this->metal -= METAL\_CRIAR\_PILAR\_LANCA;
+175         \textcolor{keywordflow}{if} (!this->pilar\_lanca.vivo) \{
+176             this->pilar\_lanca.\mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}}();
+177             this->pilar\_lanca.hp = HP\_INICIAL\_PILAR\_LANCA;
+178         \} \textcolor{keywordflow}{else} \{
+179             this->pilar\_lanca.hp += HP\_INICIAL\_PILAR\_LANCA;
+180         \}
+181     \}
+182 
+183     \textcolor{keywordflow}{if} (pil == TipoPilar::ESPADA) \{
+184         \textcolor{keywordflow}{if} (this->metal < METAL\_CRIAR\_PILAR\_ESPADA)
+185             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+186 
+187         this->metal -= METAL\_CRIAR\_PILAR\_ESPADA;
+188         \textcolor{keywordflow}{if} (!this->pilar\_espada.vivo) \{
+189             this->pilar\_espada.\mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}}();
+190             this->pilar\_espada.hp = HP\_INICIAL\_PILAR\_ESPADA;
+191         \} \textcolor{keywordflow}{else} \{
+192             this->pilar\_espada.hp += HP\_INICIAL\_PILAR\_ESPADA;
+193         \}
+194     \}
+195     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+196 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_a560ffc698994e73527433dd2bf4d2c0d}\label{class_player_a560ffc698994e73527433dd2bf4d2c0d}} 
+\index{Player@{Player}!necromancer@{necromancer}}
+\index{necromancer@{necromancer}!Player@{Player}}
+\subsubsection{\texorpdfstring{necromancer()}{necromancer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_necromancer}{Necromancer}} $\ast$ Player\+::necromancer (\begin{DoxyParamCaption}\item[{Tipo\+Necromancer}]{nec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Necromancer$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file Player.\+cpp.
+
+
+
+Referenced by Controlador\+::criar\+\_\+necromancer(), Controlador\+::fortalecer\+\_\+necromancer(), and tem\+\_\+necromancer().
+
+
+\begin{DoxyCode}
+114                                                     \{
+115     \textcolor{keywordflow}{if} (nec == TipoNecromancer::GUERREIRO)
+116         \textcolor{keywordflow}{return} &this->guerreiro;
+117 
+118     \textcolor{keywordflow}{if} (nec == TipoNecromancer::ARQUEIRO)
+119         \textcolor{keywordflow}{return} &this->arqueiro;
+120 
+121     \textcolor{keywordflow}{if} (nec == TipoNecromancer::CAVALEIRO)
+122         \textcolor{keywordflow}{return} &this->cavaleiro;
+123 
+124     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+125 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_aad208bab9f9f88af5ac34ebe7c31dc61}\label{class_player_aad208bab9f9f88af5ac34ebe7c31dc61}} 
+\index{Player@{Player}!perdeu\+\_\+jogo@{perdeu\+\_\+jogo}}
+\index{perdeu\+\_\+jogo@{perdeu\+\_\+jogo}!Player@{Player}}
+\subsubsection{\texorpdfstring{perdeu\+\_\+jogo()}{perdeu\_jogo()}}
+{\footnotesize\ttfamily bool Player\+::perdeu\+\_\+jogo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 289 of file Player.\+cpp.
+
+
+
+Referenced by Controlador\+::alguem\+\_\+ganhou().
+
+
+\begin{DoxyCode}
+289                          \{
+290     \textcolor{keywordflow}{return} !(this->guerreiro.vivo || this->pilar\_espada.vivo ||
+291     this->arqueiro.vivo || this->pilar\_arco.vivo ||
+292     this->cavaleiro.vivo || this->pilar\_lanca.vivo);
+293 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_aa953125244cebb04b2363ae102c5fbf6}\label{class_player_aa953125244cebb04b2363ae102c5fbf6}} 
+\index{Player@{Player}!pilar@{pilar}}
+\index{pilar@{pilar}!Player@{Player}}
+\subsubsection{\texorpdfstring{pilar()}{pilar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pilar}{Pilar}} $\ast$ Player\+::pilar (\begin{DoxyParamCaption}\item[{Tipo\+Pilar}]{pil }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em pil} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pilar$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 95 of file Player.\+cpp.
+
+
+
+Referenced by Controlador\+::criar\+\_\+pilar(), Controlador\+::fortalecer\+\_\+pilar(), and tem\+\_\+pilar().
+
+
+\begin{DoxyCode}
+95                                   \{
+96     \textcolor{keywordflow}{if} (pil == TipoPilar::ARCO)
+97         \textcolor{keywordflow}{return} &this->pilar\_arco;
+98 
+99     \textcolor{keywordflow}{if} (pil == TipoPilar::LANCA)
+100         \textcolor{keywordflow}{return} &this->pilar\_lanca;
+101 
+102     \textcolor{keywordflow}{if} (pil == TipoPilar::ESPADA)
+103         \textcolor{keywordflow}{return} &this->pilar\_espada;
+104 
+105     \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+106 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_a945277689283bc50bd3afef306bf9740}\label{class_player_a945277689283bc50bd3afef306bf9740}} 
+\index{Player@{Player}!pontuacao@{pontuacao}}
+\index{pontuacao@{pontuacao}!Player@{Player}}
+\subsubsection{\texorpdfstring{pontuacao()}{pontuacao()}}
+{\footnotesize\ttfamily unsigned short Player\+::pontuacao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+unsigned short 
+\end{DoxyReturn}
+
+
+Definition at line 300 of file Player.\+cpp.
+
+
+
+Referenced by Controlador\+::alguem\+\_\+ganhou().
+
+
+\begin{DoxyCode}
+300                                  \{
+301     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} total = 0;
+302 
+303     \textcolor{keywordflow}{if} (this->pilar\_espada.vivo)
+304         total+=this->pilar\_espada.hp;
+305     \textcolor{keywordflow}{if} (this->pilar\_arco.vivo)
+306         total+=this->pilar\_arco.hp;
+307     \textcolor{keywordflow}{if} (this->pilar\_lanca.vivo)
+308         total+=this->pilar\_lanca.hp;
+309     \textcolor{keywordflow}{if} (this->guerreiro.vivo)
+310         total+=this->guerreiro.mp;
+311     \textcolor{keywordflow}{if} (this->arqueiro.vivo)
+312         total+=this->arqueiro.mp;
+313     \textcolor{keywordflow}{if} (this->cavaleiro.vivo)
+314         total+=this->cavaleiro.mp;
+315 
+316     \textcolor{keywordflow}{return} total;
+317 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_a7086da1dce5a9de1c2cf29a15ace5a7d}\label{class_player_a7086da1dce5a9de1c2cf29a15ace5a7d}} 
+\index{Player@{Player}!print\+\_\+recursos@{print\+\_\+recursos}}
+\index{print\+\_\+recursos@{print\+\_\+recursos}!Player@{Player}}
+\subsubsection{\texorpdfstring{print\+\_\+recursos()}{print\_recursos()}}
+{\footnotesize\ttfamily void Player\+::print\+\_\+recursos (\begin{DoxyParamCaption}\item[{const char $\ast$}]{nome }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 260 of file Player.\+cpp.
+
+
+\begin{DoxyCode}
+260                                             \{
+261     \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacestd}{std}};
+262 
+263 \textcolor{preprocessor}{    #ifdef PROD}
+264     std::ostringstream metal\_s, bones\_s;
+265 
+266     metal\_s << \textcolor{stringliteral}{"METAL: "} << this->metal;
+267     std::string m = metal\_s.str();
+268 
+269     bones\_s << \textcolor{stringliteral}{"BONES: "} << this->ossos;
+270     std::string o = bones\_s.str();
+271 
+272     textMetal .loadFromRenderedText(m);
+273     textMetal .render(444, 568);
+274     textBones.loadFromRenderedText(o);
+275     textBones.render(654, 568);
+276 \textcolor{preprocessor}{    #else}
+277     cout << nome << \textcolor{stringliteral}{" tem: "};
+278     cout << this->metal << \textcolor{stringliteral}{" de metal, "};
+279     cout << this->ossos << \textcolor{stringliteral}{" de ossos"} << endl;
+280 \textcolor{preprocessor}{    #endif}
+281 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_aeff8c71e2c3e1a7529ec2190de0ac4cd}\label{class_player_aeff8c71e2c3e1a7529ec2190de0ac4cd}} 
+\index{Player@{Player}!tem\+\_\+necromancer@{tem\+\_\+necromancer}}
+\index{tem\+\_\+necromancer@{tem\+\_\+necromancer}!Player@{Player}}
+\subsubsection{\texorpdfstring{tem\+\_\+necromancer()}{tem\_necromancer()}}
+{\footnotesize\ttfamily bool Player\+::tem\+\_\+necromancer (\begin{DoxyParamCaption}\item[{Tipo\+Necromancer}]{nec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file Player.\+cpp.
+
+
+
+References necromancer().
+
+
+\begin{DoxyCode}
+145                                                 \{
+146     \textcolor{keywordflow}{return} this->\mbox{\hyperlink{class_player_a560ffc698994e73527433dd2bf4d2c0d}{necromancer}}(nec)->vivo;
+147 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_player_a063de6da853c618adcf8392ba639327c}\label{class_player_a063de6da853c618adcf8392ba639327c}} 
+\index{Player@{Player}!tem\+\_\+pilar@{tem\+\_\+pilar}}
+\index{tem\+\_\+pilar@{tem\+\_\+pilar}!Player@{Player}}
+\subsubsection{\texorpdfstring{tem\+\_\+pilar()}{tem\_pilar()}}
+{\footnotesize\ttfamily bool Player\+::tem\+\_\+pilar (\begin{DoxyParamCaption}\item[{Tipo\+Pilar}]{pil }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em pil} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 134 of file Player.\+cpp.
+
+
+
+References pilar().
+
+
+\begin{DoxyCode}
+134                                     \{
+135     \textcolor{keywordflow}{return} this->\mbox{\hyperlink{class_player_aa953125244cebb04b2363ae102c5fbf6}{pilar}}(pil)->vivo;
+136 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_player_8hpp}{Player.\+hpp}}\item 
+src/\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

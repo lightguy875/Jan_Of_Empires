@@ -1,0 +1,138 @@
+\hypertarget{class_colocavel_em_bloco}{}\section{Colocavel\+Em\+Bloco Class Reference}
+\label{class_colocavel_em_bloco}\index{Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}}
+Inheritance diagram for Colocavel\+Em\+Bloco\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.703704cm]{class_colocavel_em_bloco}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_a3e99f0924333aa4473cc59588acec5dc}\label{class_colocavel_em_bloco_a3e99f0924333aa4473cc59588acec5dc}} 
+\mbox{\hyperlink{class_colocavel_em_bloco_a3e99f0924333aa4473cc59588acec5dc}{Colocavel\+Em\+Bloco}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Colocavel Em \mbox{\hyperlink{class_bloco}{Bloco}}\+:\+: Colocavel Em \mbox{\hyperlink{class_bloco}{Bloco}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_colocavel_em_bloco_a89177aadb9f7fd73431adcb29b90f887}{mata}} ()
+\item 
+bool \mbox{\hyperlink{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}{revive}} ()
+\item 
+void \mbox{\hyperlink{class_colocavel_em_bloco_a1d45029183e2b8fe4790d44ca0fa3484}{set\+Ativo}} (bool a)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_a8c5d017d88f31ff3d8e5dfb01ac92d76}\label{class_colocavel_em_bloco_a8c5d017d88f31ff3d8e5dfb01ac92d76}} 
+bool {\bfseries vivo}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_ae0ab0d922be3835d8fa523a8b16769bf}\label{class_colocavel_em_bloco_ae0ab0d922be3835d8fa523a8b16769bf}} 
+unsigned short {\bfseries x}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_ac43768b1cb415acedb4edd9c678f7895}\label{class_colocavel_em_bloco_ac43768b1cb415acedb4edd9c678f7895}} 
+unsigned short {\bfseries y}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_af766227d1bcfb9858a0d80a623bcc283}\label{class_colocavel_em_bloco_af766227d1bcfb9858a0d80a623bcc283}} 
+unsigned short {\bfseries time}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_a988a57fa9f64a350685d6e9d05cf2643}\label{class_colocavel_em_bloco_a988a57fa9f64a350685d6e9d05cf2643}} 
+Tipo\+Conteudo\+Bloco {\bfseries tipo}
+\item 
+\mbox{\Hypertarget{class_colocavel_em_bloco_a5b6576486062c11fce316071d1535137}\label{class_colocavel_em_bloco_a5b6576486062c11fce316071d1535137}} 
+bool {\bfseries ativo}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 26 of file Bloco.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_colocavel_em_bloco_a89177aadb9f7fd73431adcb29b90f887}\label{class_colocavel_em_bloco_a89177aadb9f7fd73431adcb29b90f887}} 
+\index{Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}!mata@{mata}}
+\index{mata@{mata}!Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}}
+\subsubsection{\texorpdfstring{mata()}{mata()}}
+{\footnotesize\ttfamily bool Colocavel\+Em\+Bloco\+::mata (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file Bloco.\+cpp.
+
+
+
+Referenced by Player\+::\+Player().
+
+
+\begin{DoxyCode}
+87                             \{
+88     \textcolor{keywordflow}{if} (this->vivo) \{
+89         this->vivo = \textcolor{keyword}{false};
+90         this->x = -1;
+91         this->y = -1;
+92         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+93     \}
+94     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+95 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}\label{class_colocavel_em_bloco_a82f12304bcb919f4fe3fc765d00a3d0f}} 
+\index{Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}!revive@{revive}}
+\index{revive@{revive}!Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}}
+\subsubsection{\texorpdfstring{revive()}{revive()}}
+{\footnotesize\ttfamily bool Colocavel\+Em\+Bloco\+::revive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 103 of file Bloco.\+cpp.
+
+
+\begin{DoxyCode}
+103                               \{
+104     \textcolor{keywordflow}{if} (this->vivo)
+105         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+106 
+107     this->vivo = \textcolor{keyword}{true};
+108     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+109 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_colocavel_em_bloco_a1d45029183e2b8fe4790d44ca0fa3484}\label{class_colocavel_em_bloco_a1d45029183e2b8fe4790d44ca0fa3484}} 
+\index{Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}!set\+Ativo@{set\+Ativo}}
+\index{set\+Ativo@{set\+Ativo}!Colocavel\+Em\+Bloco@{Colocavel\+Em\+Bloco}}
+\subsubsection{\texorpdfstring{set\+Ativo()}{setAtivo()}}
+{\footnotesize\ttfamily void Colocavel\+Em\+Bloco\+::set\+Ativo (\begin{DoxyParamCaption}\item[{bool}]{a }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 77 of file Bloco.\+cpp.
+
+
+
+Referenced by Controlador\+::novo\+\_\+jogo().
+
+
+\begin{DoxyCode}
+77                                       \{
+78     ativo = a;
+79 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_bloco_8hpp}{Bloco.\+hpp}}\item 
+src/\mbox{\hyperlink{_bloco_8cpp}{Bloco.\+cpp}}\end{DoxyCompactItemize}

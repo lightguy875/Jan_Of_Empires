@@ -1,0 +1,76 @@
+\hypertarget{main_8cpp}{}\section{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.\+cpp@{src/main.\+cpp}}
+{\ttfamily \#include \char`\"{}../include/\+Game.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/\+Graphics.\+hpp\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a700a0caa5b70a06d1064e576f9f3cf65}{main}} (int argc, char $\ast$args\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Alex Siqueira (\href{mailto:siqueiralex@github.com}{\tt siqueiralex@github.\+com}) 
+
+Alexander André (\href{mailto:Alexander-1995@github.com}{\tt Alexander-\/1995@github.\+com}) 
+
+Arthur Veiga (\href{mailto:arthurveiga@github.com}{\tt arthurveiga@github.\+com}) 
+
+Matheus Veleci (\href{mailto:matheusvsantos@github.com}{\tt matheusvsantos@github.\+com}) 
+
+Luis Luz (\href{mailto:lightguy875@github.com}{\tt lightguy875@github.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018-\/12-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2018 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a700a0caa5b70a06d1064e576f9f3cf65}\label{main_8cpp_a700a0caa5b70a06d1064e576f9f3cf65}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{args\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & \\
+\hline
+{\em args} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 26 of file main.\+cpp.
+
+
+\begin{DoxyCode}
+26                                  \{
+27     \mbox{\hyperlink{class_graphics}{Graphics}} *graphics = \textcolor{keyword}{new} \mbox{\hyperlink{class_graphics}{Graphics}}();
+28     Game *game = \textcolor{keyword}{new} Game();
+29 
+30     \textcolor{keywordflow}{if} (!graphics->init()) \{
+31         printf(\textcolor{stringliteral}{"Falha ao inicializar!\(\backslash\)n"});
+32     \} \textcolor{keywordflow}{else} \{
+33         \textcolor{comment}{// Carrega mídia}
+34         \textcolor{keywordflow}{if} (!graphics->loadMedia()) \{
+35             printf(\textcolor{stringliteral}{"Nao foi possivel carregar a midia!\(\backslash\)n"});
+36         \} \textcolor{keywordflow}{else} \{
+37             game->playGame(GAME\_MENU);
+38         \}
+39         graphics->close();;
+40     \}
+41 
+42     \textcolor{keywordflow}{return} 0;
+43 \}
+\end{DoxyCode}

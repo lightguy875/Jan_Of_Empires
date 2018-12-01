@@ -1,0 +1,154 @@
+\hypertarget{class_necromancer}{}\section{Necromancer Class Reference}
+\label{class_necromancer}\index{Necromancer@{Necromancer}}
+Inheritance diagram for Necromancer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_necromancer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_necromancer_a2d9f222048d7321295264900dd5879f9}\label{class_necromancer_a2d9f222048d7321295264900dd5879f9}} 
+\mbox{\hyperlink{class_necromancer_a2d9f222048d7321295264900dd5879f9}{Necromancer}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_necromancer}{Necromancer}}\+:\+: \mbox{\hyperlink{class_necromancer}{Necromancer}} object. \end{DoxyCompactList}\item 
+unsigned short \mbox{\hyperlink{class_necromancer_ae276261d4338078bb09b24e73c1abb5b}{multiplicador}} (Tipo\+Pilar tipo)
+\item 
+unsigned short \mbox{\hyperlink{class_necromancer_ad8a25efaa26240e028c893d1df80b067}{multiplicador}} (Tipo\+Necromancer tipo)
+\item 
+\mbox{\Hypertarget{class_necromancer_a8e7451787b08609862b19851bfb5e699}\label{class_necromancer_a8e7451787b08609862b19851bfb5e699}} 
+bool {\bfseries handle\+Event} (S\+D\+L\+\_\+\+Event $\ast$e, int x, int y)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_necromancer_a59c7606cb39566c863099344f8ab06ed}\label{class_necromancer_a59c7606cb39566c863099344f8ab06ed}} 
+unsigned short {\bfseries mp}
+\item 
+\mbox{\Hypertarget{class_necromancer_ad2db9dae93163aa8506be6ded7861906}\label{class_necromancer_ad2db9dae93163aa8506be6ded7861906}} 
+Tipo\+Necromancer {\bfseries tipo\+\_\+necromancer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 39 of file Necromancer.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_necromancer_ae276261d4338078bb09b24e73c1abb5b}\label{class_necromancer_ae276261d4338078bb09b24e73c1abb5b}} 
+\index{Necromancer@{Necromancer}!multiplicador@{multiplicador}}
+\index{multiplicador@{multiplicador}!Necromancer@{Necromancer}}
+\subsubsection{\texorpdfstring{multiplicador()}{multiplicador()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily unsigned short Necromancer\+::multiplicador (\begin{DoxyParamCaption}\item[{Tipo\+Pilar}]{tipo }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tipo} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned short 
+\end{DoxyReturn}
+
+
+Definition at line 97 of file Necromancer.\+cpp.
+
+
+\begin{DoxyCode}
+97                                                         \{
+98     \textcolor{keywordflow}{if} (this->tipo\_necromancer == TipoNecromancer::ARQUEIRO) \{
+99         \textcolor{keywordflow}{if} (tipo == TipoPilar::ESPADA)
+100             \textcolor{keywordflow}{return} ARCO\_ESPADA\_ATQ\_MULTIPLICADOR;
+101 
+102         \textcolor{keywordflow}{if} (tipo == TipoPilar::LANCA)
+103             \textcolor{keywordflow}{return} ARCO\_LANCA\_ATQ\_MULTIPLICADOR;
+104 
+105         \textcolor{keywordflow}{if} (tipo == TipoPilar::ARCO)
+106             \textcolor{keywordflow}{return} ARCO\_ARCO\_ATQ\_MULTIPLICADOR;
+107     \}
+108     \textcolor{keywordflow}{if} (this->tipo\_necromancer == TipoNecromancer::CAVALEIRO) \{
+109         \textcolor{keywordflow}{if} (tipo == TipoPilar::ESPADA)
+110             \textcolor{keywordflow}{return} LANCA\_ESPADA\_ATQ\_MULTIPLICADOR;
+111 
+112         \textcolor{keywordflow}{if} (tipo == TipoPilar::LANCA)
+113             \textcolor{keywordflow}{return} LANCA\_LANCA\_ATQ\_MULTIPLICADOR;
+114 
+115         \textcolor{keywordflow}{if} (tipo == TipoPilar::ARCO)
+116             \textcolor{keywordflow}{return} LANCA\_ARCO\_ATQ\_MULTIPLICADOR;
+117     \}
+118     \textcolor{keywordflow}{if} (this->tipo\_necromancer == TipoNecromancer::GUERREIRO) \{
+119         \textcolor{keywordflow}{if} (tipo == TipoPilar::ESPADA)
+120             \textcolor{keywordflow}{return} ESPADA\_ESPADA\_ATQ\_MULTIPLICADOR;
+121 
+122         \textcolor{keywordflow}{if} (tipo == TipoPilar::LANCA)
+123             \textcolor{keywordflow}{return} ESPADA\_LANCA\_ATQ\_MULTIPLICADOR;
+124 
+125         \textcolor{keywordflow}{if} (tipo == TipoPilar::ARCO)
+126             \textcolor{keywordflow}{return} ESPADA\_ARCO\_ATQ\_MULTIPLICADOR;
+127     \}
+128     \textcolor{keywordflow}{return} 0;
+129 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_necromancer_ad8a25efaa26240e028c893d1df80b067}\label{class_necromancer_ad8a25efaa26240e028c893d1df80b067}} 
+\index{Necromancer@{Necromancer}!multiplicador@{multiplicador}}
+\index{multiplicador@{multiplicador}!Necromancer@{Necromancer}}
+\subsubsection{\texorpdfstring{multiplicador()}{multiplicador()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily unsigned short Necromancer\+::multiplicador (\begin{DoxyParamCaption}\item[{Tipo\+Necromancer}]{tipo }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tipo} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned short 
+\end{DoxyReturn}
+
+
+Definition at line 137 of file Necromancer.\+cpp.
+
+
+\begin{DoxyCode}
+137                                                               \{
+138     \textcolor{keywordflow}{if} (this->tipo\_necromancer == TipoNecromancer::ARQUEIRO) \{
+139         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::GUERREIRO)
+140             \textcolor{keywordflow}{return} ARCO\_ESPADA\_ATQ\_MULTIPLICADOR;
+141 
+142         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::CAVALEIRO)
+143             \textcolor{keywordflow}{return} ARCO\_LANCA\_ATQ\_MULTIPLICADOR;
+144 
+145         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::ARQUEIRO)
+146             \textcolor{keywordflow}{return} ARCO\_ARCO\_ATQ\_MULTIPLICADOR;
+147     \}
+148     \textcolor{keywordflow}{if} (this->tipo\_necromancer == TipoNecromancer::CAVALEIRO) \{
+149         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::GUERREIRO)
+150             \textcolor{keywordflow}{return} LANCA\_ESPADA\_ATQ\_MULTIPLICADOR;
+151 
+152         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::CAVALEIRO)
+153             \textcolor{keywordflow}{return} LANCA\_LANCA\_ATQ\_MULTIPLICADOR;
+154 
+155         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::ARQUEIRO)
+156             \textcolor{keywordflow}{return} LANCA\_ARCO\_ATQ\_MULTIPLICADOR;
+157     \}
+158     \textcolor{keywordflow}{if} (this->tipo\_necromancer == TipoNecromancer::GUERREIRO) \{
+159         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::GUERREIRO)
+160             \textcolor{keywordflow}{return} ESPADA\_ESPADA\_ATQ\_MULTIPLICADOR;
+161 
+162         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::CAVALEIRO)
+163             \textcolor{keywordflow}{return} ESPADA\_LANCA\_ATQ\_MULTIPLICADOR;
+164 
+165         \textcolor{keywordflow}{if} (tipo == TipoNecromancer::ARQUEIRO)
+166             \textcolor{keywordflow}{return} ESPADA\_ARCO\_ATQ\_MULTIPLICADOR;
+167     \}
+168     \textcolor{keywordflow}{return} 0;
+169 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_necromancer_8hpp}{Necromancer.\+hpp}}\item 
+src/\mbox{\hyperlink{_necromancer_8cpp}{Necromancer.\+cpp}}\end{DoxyCompactItemize}

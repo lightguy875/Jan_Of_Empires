@@ -1,0 +1,338 @@
+\hypertarget{class_button}{}\section{Button Class Reference}
+\label{class_button}\index{Button@{Button}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_button_a3b36df1ae23c58aedb9e15a713159459}\label{class_button_a3b36df1ae23c58aedb9e15a713159459}} 
+\mbox{\hyperlink{class_button_a3b36df1ae23c58aedb9e15a713159459}{Button}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_button}{Button}}\+:\+: \mbox{\hyperlink{class_button}{Button}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_button_a3abfce268def79881b95d7286a69ec19}{set\+Position\+Size\+Type}} (int x, int y, int width, int height, Button\+Type type)
+\item 
+void \mbox{\hyperlink{class_button_aa05597e01e195bb5901fc206bc0938a3}{handle\+Event}} (S\+D\+L\+\_\+\+Event $\ast$e, Game $\ast$game)
+\item 
+void \mbox{\hyperlink{class_button_addeed0141de6e58e0c5f94a4443f7103}{set\+PositionX}} (int x)
+\item 
+void \mbox{\hyperlink{class_button_a05e92fd7e167df2301247cc022d2694d}{set\+PositionY}} (int y)
+\item 
+void \mbox{\hyperlink{class_button_a15290e9b24eb7a52a698cc387670aed5}{set\+General\+Button\+Width}} (int width)
+\item 
+void \mbox{\hyperlink{class_button_aa3b0f5ac8b230e66983a83b6f4c8d440}{set\+General\+Button\+Height}} (int height)
+\item 
+int \mbox{\hyperlink{class_button_a9bcc23f4a459821144cb0ffdc7c6e338}{get\+PositionX}} ()
+\item 
+int \mbox{\hyperlink{class_button_a73237a0eeb7ae52d3f5d1c16eb794775}{get\+PositionY}} ()
+\item 
+int \mbox{\hyperlink{class_button_ac30c0f7242a6514c3b8a0d8b5c1135e6}{get\+General\+Button\+Width}} ()
+\item 
+int \mbox{\hyperlink{class_button_a577d80e982292d7b17584d11e650dca6}{get\+General\+Button\+Height}} ()
+\item 
+void \mbox{\hyperlink{class_button_a9d08f75c72f8ba5eddb857cbae0d4c77}{set\+Button\+Type}} (Button\+Type type)
+\item 
+Button\+Type \mbox{\hyperlink{class_button_afb53df1bb22e22c20d15b055cfa878dc}{get\+Button\+Type}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 48 of file Button.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_button_afb53df1bb22e22c20d15b055cfa878dc}\label{class_button_afb53df1bb22e22c20d15b055cfa878dc}} 
+\index{Button@{Button}!get\+Button\+Type@{get\+Button\+Type}}
+\index{get\+Button\+Type@{get\+Button\+Type}!Button@{Button}}
+\subsubsection{\texorpdfstring{get\+Button\+Type()}{getButtonType()}}
+{\footnotesize\ttfamily Button\+Type Button\+::get\+Button\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Button\+Type 
+\end{DoxyReturn}
+
+
+Definition at line 175 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+175                                  \{
+176     \textcolor{keywordflow}{return} buttonType;
+177 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a577d80e982292d7b17584d11e650dca6}\label{class_button_a577d80e982292d7b17584d11e650dca6}} 
+\index{Button@{Button}!get\+General\+Button\+Height@{get\+General\+Button\+Height}}
+\index{get\+General\+Button\+Height@{get\+General\+Button\+Height}!Button@{Button}}
+\subsubsection{\texorpdfstring{get\+General\+Button\+Height()}{getGeneralButtonHeight()}}
+{\footnotesize\ttfamily int Button\+::get\+General\+Button\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 157 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+157                                    \{
+158     \textcolor{keywordflow}{return} button\_height;
+159 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_ac30c0f7242a6514c3b8a0d8b5c1135e6}\label{class_button_ac30c0f7242a6514c3b8a0d8b5c1135e6}} 
+\index{Button@{Button}!get\+General\+Button\+Width@{get\+General\+Button\+Width}}
+\index{get\+General\+Button\+Width@{get\+General\+Button\+Width}!Button@{Button}}
+\subsubsection{\texorpdfstring{get\+General\+Button\+Width()}{getGeneralButtonWidth()}}
+{\footnotesize\ttfamily int Button\+::get\+General\+Button\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 148 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+148                                   \{
+149     \textcolor{keywordflow}{return} button\_width;
+150 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a9bcc23f4a459821144cb0ffdc7c6e338}\label{class_button_a9bcc23f4a459821144cb0ffdc7c6e338}} 
+\index{Button@{Button}!get\+PositionX@{get\+PositionX}}
+\index{get\+PositionX@{get\+PositionX}!Button@{Button}}
+\subsubsection{\texorpdfstring{get\+Position\+X()}{getPositionX()}}
+{\footnotesize\ttfamily int Button\+::get\+PositionX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 130 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+130                          \{
+131     \textcolor{keywordflow}{return} position\_x;
+132 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a73237a0eeb7ae52d3f5d1c16eb794775}\label{class_button_a73237a0eeb7ae52d3f5d1c16eb794775}} 
+\index{Button@{Button}!get\+PositionY@{get\+PositionY}}
+\index{get\+PositionY@{get\+PositionY}!Button@{Button}}
+\subsubsection{\texorpdfstring{get\+Position\+Y()}{getPositionY()}}
+{\footnotesize\ttfamily int Button\+::get\+PositionY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 139 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+139                          \{
+140     \textcolor{keywordflow}{return} position\_y;
+141 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_aa05597e01e195bb5901fc206bc0938a3}\label{class_button_aa05597e01e195bb5901fc206bc0938a3}} 
+\index{Button@{Button}!handle\+Event@{handle\+Event}}
+\index{handle\+Event@{handle\+Event}!Button@{Button}}
+\subsubsection{\texorpdfstring{handle\+Event()}{handleEvent()}}
+{\footnotesize\ttfamily void Button\+::handle\+Event (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Event $\ast$}]{e,  }\item[{Game $\ast$}]{game }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+{\em game} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 51 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+51                                                   \{
+52     \textcolor{keywordflow}{if} (e->type == SDL\_MOUSEBUTTONDOWN) \{
+53         \textcolor{comment}{// Get mouse position}
+54         \textcolor{keywordtype}{int} x, y;
+55         SDL\_GetMouseState(&x, &y);
+56         \textcolor{comment}{// Check if mouse is in Button}
+57         \textcolor{keywordtype}{bool} inside = \textcolor{keyword}{false};
+58         \textcolor{keywordflow}{if} (y > position\_y && y < (position\_y + button\_height)) \{
+59             \textcolor{keywordflow}{if} (x > position\_x && x < (position\_x + button\_width)) \{
+60                 inside = \textcolor{keyword}{true};
+61             \}
+62         \}
+63 
+64         \textcolor{keywordflow}{if} (inside) \{
+65             \textcolor{keywordflow}{switch} (e->type) \{
+66                 \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONDOWN:
+67                     \textcolor{keywordflow}{switch} (buttonType) \{
+68                     \textcolor{keywordflow}{case} BUTTON\_PLAY:
+69                         game->setGameRunning(GAME\_PLAY);
+70                         \textcolor{keywordflow}{break};
+71                     \textcolor{keywordflow}{case} BUTTON\_CREDITS:
+72                         game->setGameRunning(GAME\_CREDITS);
+73                         \textcolor{keywordflow}{break};
+74                     \textcolor{keywordflow}{case} BUTTON\_QUIT:
+75                         game->setGameRunning(GAME\_QUIT);
+76                         \textcolor{keywordflow}{break};
+77                     \textcolor{keywordflow}{case} BUTTON\_BACK\_CREDITS:
+78                         game->setGameRunning(GAME\_MENU);
+79                         \textcolor{keywordflow}{break};
+80                     \textcolor{keywordflow}{case} BUTTON\_BACK\_GAME:
+81                         game->setGameRunning(GAME\_PLAY);
+82                     \}
+83                 \textcolor{keywordflow}{break};
+84             \}
+85         \}
+86     \}
+87 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a9d08f75c72f8ba5eddb857cbae0d4c77}\label{class_button_a9d08f75c72f8ba5eddb857cbae0d4c77}} 
+\index{Button@{Button}!set\+Button\+Type@{set\+Button\+Type}}
+\index{set\+Button\+Type@{set\+Button\+Type}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+Button\+Type()}{setButtonType()}}
+{\footnotesize\ttfamily void Button\+::set\+Button\+Type (\begin{DoxyParamCaption}\item[{Button\+Type}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 166 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+166                                           \{
+167     buttonType = type;
+168 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_aa3b0f5ac8b230e66983a83b6f4c8d440}\label{class_button_aa3b0f5ac8b230e66983a83b6f4c8d440}} 
+\index{Button@{Button}!set\+General\+Button\+Height@{set\+General\+Button\+Height}}
+\index{set\+General\+Button\+Height@{set\+General\+Button\+Height}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+General\+Button\+Height()}{setGeneralButtonHeight()}}
+{\footnotesize\ttfamily void Button\+::set\+General\+Button\+Height (\begin{DoxyParamCaption}\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 121 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+121                                               \{
+122     button\_height = height;
+123 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a15290e9b24eb7a52a698cc387670aed5}\label{class_button_a15290e9b24eb7a52a698cc387670aed5}} 
+\index{Button@{Button}!set\+General\+Button\+Width@{set\+General\+Button\+Width}}
+\index{set\+General\+Button\+Width@{set\+General\+Button\+Width}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+General\+Button\+Width()}{setGeneralButtonWidth()}}
+{\footnotesize\ttfamily void Button\+::set\+General\+Button\+Width (\begin{DoxyParamCaption}\item[{int}]{width }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 112 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+112                                             \{
+113     button\_width = width;
+114 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a3abfce268def79881b95d7286a69ec19}\label{class_button_a3abfce268def79881b95d7286a69ec19}} 
+\index{Button@{Button}!set\+Position\+Size\+Type@{set\+Position\+Size\+Type}}
+\index{set\+Position\+Size\+Type@{set\+Position\+Size\+Type}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+Position\+Size\+Type()}{setPositionSizeType()}}
+{\footnotesize\ttfamily void Button\+::set\+Position\+Size\+Type (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{Button\+Type}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+{\em type} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 37 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+37                                                                                      \{
+38     position\_x = x;
+39     position\_y = y;
+40     button\_width = width;
+41     button\_height = height;
+42     buttonType = type;
+43 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_addeed0141de6e58e0c5f94a4443f7103}\label{class_button_addeed0141de6e58e0c5f94a4443f7103}} 
+\index{Button@{Button}!set\+PositionX@{set\+PositionX}}
+\index{set\+PositionX@{set\+PositionX}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+Position\+X()}{setPositionX()}}
+{\footnotesize\ttfamily void Button\+::set\+PositionX (\begin{DoxyParamCaption}\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+94                                \{
+95     position\_x = x;
+96 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_button_a05e92fd7e167df2301247cc022d2694d}\label{class_button_a05e92fd7e167df2301247cc022d2694d}} 
+\index{Button@{Button}!set\+PositionY@{set\+PositionY}}
+\index{set\+PositionY@{set\+PositionY}!Button@{Button}}
+\subsubsection{\texorpdfstring{set\+Position\+Y()}{setPositionY()}}
+{\footnotesize\ttfamily void Button\+::set\+PositionY (\begin{DoxyParamCaption}\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 103 of file Button.\+cpp.
+
+
+\begin{DoxyCode}
+103                                \{
+104     position\_y = y;
+105 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_button_8hpp}{Button.\+hpp}}\item 
+src/\mbox{\hyperlink{_button_8cpp}{Button.\+cpp}}\end{DoxyCompactItemize}
