@@ -151,26 +151,37 @@ bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned 
 void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, unsigned short x_vit, unsigned short y_vit ) {
     unsigned short dano_golpe;
     std::cout<<  "realizando combate em: "<< x_atac << " " << y_atac << " "<< x_vit << " " << y_vit <<std::endl;
-    Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac, y_atac);
+    Necromancer *atacante = (Necromancer *)this->mapa.ver(x_atac,y_atac);
+    
     ColocavelEmBloco *vitima = this->mapa.ver(x_vit, y_vit);
-    if (this->mapa.ver(x_vit, y_vit)->tipo == TipoConteudoBloco::UNIDADE) {
-        TipoNecromancer tipo_vitima = ((Necromancer *) vitima)->tipo_necromancer;
-        dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima);
-        if ( ((Necromancer *) vitima)->mp <= dano_golpe ) {
-            this->matar(x_vit, y_vit);
-        } else {
-            ((Necromancer *) vitima)->mp = ((Necromancer *) vitima)->mp - dano_golpe;
-        }
+    TipoNecromancer tipo_vitima_nec = ((Necromancer *) vitima)->tipo_necromancer;
+    TipoPilar tipo_vitima_pil = ((Pilar *) vitima)->tipo_pilar;
+    switch((int) this->mapa.ver(x_vit, y_vit)->tipo){
+        case (int) TipoConteudoBloco::UNIDADE:
+            dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_nec);
+            if( ((Necromancer *) vitima)->mp <= dano_golpe ){
+                this->matar(x_vit, y_vit);
+            }
+            else
+            {
+                ((Necromancer *) vitima)->mp = ((Necromancer *) vitima)->mp - dano_golpe;
+            }
+            break;
+        case (int) TipoConteudoBloco::PREDIO:
+            dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima_pil);
+            if( ((Pilar *) vitima)->hp <= dano_golpe ){
+                this->matar(x_vit, y_vit);
+            
+            }
+            else
+            {
+                ((Pilar *) vitima)->hp = ((Pilar *) vitima)->hp - dano_golpe;
+            }
+            break;
+        default:
+            break;
     }
-    if (this->mapa.ver(x_vit, y_vit)->tipo == TipoConteudoBloco::PREDIO) {
-        TipoPilar tipo_vitima = ((Pilar *) vitima)->tipo_pilar;
-        dano_golpe = (atacante->mp/2) * atacante->multiplicador(tipo_vitima);
-        if ( ((Pilar *) vitima)->hp <= dano_golpe ) {
-            this->matar(x_vit, y_vit);
-        } else {
-            ((Pilar *) vitima)->hp = ((Pilar *) vitima)->hp - dano_golpe;
-        }
-    }
+    return;
 }
 
 
