@@ -23,6 +23,7 @@ class Controlador {
         int ganhou;
         bool computador_joga;
         unsigned short vez;
+        int vezes;
 
 
         Controlador();
@@ -33,10 +34,10 @@ class Controlador {
 
         bool criar_pilar(Player*, TipoPilar, unsigned short, unsigned short);
         bool fortalecer_pilar(Player*, TipoPilar);
-        
+
         bool criar_necromancer(Player*, TipoNecromancer, unsigned short, unsigned short);
         bool fortalecer_necromancer(Player*, TipoNecromancer);
-        
+
         bool matar(unsigned short, unsigned short);
         bool pode_movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);
         bool movimentar(Player*, unsigned short,unsigned short,unsigned short,unsigned short);

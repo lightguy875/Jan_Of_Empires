@@ -8,7 +8,7 @@ enum class TipoConteudoBloco{
 };
 
 
-class ColocavelEmBloco 
+class ColocavelEmBloco
 {
     public:
         bool vivo;
@@ -17,6 +17,8 @@ class ColocavelEmBloco
         ColocavelEmBloco();
         bool mata();
         bool revive();
+        bool ativo;
+        void setAtivo(bool a);
 };
 
 class Bloco
