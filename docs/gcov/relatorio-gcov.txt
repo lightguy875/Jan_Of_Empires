@@ -1,20 +1,143 @@
 File 'Bloco.cpp'
-Lines executed:58.33% of 24
+Lines executed:80.00% of 35
 
-File 'Necromancer.cpp'
-Lines executed:46.67% of 15
+File '../include/Mapa.hpp'
+Lines executed:0.00% of 1
 
-File 'Pilar.cpp'
-Lines executed:0.00% of 12
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__locale'
+Lines executed:0.00% of 2
 
-File 'Recurso.cpp'
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__string'
+Lines executed:0.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__tree'
+Lines executed:0.00% of 17
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/ios'
+Lines executed:0.00% of 15
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/iterator'
+Lines executed:0.00% of 2
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/list'
+Lines executed:67.80% of 59
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/locale'
+Lines executed:0.00% of 28
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/map'
+Lines executed:0.00% of 1
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/memory'
+Lines executed:35.56% of 45
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/new'
+Lines executed:66.67% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/ostream'
+Lines executed:4.35% of 23
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/stdexcept'
+Lines executed:0.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/streambuf'
+Lines executed:0.00% of 1
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string'
 Lines executed:0.00% of 9
 
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/type_traits'
+Lines executed:66.67% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/utility'
+Lines executed:100.00% of 1
+
+File 'Controlador.cpp'
+Lines executed:54.73% of 243
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__functional_base'
+Lines executed:100.00% of 1
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__tree'
+Lines executed:45.57% of 158
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/map'
+Lines executed:87.50% of 8
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/memory'
+Lines executed:83.72% of 43
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/new'
+Lines executed:33.33% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/stdexcept'
+Lines executed:0.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/tuple'
+Lines executed:100.00% of 14
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/type_traits'
+Lines executed:100.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/utility'
+Lines executed:100.00% of 8
+
+File 'Mapa.cpp'
+Lines executed:100.00% of 26
+
+File 'Necromancer.cpp'
+Lines executed:55.22% of 67
+
+File 'Pilar.cpp'
+Lines executed:100.00% of 15
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__locale'
+Lines executed:0.00% of 2
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__string'
+Lines executed:0.00% of 3
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/ios'
+Lines executed:0.00% of 15
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/iterator'
+Lines executed:0.00% of 2
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/locale'
+Lines executed:0.00% of 28
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/memory'
+Lines executed:0.00% of 8
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/ostream'
+Lines executed:0.00% of 23
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/streambuf'
+Lines executed:0.00% of 1
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string'
+Lines executed:0.00% of 9
+
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/type_traits'
+Lines executed:0.00% of 1
+
+File 'Player.cpp'
+Lines executed:89.80% of 147
+
+File 'Recurso.cpp'
+Lines executed:100.00% of 11
+
+File '../include/Mapa.hpp'
+Lines executed:100.00% of 1
+
+File '../tests/../include/Controlador.hpp'
+Lines executed:100.00% of 1
+
 File '../tests/../lib/catch.hpp'
-Lines executed:28.59% of 4043
+Lines executed:29.95% of 4057
 
 File '../tests/Tests.cpp'
-Lines executed:100.00% of 12
+Lines executed:100.00% of 495
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__functional_base'
 Lines executed:100.00% of 1
@@ -29,10 +152,10 @@ File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__string'
 Lines executed:19.39% of 98
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/__tree'
-Lines executed:54.45% of 292
+Lines executed:67.47% of 292
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm'
-Lines executed:7.78% of 424
+Lines executed:8.25% of 424
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/chrono'
 Lines executed:100.00% of 5
@@ -67,6 +190,9 @@ Lines executed:42.59% of 54
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/limits'
 Lines executed:50.00% of 4
 
+File '/Library/Developer/CommandLineTools/usr/include/c++/v1/list'
+Lines executed:63.04% of 46
+
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/locale'
 Lines executed:53.57% of 28
 
@@ -77,7 +203,7 @@ File '/Library/Developer/CommandLineTools/usr/include/c++/v1/math.h'
 Lines executed:0.00% of 2
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/memory'
-Lines executed:80.97% of 226
+Lines executed:85.84% of 226
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/new'
 Lines executed:100.00% of 3
@@ -104,7 +230,7 @@ File '/Library/Developer/CommandLineTools/usr/include/c++/v1/streambuf'
 Lines executed:3.70% of 27
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string'
-Lines executed:37.44% of 211
+Lines executed:40.76% of 211
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/string_view'
 Lines executed:100.00% of 5
@@ -122,7 +248,7 @@ File '/Library/Developer/CommandLineTools/usr/include/c++/v1/utility'
 Lines executed:38.46% of 13
 
 File '/Library/Developer/CommandLineTools/usr/include/c++/v1/vector'
-Lines executed:46.80% of 344
+Lines executed:51.74% of 344
 
 File '/usr/include/_ctype.h'
 Lines executed:20.00% of 5

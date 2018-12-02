@@ -62,7 +62,8 @@ class Controlador {
         void verifica_combate(unsigned short, unsigned short);
         void realiza_combate(unsigned short , unsigned short ,unsigned short , unsigned short);
         bool gerou_combate(unsigned short, unsigned short, unsigned short);
-
+        void jogada_pc();
+        void pc_movimenta_necromancer(TipoNecromancer tip);
         //temporarios
         void print_recursos();
         void print_mapa();

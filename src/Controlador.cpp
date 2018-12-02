@@ -15,6 +15,7 @@
  */
 #include <string>
 #include <sstream>
+#include <cmath>
 #include <iostream>
 #include "../include/Controlador.hpp"
 #include "../include/common.hpp"
@@ -380,14 +381,16 @@ void Controlador::processa_jogada() {
         return;
     }
 
-    if (this->computador_joga) {
-        this->muda_vez();
-        // funcao de jogada do computador aqui!
-    }
 
     if (this->vezes++ == 1) {
         this->muda_vez();
         this->vezes = 0;
+        
+        if (this->computador_joga) {
+            this->jogada_pc();
+            this->muda_vez();
+        }
+
     }
 
     if (!jogador.arqueiro.vivo && !jogador.cavaleiro.vivo && !jogador.guerreiro.vivo && jogador.ossos < OSSOS_CRIAR_ARQUEIRO){
@@ -449,6 +452,66 @@ void Controlador::processa_jogada() {
     }
 }
 
+void Controlador::pc_movimenta_necromancer(TipoNecromancer tip){
+    int nec_x = this->computador.necromancer(tip)->x;
+    int nec_y = this->computador.necromancer(tip)->y;
+
+    // se tiver recurso pega ele
+    for (auto v : this->recursos) {
+        if( abs(v.x - nec_x) < 3 && abs(v.y - nec_y) < 3 ){
+            this->movimentar(&(this->computador), nec_x, nec_y, v.x, v.y);
+            break;
+        }
+    }
+    
+    // depois movimenta aleatório
+    nec_x = this->computador.necromancer(tip)->x;
+    nec_y = this->computador.necromancer(tip)->y;
+    int pos_x = this->computador.necromancer(tip)->x + (rand()%5) -2;
+    int pos_y = this->computador.necromancer(tip)->y + (rand()%5) -2;
+
+    this->movimentar(&(this->computador), nec_x, nec_y, pos_x, pos_y);
+
+}
+
+void Controlador::jogada_pc(){
+    int position_x = rand()%MAPA_LARGURA; 
+    int position_y = rand()%MAPA_ALTURA;
+
+    while(!mapa.vazio(position_x,position_y)){
+        position_x = rand()%MAPA_LARGURA;
+        position_y = rand()%MAPA_ALTURA;
+    }
+
+    // tenta criar todos os necromancers
+    this->criar_necromancer(&(this->computador), TipoNecromancer::ARQUEIRO, position_x, position_y);
+    this->criar_necromancer(&(this->computador), TipoNecromancer::GUERREIRO, position_x, position_y);
+    this->criar_necromancer(&(this->computador), TipoNecromancer::CAVALEIRO, position_x, position_y);
+
+    while(!mapa.vazio(position_x,position_y)){
+            position_x = rand()%MAPA_LARGURA;
+            position_y = rand()%MAPA_ALTURA;
+    }
+
+    // tenta criar todos os pilares
+    this->criar_pilar(&(this->computador), TipoPilar::ARCO, position_x, position_y);
+    this->criar_pilar(&(this->computador), TipoPilar::ESPADA, position_x, position_y);
+    this->criar_pilar(&(this->computador), TipoPilar::LANCA, position_x, position_y);
+
+
+    if( this->computador.tem_necromancer(TipoNecromancer::ARQUEIRO) ){
+        this->pc_movimenta_necromancer(TipoNecromancer::ARQUEIRO);
+    }
+    else if( this->computador.tem_necromancer(TipoNecromancer::GUERREIRO) ){
+        this->pc_movimenta_necromancer(TipoNecromancer::GUERREIRO);
+    }
+    else if( this->computador.tem_necromancer(TipoNecromancer::CAVALEIRO) ){
+        this->pc_movimenta_necromancer(TipoNecromancer::CAVALEIRO);
+    }
+
+}
+
+
 /**
  * @brief
  *
@@ -503,6 +566,8 @@ void Controlador::print_recursos() {
     }
     #endif
 }
+
+
 
 /**
  * @brief

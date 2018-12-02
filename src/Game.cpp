@@ -431,7 +431,7 @@ void movimentar_ativo(Controlador * controlador, SDL_Event * e) {
 void Game::renderPlay() {
     SDL_Event e;
     Controlador controlador;
-    controlador.novo_jogo(true, false);
+    controlador.novo_jogo(true, true);
     while (gameRunning == GAME_PLAY) {
             // Handle events on queue
             while (SDL_PollEvent(&e) != 0) {
