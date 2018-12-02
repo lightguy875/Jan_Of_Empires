@@ -431,7 +431,7 @@ void movimentar_ativo(Controlador * controlador, SDL_Event * e) {
 void Game::renderPlay() {
     SDL_Event e;
     Controlador controlador;
-    controlador.novo_jogo(true, true);
+    controlador.novo_jogo(true, cpu_or_player);
     while (gameRunning == GAME_PLAY) {
             // Handle events on queue
             while (SDL_PollEvent(&e) != 0) {
@@ -483,6 +483,27 @@ void Game::renderPause() {
             SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
             SDL_RenderClear(renderer);
             pause_screen.render(0, 0);
+            SDL_RenderPresent(renderer);
+    }
+}
+
+void Game::renderChoose() {
+    SDL_Event e;
+
+    while (gameRunning == GAME_CHOOSE) {
+            // Handle events on queue
+            while (SDL_PollEvent(&e) != 0) {
+                // User requests quit
+                if (e.type == SDL_QUIT) {
+                    gameRunning = GAME_QUIT;
+                }
+                chooseButton[0].handleEvent(&e, this);
+                chooseButton[1].handleEvent(&e, this);
+            }
+
+            SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+            SDL_RenderClear(renderer);
+            chooseScreen.render(0, 0);
             SDL_RenderPresent(renderer);
     }
 }
@@ -557,6 +578,8 @@ void Game::playGame(GameState gameState) {
         case GAME_GANHOU:
             renderGanhou();
             break;
+        case GAME_CHOOSE:
+            renderChoose();
         }
     }
 }
