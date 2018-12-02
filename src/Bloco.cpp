@@ -27,7 +27,7 @@ Bloco::Bloco() {
 /**
  * @brief Construct a new Bloco:: Bloco object
  * 
- * @param conteudo 
+ * @param conteudo =  conteudo a ser colocado no bloco inicializado
  */
 Bloco::Bloco(ColocavelEmBloco *conteudo) {
     this->conteudo = conteudo;
@@ -35,11 +35,18 @@ Bloco::Bloco(ColocavelEmBloco *conteudo) {
 }
 
 /**
- * @brief 
+ * @brief coloca conteudo no bloco
  * 
- * @param c 
- * @return true 
- * @return false 
+ * @param c  = ponteiro para o conteudo a ser colocado
+ * @return true se foi possivel colocar
+ * @return false  se não foi possível colocar
+ * 
+ * Assertivas de Entrada:
+ * inicializado(bloco) == True
+ * conteudo_valido(c) == True
+ *
+ * Assertivas de Saida:
+ * bloco == bloco || preenchido(bloco)
  */
 bool Bloco::preenche(ColocavelEmBloco *c) {
     if (!this->vazio) return false;
@@ -49,10 +56,16 @@ bool Bloco::preenche(ColocavelEmBloco *c) {
 }
 
 /**
- * @brief 
+ * @brief Limpa o conteudo do bloco
  * 
- * @return true 
- * @return false 
+ * @return true se foi possivel limpar
+ * @return false se nao foi possivel limpar
+ * 
+ * Assertivas de Entrada:
+ * inicializado(bloco) == True
+ *
+ * Assertivas de Saída:
+ * limpo(bloco) == True
  */
 bool Bloco::limpa() {
     if (this->vazio) return false;
@@ -70,19 +83,30 @@ ColocavelEmBloco::ColocavelEmBloco() {
 }
 
 /**
- * @brief 
+ * @brief altera o conteudo da variavel ativo de uma peça que herda de Colocavel em Bloco .
  * 
- * @param a 
+ * @param a = valor a ser colocado na variavel
+ * Assertivas de Entrada:
+ * inicializada(peca) == True
+ *
+ * Assertivas de Saída:
+ * peca.ativo == a
  */
 void ColocavelEmBloco::setAtivo(bool a) {
     ativo = a;
 }
 
 /**
- * @brief 
+ * @brief Mata uma peça que herda de Colocavel em bloco
  * 
- * @return true 
- * @return false 
+ * @return true se foi possível matar
+ * @return false se não foi possível matar
+ *
+ * Assertivas de Entrada:
+ * inicializada(peca) == True
+ *
+ * Assertivas de Saída:
+ * morta(peca) == True
  */
 bool ColocavelEmBloco::mata() {
     if (this->vivo) {
@@ -95,10 +119,16 @@ bool ColocavelEmBloco::mata() {
 }
 
 /**
- * @brief 
+ * @brief Ressucita uma peça que herda de Colocavel em bloco
  * 
- * @return true 
- * @return false 
+ * @return true se foi possível reviver
+ * @return false se não foi possível reviver
+ *
+ * Assertivas de Entrada:
+ * inicializada(peca) == True
+ *
+ * Assertivas de Saída:
+ * viva(peca) == True
  */
 bool ColocavelEmBloco::revive() {
     if (this->vivo)
