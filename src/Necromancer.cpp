@@ -14,10 +14,126 @@
  * 
  */
 #include "../include/Necromancer.hpp"
-/*
-    Setando diferentes valores iniciais de mp
-    de acordo com o tipo de necromancer
-*/
+
+/**
+ * @brief retorna no multiplicador de ataque do necromancer contra um pilar
+ * 
+ * @param tipo = tipo de necromancer inimigo
+ * @return unsigned short = numero multiplicador
+ *
+ * Assertivas de Entrada:
+ * tipo_valido(tipo) == True
+ *
+ * Assertivas de Saída:
+ * multiplicador > 0
+ */
+unsigned short Necromancer::multiplicador(TipoPilar tipo) {
+    if (this->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
+        if (tipo == TipoPilar::ESPADA)
+            return ARCO_ESPADA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoPilar::LANCA)
+            return ARCO_LANCA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoPilar::ARCO)
+            return ARCO_ARCO_ATQ_MULTIPLICADOR;
+    }
+    if (this->tipo_necromancer == TipoNecromancer::CAVALEIRO) {
+        if (tipo == TipoPilar::ESPADA)
+            return LANCA_ESPADA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoPilar::LANCA)
+            return LANCA_LANCA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoPilar::ARCO)
+            return LANCA_ARCO_ATQ_MULTIPLICADOR;
+    }
+    if (this->tipo_necromancer == TipoNecromancer::GUERREIRO) {
+        if (tipo == TipoPilar::ESPADA)
+            return ESPADA_ESPADA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoPilar::LANCA)
+            return ESPADA_LANCA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoPilar::ARCO)
+            return ESPADA_ARCO_ATQ_MULTIPLICADOR;
+    }
+    return 0;
+}
+
+/**
+ * @brief retorna no multiplicador de ataque do necromancer contra um outro necromancer
+ * 
+ * @param tipo = tipo de necromancer inimigo
+ * @return unsigned short = numero multiplicador
+ *
+ * Assertivas de Entrada:
+ * tipo_valido(tipo) == True
+ *
+ * Assertivas de Saída:
+ * multiplicador > 0
+ */
+unsigned short Necromancer::multiplicador(TipoNecromancer tipo) {
+    if (this->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
+        if (tipo == TipoNecromancer::GUERREIRO)
+            return ARCO_ESPADA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoNecromancer::CAVALEIRO)
+            return ARCO_LANCA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoNecromancer::ARQUEIRO)
+            return ARCO_ARCO_ATQ_MULTIPLICADOR;
+    }
+    if (this->tipo_necromancer == TipoNecromancer::CAVALEIRO) {
+        if (tipo == TipoNecromancer::GUERREIRO)
+            return LANCA_ESPADA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoNecromancer::CAVALEIRO)
+            return LANCA_LANCA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoNecromancer::ARQUEIRO)
+            return LANCA_ARCO_ATQ_MULTIPLICADOR;
+    }
+    if (this->tipo_necromancer == TipoNecromancer::GUERREIRO) {
+        if (tipo == TipoNecromancer::GUERREIRO)
+            return ESPADA_ESPADA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoNecromancer::CAVALEIRO)
+            return ESPADA_LANCA_ATQ_MULTIPLICADOR;
+
+        if (tipo == TipoNecromancer::ARQUEIRO)
+            return ESPADA_ARCO_ATQ_MULTIPLICADOR;
+    }
+    return 0;
+}
+
+
+/**
+ * @brief Construct a new Guerreiro:: Guerreiro object
+ * 
+ */
+Guerreiro::Guerreiro() {
+    this->tipo_necromancer = TipoNecromancer::GUERREIRO;
+    this->mp = MP_INICIAL_GUERREIRO;
+}
+
+/**
+ * @brief Construct a new Cavaleiro:: Cavaleiro object
+ * 
+ */
+Cavaleiro::Cavaleiro() {
+    this->tipo_necromancer = TipoNecromancer::CAVALEIRO;
+    this->mp = MP_INICIAL_CAVALEIRO;
+}
+
+/**
+ * @brief Construct a new Arqueiro:: Arqueiro object
+ * 
+ */
+Arqueiro::Arqueiro() {
+    this->tipo_necromancer = TipoNecromancer::ARQUEIRO;
+    this->mp = MP_INICIAL_ARQUEIRO;
+}
 
 /**
  * @brief Construct a new Necromancer:: Necromancer object
@@ -60,110 +176,3 @@ bool Necromancer::handleEvent(SDL_Event * e, int position_x, int position_y) {
     return false;
 }
 #endif
-
-/**
- * @brief Construct a new Guerreiro:: Guerreiro object
- * 
- */
-Guerreiro::Guerreiro() {
-    this->tipo_necromancer = TipoNecromancer::GUERREIRO;
-    this->mp = MP_INICIAL_GUERREIRO;
-}
-
-/**
- * @brief Construct a new Cavaleiro:: Cavaleiro object
- * 
- */
-Cavaleiro::Cavaleiro() {
-    this->tipo_necromancer = TipoNecromancer::CAVALEIRO;
-    this->mp = MP_INICIAL_CAVALEIRO;
-}
-
-/**
- * @brief Construct a new Arqueiro:: Arqueiro object
- * 
- */
-Arqueiro::Arqueiro() {
-    this->tipo_necromancer = TipoNecromancer::ARQUEIRO;
-    this->mp = MP_INICIAL_ARQUEIRO;
-}
-
-/**
- * @brief 
- * 
- * @param tipo 
- * @return unsigned short 
- */
-unsigned short Necromancer::multiplicador(TipoPilar tipo) {
-    if (this->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
-        if (tipo == TipoPilar::ESPADA)
-            return ARCO_ESPADA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoPilar::LANCA)
-            return ARCO_LANCA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoPilar::ARCO)
-            return ARCO_ARCO_ATQ_MULTIPLICADOR;
-    }
-    if (this->tipo_necromancer == TipoNecromancer::CAVALEIRO) {
-        if (tipo == TipoPilar::ESPADA)
-            return LANCA_ESPADA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoPilar::LANCA)
-            return LANCA_LANCA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoPilar::ARCO)
-            return LANCA_ARCO_ATQ_MULTIPLICADOR;
-    }
-    if (this->tipo_necromancer == TipoNecromancer::GUERREIRO) {
-        if (tipo == TipoPilar::ESPADA)
-            return ESPADA_ESPADA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoPilar::LANCA)
-            return ESPADA_LANCA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoPilar::ARCO)
-            return ESPADA_ARCO_ATQ_MULTIPLICADOR;
-    }
-    return 0;
-}
-
-/**
- * @brief 
- * 
- * @param tipo 
- * @return unsigned short 
- */
-unsigned short Necromancer::multiplicador(TipoNecromancer tipo) {
-    if (this->tipo_necromancer == TipoNecromancer::ARQUEIRO) {
-        if (tipo == TipoNecromancer::GUERREIRO)
-            return ARCO_ESPADA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoNecromancer::CAVALEIRO)
-            return ARCO_LANCA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoNecromancer::ARQUEIRO)
-            return ARCO_ARCO_ATQ_MULTIPLICADOR;
-    }
-    if (this->tipo_necromancer == TipoNecromancer::CAVALEIRO) {
-        if (tipo == TipoNecromancer::GUERREIRO)
-            return LANCA_ESPADA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoNecromancer::CAVALEIRO)
-            return LANCA_LANCA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoNecromancer::ARQUEIRO)
-            return LANCA_ARCO_ATQ_MULTIPLICADOR;
-    }
-    if (this->tipo_necromancer == TipoNecromancer::GUERREIRO) {
-        if (tipo == TipoNecromancer::GUERREIRO)
-            return ESPADA_ESPADA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoNecromancer::CAVALEIRO)
-            return ESPADA_LANCA_ATQ_MULTIPLICADOR;
-
-        if (tipo == TipoNecromancer::ARQUEIRO)
-            return ESPADA_ARCO_ATQ_MULTIPLICADOR;
-    }
-    return 0;
-}
