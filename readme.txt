@@ -7,6 +7,6 @@
 1) Abra o terminal na pasta src
 2) Os seguintes comandos estão disponíveis:
     >>> make clean: limpa o repositório dos objetos gerados a partir da compilação
-    >>> make cov: gera o relatório de cobertura de testes
     >>> make test: para compilar e rodar os testes (back-end)
+    >>> make cov: gera o relatório de cobertura de testes. Use este comando após compilar com make test.
     >>> make project: para compilar e rodar o jogo
