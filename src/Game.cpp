@@ -151,13 +151,13 @@ void boxCriarPilar(Controlador * controlador) {
         case 1:
             if (controlador->vez == 0) {
                 if (controlador->criar_pilar(&controlador->jogador, TipoPilar::LANCA, position_x, position_y)) {
-                    boxWarning("Necromancer fortalecido!");
+                    boxWarning("Pilar Criado com  Sucesso!");
                 } else {
                     boxWarning("Recursos insuficientes!");
                 }
             } else {
                 if (controlador->criar_pilar(&controlador->computador, TipoPilar::LANCA, position_x, position_y)) {
-                    boxWarning("Necromancer fortalecido!");
+                    boxWarning("Pilar Criado com  Sucesso!");
                 } else {
                     boxWarning("Recursos insuficientes!");
                 }
@@ -166,13 +166,13 @@ void boxCriarPilar(Controlador * controlador) {
         case 2:
             if (controlador->vez == 0) {
                 if (controlador->criar_pilar(&controlador->jogador, TipoPilar::ARCO, position_x, position_y)) {
-                    boxWarning("Necromancer fortalecido!");
+                    boxWarning("Pilar Criado com  Sucesso!");
                 } else {
                     boxWarning("Recursos insuficientes!");
                 }
             } else {
                 if (controlador->criar_pilar(&controlador->computador, TipoPilar::ARCO, position_x, position_y)) {
-                    boxWarning("Necromancer fortalecido!");
+                    boxWarning("Pilar Criado com  Sucesso!");
                 } else {
                     boxWarning("Recursos insuficientes!");
                 }
@@ -181,13 +181,13 @@ void boxCriarPilar(Controlador * controlador) {
         case 3:
             if (controlador->vez == 0) {
                 if (controlador->criar_pilar(&controlador->jogador, TipoPilar::ESPADA, position_x, position_y)) {
-                    boxWarning("Necromancer fortalecido!");
+                    boxWarning("Pilar Criado com  Sucesso!");
                 } else {
                     boxWarning("Recursos insuficientes!");
                 }
             } else {
                 if (controlador->criar_pilar(&controlador->computador, TipoPilar::ESPADA, position_x, position_y)) {
-                    boxWarning("Necromancer fortalecido!");
+                    boxWarning("Pilar Criado com  Sucesso!");
                 } else {
                     boxWarning("Recursos insuficientes!");
                 }
