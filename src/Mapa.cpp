@@ -18,8 +18,8 @@
 /**
  * @brief Construct a new Mapa:: Mapa object
  * 
- * @param X 
- * @param Y 
+ * @param X = tamanho do eixo X do mapa
+ * @param Y = tamanho do eixo Y do mapa 
  */
 Mapa::Mapa(unsigned short X, unsigned short Y) {
     this->tam_x = X;
@@ -31,24 +31,34 @@ Mapa::Mapa(unsigned short X, unsigned short Y) {
 }
 
 /**
- * @brief 
+ * @brief verifica se um par X/Y corresponde a uma posição válida
  * 
- * @param X 
- * @param Y 
- * @return true 
- * @return false 
+ * @param X, Y = posição a ser verificada 
+ * @return true se é válida
+ * @return false se não é válida
+ *
+ * Assertivas de Entrada:
+ * inicializado(mapa) == True
+ * 
+ * Assertivas de Saída:
+ * mantem_consistente(mapa) == True
  */
 bool Mapa::posicao_valida(unsigned short X, unsigned short Y) {
     return X < this->tam_x && Y < this->tam_y;
 }
 
 /**
- * @brief 
+ * @brief verifica se um par X/Y corresponde a uma posição vazia do mapa
  * 
- * @param X 
- * @param Y 
- * @return true 
- * @return false 
+ * @param X, Y = posição a ser verificada 
+ * @return true se está vazia
+ * @return false se não está vazia
+ *
+ * Assertivas de Entrada:
+ * inicializado(mapa) == True
+ * 
+ * Assertivas de Saída:
+ * mantem_consistente(mapa) == True
  */
 bool Mapa::vazio(unsigned short X, unsigned short Y) {
     if (!this->posicao_valida(X, Y)) return false;
@@ -57,13 +67,19 @@ bool Mapa::vazio(unsigned short X, unsigned short Y) {
 }
 
 /**
- * @brief 
+ * @brief Insere conteudo em um bloco
  * 
- * @param item 
- * @param X 
- * @param Y 
- * @return true 
- * @return false 
+ * @param item = ponteiro pro item a ser colocado no bloco
+ * @param X, Y = posição do bloco a ser preenchida 
+ * @return true se foi possivel inserir
+ * @return false se não foi possível inserir
+ *
+ * Assertivas de Entrada:
+ * inicializado(mapa) == True
+ * item_valido(item) == True 
+ *
+ * Assertivas de Saída:
+ * mapa == mapa || com_item_inserido(mapa)
  */
 bool Mapa::inserir(ColocavelEmBloco *item, unsigned short X, unsigned short Y) {
     if (!this->vazio(X, Y)) return false;
@@ -75,11 +91,17 @@ bool Mapa::inserir(ColocavelEmBloco *item, unsigned short X, unsigned short Y) {
 }
 
 /**
- * @brief 
+ * @brief consulta conteúdo de bloco
  * 
- * @param X 
- * @param Y 
- * @return ColocavelEmBloco* 
+ * @param X, Y = posição do bloco 
+ * @return ColocavelEmBloco* = ponteiro para o conteúdo do bloco
+ *
+ * Assertivas de Entrada:
+ * inicializado(mapa) == True
+ * posição_válida_e_não_vazia(X,Y) == True
+ *
+ * Assertivas de Saída:
+ * mapa == nao_alterado(mapa)
  */
 ColocavelEmBloco* Mapa::ver(unsigned short X, unsigned short Y) {
     if (this->vazio(X, Y) || !this->posicao_valida(X, Y)) return nullptr;
@@ -89,11 +111,17 @@ ColocavelEmBloco* Mapa::ver(unsigned short X, unsigned short Y) {
 }
 
 /**
- * @brief 
+ * @brief retira conteúdo de bloco
  * 
- * @param X 
- * @param Y 
- * @return ColocavelEmBloco* 
+ * @param X, Y = posição do bloco 
+ * @return ColocavelEmBloco* = ponteiro para o conteúdo do bloco
+ *
+ * Assertivas de Entrada:
+ * inicializado(mapa) == True
+ * posição_válida_e_não_vazia(X,Y) == True
+ *
+ * Assertivas de Saída:
+ * mapa == com_conteudo_retirado(mapa)
  */
 ColocavelEmBloco* Mapa::retirar(unsigned short X, unsigned short Y) {
     if (this->vazio(X, Y) || !this->posicao_valida(X, Y)) return nullptr;
