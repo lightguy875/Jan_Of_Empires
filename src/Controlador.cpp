@@ -30,8 +30,13 @@ Controlador::Controlador() : mapa(MAPA_LARGURA, MAPA_ALTURA) {
     this->vezes = 0;
 }
 /**
- * @brief
+ * @brief preenche o mapa com recursos aleatoriamente
  *
+ * Assertivas de Entrada
+ * nao_preenchido(mapa) == True
+ *
+ * Assertivas de Saida
+ * preenchido(mapa) == True
  */
 void Controlador::preenche_recursos_iniciais() {
     unsigned short i;
@@ -50,12 +55,19 @@ void Controlador::preenche_recursos_iniciais() {
 }
 
 /**
- * @brief
+ * @brief Função que inicializa o mapa e os jogadores para iniciar uma partida
  *
- * @param recursos_aleatorios
- * @param computador_joga
- * @return true
- * @return false
+ * @param recursos_aleatorios = define se devem ou não ser colocados recursos no mapa aleatoriamente
+ * @param computador_joga = define se deve configurar o jogo para que o computador jogue ou não
+ * @return true se foi possível iniciar o jogo
+ * @return false se não foi possivel iniciar o jogo
+ * 
+ * Assertivas de Entrada:
+ *  jogo_nao_iniciado() == True
+ * 
+ * Assertivas de Saída:
+ * Consistente(mapa)==True
+ * pronto_pra_jogar(controlador) == True
  */
 bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga) {
     this->mapa.inserir(&jogador.guerreiro, X_NECROMANCER_PLAYER, Y_NECROMANCER_PLAYER);
@@ -83,14 +95,20 @@ bool Controlador::novo_jogo(bool recursos_aleatorios, bool computador_joga) {
 }
 
 /**
- * @brief
+ * @brief Função em que um jogador cria um pilar
  *
- * @param jog
- * @param pil
- * @param x
- * @param y
- * @return true
- * @return false
+ * @param jog = Jogador que faz a jogada
+ * @param pil = Tipo de pilar a ser criado
+ * @param x, y = Coordenadas em que o pilar será colocado
+ * @return true se foi possível criar o pilar
+ * @return false se não foi possível criar o pilar
+ * 
+ * Assertivas de Entrada:
+ *  Jogador_Válido(jog) == True
+ *  Tipo_Pilar_Válido(pil) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa || adiciona_pilar(mapa)
  */
 bool Controlador::criar_pilar(Player *jog, TipoPilar pil, unsigned short x, unsigned short y) {
     if (jog->pilar(pil)->vivo) return false;
@@ -102,14 +120,21 @@ bool Controlador::criar_pilar(Player *jog, TipoPilar pil, unsigned short x, unsi
 }
 
 /**
- * @brief
+ * @brief Funcao em que um jogador cria um necromancer
  *
- * @param jog
- * @param nec
- * @param x
- * @param y
- * @return true
- * @return false
+ * @param jog = Jogador que faz a jogada
+ * @param nec = Tipo de necromancer a ser criado
+ * @param x, y = Coordenadas em que o necromancer será colocado
+ * @return true se foi posseivel criar
+ * @return false se não foi possível criar
+ * 
+ * Assertivas de Entrada:
+ *  Jogador_Válido(jog) == True
+ *  Tipo_Necromancer_Válido(nec) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa || adiciona_necromancer(mapa)
+ *
  */
 bool Controlador::criar_necromancer(Player *jog, TipoNecromancer nec, unsigned short x, unsigned short y) {
     if (jog->necromancer(nec)->vivo) return false;
@@ -122,12 +147,20 @@ bool Controlador::criar_necromancer(Player *jog, TipoNecromancer nec, unsigned s
 }
 
 /**
- * @brief
+ * @brief Funcão em que um jogador fortalece um pilar
  *
- * @param jog
- * @param pil
- * @return true
- * @return false
+ * @param jog = Jogador que faz a jogada
+ * @param pil = Tipo de pilar a ser fortalecido
+ * @return true se foi possível fortalecer
+ * @return false se não foi possível fortalecer
+ * 
+ * Assertivas de Entrada:
+ *  Jogador_Válido(jog) == True
+ *  Tipo_Pilar_Válido(pil) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa
+ *
  */
 bool Controlador::fortalecer_pilar(Player *jog, TipoPilar pil) {
     if (!jog->pilar(pil)->vivo) return false;
@@ -136,12 +169,20 @@ bool Controlador::fortalecer_pilar(Player *jog, TipoPilar pil) {
 }
 
 /**
- * @brief
+ * @brief Função em que um jogador fortalecer um necromancer
  *
- * @param jog
- * @param nec
- * @return true
- * @return false
+ * @param jog = Jogador que faz a jogada
+ * @param nec = Tipo de necromancer a ser fortalcido
+ * @return true se foi posseivel fortalcer
+ * @return false se não foi possível fortalecer
+ * 
+ * Assertivas de Entrada:
+ *  Jogador_Válido(jog) == True
+ *  Tipo_Necromacner_Válido(nec) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa
+ *
  */
 bool Controlador::fortalecer_necromancer(Player *jog, TipoNecromancer nec) {
     if (!jog->necromancer(nec)->vivo) return false;
@@ -150,12 +191,17 @@ bool Controlador::fortalecer_necromancer(Player *jog, TipoNecromancer nec) {
 }
 
 /**
- * @brief
+ * @brief Função para matar uma peça (Necromancer ou Pilar)
  *
- * @param X
- * @param Y
- * @return true
- * @return false
+ * @param X, Y = Coordenadas da peça a ser morta
+ * @return true se foi possível matar
+ * @return false se não foi possível matar
+ *
+ * Assertivas de Entrada:
+ * inicializado(mapa) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa || menos_uma_peça(mapa)
  */
 bool Controlador::matar(unsigned short X, unsigned short Y) {
     if (this->mapa.vazio(X, Y))
@@ -168,15 +214,20 @@ bool Controlador::matar(unsigned short X, unsigned short Y) {
 }
 
 /**
- * @brief
+ * @brief função que avalia se um movimento é possível de acordo com as regras do jogo
  *
- * @param jog
- * @param x_orig
- * @param y_orig
- * @param x_dest
- * @param y_dest
- * @return true
- * @return false
+ * @param jog = Jogador que pretende realizar a jogada
+ * @param x_orig, y_orig = Coordenadas de origem do movimento
+ * @param x_dest, y_dest = Coordendas de destino do movimento
+ * @return true se será possível movimentar
+ * @return false se não será possível movimentar
+ *
+ * Assertivas de Entrada:
+ * inicializado(controlador) == True
+ * Jogador_Valido(jog) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa
  */
 bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest) {
     if (!(this->mapa.posicao_valida(x_orig, y_orig) && this->mapa.posicao_valida(x_dest, y_dest)))
@@ -200,15 +251,20 @@ bool Controlador::pode_movimentar(Player *jog, unsigned short x_orig, unsigned s
 }
 
 /**
- * @brief
+ * @brief Função em que jogador realiza movimentação de peças
  *
- * @param jog
- * @param x_orig
- * @param y_orig
- * @param x_dest
- * @param y_dest
- * @return true
- * @return false
+ * @param jog = Jogador que pretende realizar a movimentação
+ * @param x_orig, y_orig = Coordenadas de origem do movimento
+ * @param x_dest, y_dest = Coordendas de destino do movimento
+ * @return true se foi possível movimentar
+ * @return false se não foi possível movimentar
+ *
+ * Assertivas de Entrada:
+ * inicializado(controlador) == True
+ * Jogador_Valido(jog) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa || com_peça_movimentada(mapa)
  */
 bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short y_orig, unsigned short x_dest, unsigned short y_dest) {
     if ( !this->pode_movimentar(jog, x_orig, y_orig, x_dest, y_dest) )
@@ -233,13 +289,18 @@ bool Controlador::movimentar(Player *jog, unsigned short x_orig, unsigned short 
 }
 
 /**
- * @brief
+ * @brief Função que avalia se uma movimentação gerou combate, ou seja, duas peças inimigas estão vizinhas
  *
- * @param time
- * @param x
- * @param y
- * @return true
- * @return false
+ * @param time = time que tem a vez
+ * @param x, y = posição pra avaliar se tem uma peça inimiga
+ * @return true se tem peça inimiga na posiçåõ passada
+ * @return false se não tem peça inimiga na posiçåõ passada
+ *
+ * Assertivas de Entrada:
+ * inicializado(jogo) == True
+ * 
+ * Assertiva de Saída:
+ * mapa == mapa
  */
 bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned short y) {
     if (!this->mapa.posicao_valida(x, y))
@@ -253,12 +314,16 @@ bool Controlador::gerou_combate(unsigned short time, unsigned short x, unsigned 
 }
 
 /**
- * @brief
+ * @brief realiza combate entre peças em duas peças inimigas, tirando vida da peça vítima
  *
- * @param x_atac
- * @param y_atac
- * @param x_vit
- * @param y_vit
+ * @param x_atac, y_atac = Coordenada do atancante
+ * @param x_vit, y_vit = Coordenadas da vítima
+ *
+ * Assertivas de Entrada:
+ * peças_vizinhas(posicao_atacante,posicao_vitima) == True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa || menos_uma_peça(mapa)
  */
 void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, unsigned short x_vit, unsigned short y_vit ) {
     unsigned short dano_golpe;
@@ -293,10 +358,15 @@ void Controlador::realiza_combate(unsigned short x_atac, unsigned short y_atac, 
 }
 
 /**
- * @brief
+ * @brief Verifica, a partir de uma coordenada, se aquela peça está gerando combate com algum inimigo vizinho
  *
- * @param x
- * @param y
+ * @param x, y =  coordenadas da peça atacante
+ *
+ * Assertivas de Entrada:
+ * Tem_peça(x,y) == True
+ *
+ * Assertiva de Saída:
+ * mapa == com_ate_6_combates(mapa)
  */
 void Controlador::verifica_combate(unsigned short x, unsigned short y) {
     // std::cout<<  "verificando combate em: "<< x << " " << y << std::endl;
@@ -312,8 +382,13 @@ void Controlador::verifica_combate(unsigned short x, unsigned short y) {
 }
 
 /**
- * @brief
+ * @brief Troca o turno, ou seja, que jogador detém a jogada
  *
+ * Assertivas de Entrada:
+ * inicializado(controlador) == True
+ *
+ * Assertiva de Saida:
+ * vez == 1 ou 0
  */
 void Controlador::muda_vez() {
     if (this->vez == 0) {
@@ -325,10 +400,17 @@ void Controlador::muda_vez() {
 }
 
 /**
- * @brief
+ * @brief Verifica se alguem ganhou, seja por ter perdido todas as pecas ou por terem acabado os recursos (por pontuaçåõ)
  *
- * @return true
- * @return false
+ * @return true se alguem ganhou
+ * @return false se ninguém ganhou
+ *
+ * Assertivas de Entrada:
+ * inicializado(controlador) == True
+ *
+ * Assertivas de Saída:
+ * pode_ser_alterado(jogo_terminou) == true
+ * pode_ser_alterado(ganhou) == True
  */
 bool Controlador::alguem_ganhou() {
     if (this->recursos.size() == 0) {
@@ -363,8 +445,15 @@ bool Controlador::alguem_ganhou() {
 }
 
 /**
- * @brief
+ * @brief função que processa as posseiveis consequências de uma movimentação
  *
+ * Assertivas de Entrada
+ * inicializado(controlador) ==  True
+ *
+ * Assertivas de Saída:
+ * mapa == mapa
+ * pode_ser_alterado(jogo_terminou) == true
+ * pode_ser_alterado(ganhou) == True
  */
 void Controlador::processa_jogada() {
     unsigned short time;
@@ -452,6 +541,18 @@ void Controlador::processa_jogada() {
     }
 }
 
+/**
+ * @brief heuristica de movimentação automática do necromacner
+ *
+ * @param tip = tipo de Necromancer pra ser movimentado
+ *
+ * Assertivas de Entrada
+ * inicializado(controlador) ==  True
+ * vez_computador() == True
+
+ * Assertivas de Saída:
+ * mapa == mapa + movimentação_computador()
+ */
 void Controlador::pc_movimenta_necromancer(TipoNecromancer tip){
     int nec_x = this->computador.necromancer(tip)->x;
     int nec_y = this->computador.necromancer(tip)->y;
@@ -474,6 +575,17 @@ void Controlador::pc_movimenta_necromancer(TipoNecromancer tip){
 
 }
 
+
+/**
+ * @brief heuristica de jogada automática do computador
+ *
+ * Assertivas de Entrada
+ * inicializado(controlador) ==  True
+ * vez_computador() == True
+
+ * Assertivas de Saída:
+ * mapa == mapa + movimentação_computador()
+ */
 void Controlador::jogada_pc(){
     int position_x = rand()%MAPA_LARGURA; 
     int position_y = rand()%MAPA_ALTURA;
@@ -652,16 +764,3 @@ void Controlador::print_mapa() {
     #endif
 }
 
-
-
-
-
-// TO DO
-// bool Controlador::carregar_jogo(){
-//     return true;
-// }
-
-
-// bool Controlador::salvar_jogo(){
-//     return true;
-// }
