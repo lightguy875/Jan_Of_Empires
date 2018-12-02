@@ -52,8 +52,13 @@ Player::Player() {
 }
 
 /**
- * @brief 
+ * @brief muda o player de time
  * 
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ *
+ * Assertivas de Saida:
+ * player.time == 0 || 1
  */
 void Player::muda_time() {
     if (this->time == 0)
@@ -70,11 +75,17 @@ void Player::muda_time() {
 }
 
 /**
- * @brief 
+ * @brief adiciona recursos ao player
  * 
- * @param rec 
- * @return true 
- * @return false 
+ * @param rec tipo de recursos a ser adicionado
+ * @return true se foi possível
+ * @return false se não foi possível
+ * 
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ *
+ * Assertivas de Saida:
+ * recursos_aumentados(player) == true
  */
 bool Player::captar_recurso(TipoRecurso rec) {
     if (rec == TipoRecurso::METAL) {
@@ -87,10 +98,17 @@ bool Player::captar_recurso(TipoRecurso rec) {
 }
 
 /**
- * @brief 
+ * @brief retorna ponteiro pro pilar de determinado tipo do player
  * 
- * @param pil 
- * @return Pilar* 
+ * @param pil = tipo de pilar que se quer retornar
+ * @return Pilar* ponteiro para o pilar
+*
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ * tipo_valido(pil) == True
+ *
+ * Assertivas de Saida:
+ * mantem_consistente(player) == true
  */
 Pilar* Player::pilar(TipoPilar pil) {
     if (pil == TipoPilar::ARCO)
@@ -106,10 +124,17 @@ Pilar* Player::pilar(TipoPilar pil) {
 }
 
 /**
- * @brief 
+ * @brief retorna ponteiro pro necromancer de determinado tipo do player
  * 
- * @param nec 
- * @return Necromancer* 
+ * @param nec = tipo de necromancer que se quer retornar
+ * @return Necromancer* ponteiro para o necromancer
+*
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ * tipo_valido(nec) == True
+ *
+ * Assertivas de Saida:
+ * mantem_consistente(player) == true
  */
 Necromancer* Player::necromancer(TipoNecromancer nec) {
     if (nec == TipoNecromancer::GUERREIRO)
@@ -125,33 +150,54 @@ Necromancer* Player::necromancer(TipoNecromancer nec) {
 }
 
 /**
- * @brief 
+ * @brief verifica se o player tem pilar de terminado tipo vivo
  * 
- * @param pil 
- * @return true 
- * @return false 
+ * @param pil = tipo de pilar pra verificação
+ * @return true se está vivo
+ * @return false se não está vivo
+ *
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ * tipo_valido(pil) == True
+ *
+ * Assertivas de Saida:
+ * mantem_consistente(player) == true
  */
 bool Player::tem_pilar(TipoPilar pil) {
     return this->pilar(pil)->vivo;
 }
 
 /**
- * @brief 
+ * @brief verifica se o player tem necromancer de determinado tipo vivo
  * 
- * @param nec 
- * @return true 
- * @return false 
+ * @param nec = tipo de necromaner para verificação
+ * @return true se está vivo
+ * @return false se não está vivo
+ *
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ * tipo_valido(nec) == True
+ *
+ * Assertivas de Saida:
+ * mantem_consistente(player) == true
  */
 bool Player::tem_necromancer(TipoNecromancer nec) {
     return this->necromancer(nec)->vivo;
 }
 
 /**
- * @brief 
+ * @brief cria pilar
  * 
- * @param pil 
- * @return true 
- * @return false 
+ * @param pil = tipo de pilar que se quer criar
+ * @return true se foi possível criar 
+ * @return false se não foi possível criar
+ *
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ * tipo_valido(pil) == True
+ *
+ * Assertivas de Saida:
+ * player == player || (player+pilar)
  */
 bool Player::criar_pilar(TipoPilar pil) {
     if (pil == TipoPilar::ARCO) {
@@ -196,11 +242,18 @@ bool Player::criar_pilar(TipoPilar pil) {
 }
 
 /**
- * @brief 
+ * @brief cria necromancer
  * 
- * @param nec 
- * @return true 
- * @return false 
+ * @param nec = tipo de necromancer que se quer criar
+ * @return true se foi possível
+ * @return false se não foi possível
+ *
+ * Assertivas de Entrada:
+ * inicializado(player)==True
+ * tipo_valido(nec) == True
+ *
+ * Assertivas de Saida:
+ * player == player || player+necromancer
  */
 bool Player::criar_necromancer(TipoNecromancer nec) {
     if (nec == TipoNecromancer::GUERREIRO) {
@@ -253,6 +306,54 @@ bool Player::criar_necromancer(TipoNecromancer nec) {
 }
 
 /**
+ * @brief verifica se o jogador ainda tem peças vivas
+ * 
+ * @return true se ele perdeu o jogo
+ * @return false se ainda tem peças vivas
+ *
+ * Assertivas de Entrada:
+ * inicializado(jogador)== True
+ *
+ * Assertivas de Saída:
+ * mantem_inalterado(jogador) == True
+ */
+bool Player::perdeu_jogo() {
+    return !(this->guerreiro.vivo || this->pilar_espada.vivo ||
+    this->arqueiro.vivo || this->pilar_arco.vivo ||
+    this->cavaleiro.vivo || this->pilar_lanca.vivo);
+}
+
+/**
+ * @brief retorna pontuação do jogador baseado na vida de todas peças vivas
+ * 
+ * @return unsigned short valor da pontuação
+ *
+ * Assertivas de Entrada:
+ * inicializado(jogador) == True
+ *
+ * Assertivas de Saída:
+ * pontuacao >= 0
+ */
+unsigned short Player::pontuacao() {
+    unsigned short total = 0;
+
+    if (this->pilar_espada.vivo)
+        total+=this->pilar_espada.hp;
+    if (this->pilar_arco.vivo)
+        total+=this->pilar_arco.hp;
+    if (this->pilar_lanca.vivo)
+        total+=this->pilar_lanca.hp;
+    if (this->guerreiro.vivo)
+        total+=this->guerreiro.mp;
+    if (this->arqueiro.vivo)
+        total+=this->arqueiro.mp;
+    if (this->cavaleiro.vivo)
+        total+=this->cavaleiro.mp;
+
+    return total;
+}
+
+/**
  * @brief 
  * 
  * @param nome 
@@ -278,40 +379,4 @@ void Player::print_recursos(const char* nome) {
     cout << this->metal << " de metal, ";
     cout << this->ossos << " de ossos" << endl;
     #endif
-}
-
-/**
- * @brief 
- * 
- * @return true 
- * @return false 
- */
-bool Player::perdeu_jogo() {
-    return !(this->guerreiro.vivo || this->pilar_espada.vivo ||
-    this->arqueiro.vivo || this->pilar_arco.vivo ||
-    this->cavaleiro.vivo || this->pilar_lanca.vivo);
-}
-
-/**
- * @brief 
- * 
- * @return unsigned short 
- */
-unsigned short Player::pontuacao() {
-    unsigned short total = 0;
-
-    if (this->pilar_espada.vivo)
-        total+=this->pilar_espada.hp;
-    if (this->pilar_arco.vivo)
-        total+=this->pilar_arco.hp;
-    if (this->pilar_lanca.vivo)
-        total+=this->pilar_lanca.hp;
-    if (this->guerreiro.vivo)
-        total+=this->guerreiro.mp;
-    if (this->arqueiro.vivo)
-        total+=this->arqueiro.mp;
-    if (this->cavaleiro.vivo)
-        total+=this->cavaleiro.mp;
-
-    return total;
 }
