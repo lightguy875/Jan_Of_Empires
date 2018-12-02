@@ -1,0 +1,119 @@
+\hypertarget{_graphics_8cpp}{}\section{src/\+Graphics.cpp File Reference}
+\label{_graphics_8cpp}\index{src/\+Graphics.\+cpp@{src/\+Graphics.\+cpp}}
+{\ttfamily \#include \char`\"{}../include/\+Graphics.\+hpp\char`\"{}}\newline
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a918b230e9805d25f5fa32459a87dee8f}\label{_graphics_8cpp_a918b230e9805d25f5fa32459a87dee8f}} 
+\mbox{\hyperlink{class_button}{Button}} {\bfseries menu\+Buttons} \mbox{[}T\+O\+T\+A\+L\+\_\+\+M\+E\+N\+U\+\_\+\+B\+U\+T\+T\+O\+NS\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a4822d5e4e7fb2d26aedcd492c4254b7a}\label{_graphics_8cpp_a4822d5e4e7fb2d26aedcd492c4254b7a}} 
+\mbox{\hyperlink{class_button}{Button}} {\bfseries pause\+Button} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a831bd72f9c6ffcc476f0df35eb411c59}\label{_graphics_8cpp_a831bd72f9c6ffcc476f0df35eb411c59}} 
+\mbox{\hyperlink{class_button}{Button}} {\bfseries credits\+Back\+Button}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_aaa8e409e04dcf575ef63fd5fb3db06f9}\label{_graphics_8cpp_aaa8e409e04dcf575ef63fd5fb3db06f9}} 
+S\+D\+L\+\_\+\+Window $\ast$ {\bfseries window} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a966da7a60c4ea3ba301e26ccc5efe452}\label{_graphics_8cpp_a966da7a60c4ea3ba301e26ccc5efe452}} 
+S\+D\+L\+\_\+\+Renderer $\ast$ {\bfseries renderer} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a88e92429d5c1319c5a693c5e96742577}\label{_graphics_8cpp_a88e92429d5c1319c5a693c5e96742577}} 
+Texture {\bfseries menu\+\_\+screen}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a94bbf2b4f079b7abf8b8366267c1819d}\label{_graphics_8cpp_a94bbf2b4f079b7abf8b8366267c1819d}} 
+Texture {\bfseries credit\+\_\+screen}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a0c83ba420981799044096f0e61cd6130}\label{_graphics_8cpp_a0c83ba420981799044096f0e61cd6130}} 
+Texture {\bfseries pause\+\_\+screen}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a9d17e3b3d95f2f3bdfbb390349657f60}\label{_graphics_8cpp_a9d17e3b3d95f2f3bdfbb390349657f60}} 
+Texture {\bfseries round\+\_\+screen}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a5cd840b1b5ad682981b7aefc8c37b8c8}\label{_graphics_8cpp_a5cd840b1b5ad682981b7aefc8c37b8c8}} 
+Texture {\bfseries knight} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_afb0456214bf86e8255efbf93843e9c5b}\label{_graphics_8cpp_afb0456214bf86e8255efbf93843e9c5b}} 
+Texture {\bfseries solider} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_ace74383427c40e9917c56fad4b6f2c11}\label{_graphics_8cpp_ace74383427c40e9917c56fad4b6f2c11}} 
+Texture {\bfseries archer} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_ae4632d4c0660c7d35d3b86057bd7c2e9}\label{_graphics_8cpp_ae4632d4c0660c7d35d3b86057bd7c2e9}} 
+Texture {\bfseries map\+\_\+screen}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a10392e450938c1c3db72f902ebe36f7a}\label{_graphics_8cpp_a10392e450938c1c3db72f902ebe36f7a}} 
+Texture {\bfseries ganhou\+\_\+screen} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_abf5bfa705e66ffc1ddaa6ce46c960873}\label{_graphics_8cpp_abf5bfa705e66ffc1ddaa6ce46c960873}} 
+T\+T\+F\+\_\+\+Font $\ast$ {\bfseries font}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_adb557ab7cf5ea08e8b024b64ae7fbbf7}\label{_graphics_8cpp_adb557ab7cf5ea08e8b024b64ae7fbbf7}} 
+Texture {\bfseries text\+Active\+Item}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a325d4592837174021a9691937f662dba}\label{_graphics_8cpp_a325d4592837174021a9691937f662dba}} 
+Texture {\bfseries text\+HP}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a993543549b5395e9004ca567bab1b997}\label{_graphics_8cpp_a993543549b5395e9004ca567bab1b997}} 
+Texture {\bfseries text\+Bones}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a595b1c1034a23eae04587313da684bbf}\label{_graphics_8cpp_a595b1c1034a23eae04587313da684bbf}} 
+Texture {\bfseries text\+Metal}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a5fdf598ed1ee9a242523b50687251e00}\label{_graphics_8cpp_a5fdf598ed1ee9a242523b50687251e00}} 
+Texture {\bfseries text\+Round}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a317243d7664c329128a0f4b6444a3c9b}\label{_graphics_8cpp_a317243d7664c329128a0f4b6444a3c9b}} 
+Texture {\bfseries pilar\+\_\+archer} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a95dc3fcb509a2e27395399748755954b}\label{_graphics_8cpp_a95dc3fcb509a2e27395399748755954b}} 
+Texture {\bfseries pilar\+\_\+knight} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a44877f53171b123e5ac2af041fe28ff7}\label{_graphics_8cpp_a44877f53171b123e5ac2af041fe28ff7}} 
+Texture {\bfseries pilar\+\_\+solider} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_ad1db82157cd98f00d6e7f9ef9b5637ad}\label{_graphics_8cpp_ad1db82157cd98f00d6e7f9ef9b5637ad}} 
+Texture {\bfseries bones} \mbox{[}20\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a712aa1c199e50ae301e38e36a62c2b4e}\label{_graphics_8cpp_a712aa1c199e50ae301e38e36a62c2b4e}} 
+Texture {\bfseries metal} \mbox{[}20\mbox{]}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_abee26a5db07835674de8945f1227df02}\label{_graphics_8cpp_abee26a5db07835674de8945f1227df02}} 
+int {\bfseries ativo\+\_\+x\+\_\+jog}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_af8b1c421c2b3f3474f60f3172232582c}\label{_graphics_8cpp_af8b1c421c2b3f3474f60f3172232582c}} 
+int {\bfseries ativo\+\_\+y\+\_\+jog}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a3af4fd2e68b24f6267ca0fdba135ce97}\label{_graphics_8cpp_a3af4fd2e68b24f6267ca0fdba135ce97}} 
+int {\bfseries ativo\+\_\+x\+\_\+cpu}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_a5a03c7b0c242cb206996d29c58200e78}\label{_graphics_8cpp_a5a03c7b0c242cb206996d29c58200e78}} 
+int {\bfseries ativo\+\_\+y\+\_\+cpu}
+\item 
+\mbox{\Hypertarget{_graphics_8cpp_ae8e5ca4ec014caadce25d80a7ec32912}\label{_graphics_8cpp_ae8e5ca4ec014caadce25d80a7ec32912}} 
+int {\bfseries ganhou\+\_\+time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Alex Siqueira (\href{mailto:siqueiralex@github.com}{\tt siqueiralex@github.\+com}) 
+
+Alexander André (\href{mailto:Alexander-1995@github.com}{\tt Alexander-\/1995@github.\+com}) 
+
+Arthur Veiga (\href{mailto:arthurveiga@github.com}{\tt arthurveiga@github.\+com}) 
+
+Matheus Veleci (\href{mailto:matheusvsantos@github.com}{\tt matheusvsantos@github.\+com}) 
+
+Luis Luz (\href{mailto:lightguy875@github.com}{\tt lightguy875@github.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018-\/12-\/01
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2018 
+\end{DoxyCopyright}

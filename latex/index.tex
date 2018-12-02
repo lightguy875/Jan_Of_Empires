@@ -1,0 +1,93 @@
+Simple Strategy game
+
+\section*{Ideia do jogo}
+
+É um jogo de estratégia em turnos onde você controla 3 unidades para explorar, adquirir recursos, aumentar o poder da sua unidade usando os pilares para vencer o oponente. Cada tipo de unidade tem vantagem sobre outra unidade. O jogo é single-\/player com 1 C\+PU de oponente.
+
+\section*{Elementos do Jogo}
+
+\subsection*{Recursos}
+
+Os recursos servem para criar pilares novos, criar necromancers (a partir de pilares) ou aumentar o poder de necromancers
+
+Dois tipos de recursos\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_metal}{Metal}}\+: para criação de pilares. Menos abundante no mapa (terá o suficiente para criar mais 2 pilares para cada jogador).
+\item \mbox{\hyperlink{class_ossos}{Ossos}}\+: para aumento de poder das unidades. Mais abundante no mapa.
+\end{DoxyItemize}
+
+\subsection*{Prédios (Pilares)}
+
+Os prédios são pilares. Cada pilar representa uma fábrica de um tipo de unidade que será criada a partir da quantidade de ossos. Cada pilar cria uma única unidade, que é o necromancer. Depois de criado o necromancer, o pilar pode aumentar o poder do necromancer utilizando ossos.
+
+Cada pilar tem\+:
+\begin{DoxyItemize}
+\item HP\+: representa a vida do pilar. Se chega a zero, ele é destruído.
+\end{DoxyItemize}
+
+É possível reconstruir pilares, com o máximo de 3 por jogador.
+
+Três tipos de pilares\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_pilar}{Pilar}} da Espada\+: é o pilar que cria o necromancer guerreiro.
+\item \mbox{\hyperlink{class_pilar}{Pilar}} da Lança\+: é o pilar que cria o necromancer cavaleiro.
+\item \mbox{\hyperlink{class_pilar}{Pilar}} do Arco \+: é o pilar que cria o necromancer arqueiro.
+\end{DoxyItemize}
+
+\subsection*{Unidades (Necromancers)}
+
+As unidades são representadas por um único elemento, o \mbox{\hyperlink{class_necromancer}{Necromancer}}. Cada necromancer tem um número associado que define quanto de poder ele tem. Por exemplo\+: no mapa há uma unidade A com o número 20. Isso significa que a unidade A tem 20 de poder.
+
+Cada unidade tem\+:
+\begin{DoxyItemize}
+\item MP\+: representa quanto de poder a unidade tem e representa a vida da unidade. Se ela chegar a zero, a unidade morre.
+\end{DoxyItemize}
+
+São 3 tipos de unidades\+:
+
+
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_guerreiro}{Guerreiro}} (A)\+: é o necromancer que invoca somente undeads guerreiros. A quantidade de undeads é o que define o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_cavaleiro}{Cavaleiro}} e desvantagem sobre o \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_arqueiro}{Arqueiro}}.
+\item \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_cavaleiro}{Cavaleiro}} (B)\+: é o necromancer que invoca somente undeads cavaleiros. A quantidade de undeads é o que define o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_arqueiro}{Arqueiro}} e desvantagem sobre o \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_guerreiro}{Guerreiro}}.
+\item \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_arqueiro}{Arqueiro}} (C)\+: é o necromancer que invoca somente undeads arqueiros. EA quantidade de undeads é o que define o poder do necromancer (é o número que mostra a força da unidade). Ele tem vantagem sobre o \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_guerreiro}{Guerreiro}} e desvantagem sobre o \mbox{\hyperlink{class_necromancer}{Necromancer}} \mbox{\hyperlink{class_cavaleiro}{Cavaleiro}}.
+\end{DoxyItemize}
+
+O máximo de unidades no jogo são 6.
+
+\section*{Regras definidas para o jogo}
+
+\subsection*{Inicialização}
+
+Inicialmente cada jogardor possui\+:
+\begin{DoxyItemize}
+\item 1 \mbox{\hyperlink{class_pilar}{Pilar}} da Espada
+\item 1 \mbox{\hyperlink{class_necromancer}{Necromancer}} guerreiro
+\end{DoxyItemize}
+
+\subsection*{Turno}
+
+Em UM turno o jogador pode criar pilares, fortalecer unidades e mover apenas uma delas. Ele acaba quando o jogador move uma peça ou decide terminar o turno.
+
+\subsection*{Captação de recursos}
+
+Os recursos são espalhados randômicamente no mapa no início do jogo. São capturados quando o jogador move uma unidade para o mesmo bloco em que o recurso está inserido.
+
+\subsection*{Combate}
+
+O combate acontece automaticamente quando duas unidades estão vizinhas O combate acontece sempre entre apenas duas unidades No combate, verificam-\/se os poderes de cada unidade, e as capacidades e fraquezas de cada uma em relação a outra, de acordo com os seus tipos. Então, é decrescido poder de cada uma de acordo com o estabelecido.
+
+\subsection*{Condições de término do jogo}
+
+As condições para o término do jogo são os seguintes\+:
+\begin{DoxyItemize}
+\item Se todos os pilares do oponente forem destruídos;
+\item Se todos os recursos do mapa acabarem\+: nesse caso, a quantidade da vida dos pilares + unidades é somado. Quem tiver mais, vence.
+\end{DoxyItemize}
+
+\section*{Useful links}
+
+
+\begin{DoxyItemize}
+\item \href{http://lazyfoo.net/tutorials/SDL/}{\tt S\+DL Tutorial link}
+\item \href{https://www.libsdl.org/release/SDL-1.2.15/docs/html/}{\tt Bibliotecas de S\+DL} 
+\end{DoxyItemize}

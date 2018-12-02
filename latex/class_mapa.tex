@@ -1,0 +1,265 @@
+\hypertarget{class_mapa}{}\section{Mapa Class Reference}
+\label{class_mapa}\index{Mapa@{Mapa}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mapa_ad722918f4e9150eb37d27de9f2847d5c}{Mapa}} (unsigned short, unsigned short)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_mapa}{Mapa}}\+:\+: \mbox{\hyperlink{class_mapa}{Mapa}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\+\_\+valida}} (unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}} (unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}} (\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$, unsigned short, unsigned short)
+\item 
+\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$ \mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}} (unsigned short, unsigned short)
+\item 
+\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$ \mbox{\hyperlink{class_mapa_a8c216da0fb1514cb354c40b64d9af93a}{retirar}} (unsigned short, unsigned short)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mapa_a510e97a3b1705bd120220da7a1ce1cbf}\label{class_mapa_a510e97a3b1705bd120220da7a1ce1cbf}} 
+Posicao {\bfseries cursor}
+\item 
+\mbox{\Hypertarget{class_mapa_ae1372f45e15677c1ac55e88e9cb1f240}\label{class_mapa_ae1372f45e15677c1ac55e88e9cb1f240}} 
+Mapa\+De\+Blocos {\bfseries mapa}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 25 of file Mapa.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_mapa_ad722918f4e9150eb37d27de9f2847d5c}\label{class_mapa_ad722918f4e9150eb37d27de9f2847d5c}} 
+\index{Mapa@{Mapa}!Mapa@{Mapa}}
+\index{Mapa@{Mapa}!Mapa@{Mapa}}
+\subsubsection{\texorpdfstring{Mapa()}{Mapa()}}
+{\footnotesize\ttfamily Mapa\+::\+Mapa (\begin{DoxyParamCaption}\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_mapa}{Mapa}}\+:\+: \mbox{\hyperlink{class_mapa}{Mapa}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file Mapa.\+cpp.
+
+
+\begin{DoxyCode}
+24                                              \{
+25     this->tam\_x = X;
+26     this->tam\_y = Y;
+27     \textcolor{keywordtype}{int} i, j;
+28     \textcolor{keywordflow}{for} (i = 0; i < X; i++)
+29         \textcolor{keywordflow}{for} (j = 0; j < Y; j++)
+30             this->mapa[std::make\_pair(i, j)] = \mbox{\hyperlink{class_bloco}{Bloco}}();
+31 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}\label{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}} 
+\index{Mapa@{Mapa}!inserir@{inserir}}
+\index{inserir@{inserir}!Mapa@{Mapa}}
+\subsubsection{\texorpdfstring{inserir()}{inserir()}}
+{\footnotesize\ttfamily bool Mapa\+::inserir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$}]{item,  }\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 68 of file Mapa.\+cpp.
+
+
+
+References vazio().
+
+
+
+Referenced by Controlador\+::criar\+\_\+necromancer(), Controlador\+::criar\+\_\+pilar(), and Controlador\+::novo\+\_\+jogo().
+
+
+\begin{DoxyCode}
+68                                                                              \{
+69     \textcolor{keywordflow}{if} (!this->\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(X, Y)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+70 
+71     this->mapa[std::make\_pair(X, Y)].preenche(item);
+72     item->x = X;
+73     item->y = Y;
+74     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+75 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_mapa_aa07c1444720958b3efbc734d2691361d}\label{class_mapa_aa07c1444720958b3efbc734d2691361d}} 
+\index{Mapa@{Mapa}!posicao\+\_\+valida@{posicao\+\_\+valida}}
+\index{posicao\+\_\+valida@{posicao\+\_\+valida}!Mapa@{Mapa}}
+\subsubsection{\texorpdfstring{posicao\+\_\+valida()}{posicao\_valida()}}
+{\footnotesize\ttfamily bool Mapa\+::posicao\+\_\+valida (\begin{DoxyParamCaption}\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file Mapa.\+cpp.
+
+
+
+Referenced by Controlador\+::gerou\+\_\+combate(), Controlador\+::pode\+\_\+movimentar(), retirar(), vazio(), and ver().
+
+
+\begin{DoxyCode}
+41                                                             \{
+42     \textcolor{keywordflow}{return} X < this->tam\_x && Y < this->tam\_y;
+43 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_mapa_a8c216da0fb1514cb354c40b64d9af93a}\label{class_mapa_a8c216da0fb1514cb354c40b64d9af93a}} 
+\index{Mapa@{Mapa}!retirar@{retirar}}
+\index{retirar@{retirar}!Mapa@{Mapa}}
+\subsubsection{\texorpdfstring{retirar()}{retirar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$ Mapa\+::retirar (\begin{DoxyParamCaption}\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Colocavel\+Em\+Bloco$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file Mapa.\+cpp.
+
+
+
+References posicao\+\_\+valida(), and vazio().
+
+
+
+Referenced by Controlador\+::movimentar().
+
+
+\begin{DoxyCode}
+98                                                                   \{
+99     \textcolor{keywordflow}{if} (this->\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(X, Y) || !this->\mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\_valida}}(X, Y)) \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+100     \mbox{\hyperlink{class_colocavel_em_bloco}{ColocavelEmBloco}} *conteudo = this->mapa[std::make\_pair(X, Y)].conteudo;
+101     this->mapa[std::make\_pair(X, Y)].limpa();
+102 
+103     \textcolor{keywordflow}{return} conteudo;
+104 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}\label{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}} 
+\index{Mapa@{Mapa}!vazio@{vazio}}
+\index{vazio@{vazio}!Mapa@{Mapa}}
+\subsubsection{\texorpdfstring{vazio()}{vazio()}}
+{\footnotesize\ttfamily bool Mapa\+::vazio (\begin{DoxyParamCaption}\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file Mapa.\+cpp.
+
+
+
+References posicao\+\_\+valida().
+
+
+
+Referenced by Controlador\+::criar\+\_\+necromancer(), Controlador\+::criar\+\_\+pilar(), Controlador\+::gerou\+\_\+combate(), inserir(), Controlador\+::matar(), Controlador\+::movimentar(), Controlador\+::pode\+\_\+movimentar(), retirar(), and ver().
+
+
+\begin{DoxyCode}
+53                                                    \{
+54     \textcolor{keywordflow}{if} (!this->\mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\_valida}}(X, Y)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+55 
+56     \textcolor{keywordflow}{return} this->mapa[std::make\_pair(X, Y)].vazio;
+57 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}\label{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}} 
+\index{Mapa@{Mapa}!ver@{ver}}
+\index{ver@{ver}!Mapa@{Mapa}}
+\subsubsection{\texorpdfstring{ver()}{ver()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$ Mapa\+::ver (\begin{DoxyParamCaption}\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Colocavel\+Em\+Bloco$\ast$ 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file Mapa.\+cpp.
+
+
+
+References posicao\+\_\+valida(), and vazio().
+
+
+
+Referenced by Controlador\+::gerou\+\_\+combate(), Controlador\+::matar(), Controlador\+::movimentar(), Controlador\+::pode\+\_\+movimentar(), Controlador\+::realiza\+\_\+combate(), and Controlador\+::verifica\+\_\+combate().
+
+
+\begin{DoxyCode}
+84                                                               \{
+85     \textcolor{keywordflow}{if} (this->\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(X, Y) || !this->\mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\_valida}}(X, Y)) \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+86     \mbox{\hyperlink{class_colocavel_em_bloco}{ColocavelEmBloco}} *conteudo = this->mapa[std::make\_pair(X, Y)].conteudo;
+87 
+88     \textcolor{keywordflow}{return} conteudo;
+89 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_mapa_8hpp}{Mapa.\+hpp}}\item 
+src/\mbox{\hyperlink{_mapa_8cpp}{Mapa.\+cpp}}\end{DoxyCompactItemize}

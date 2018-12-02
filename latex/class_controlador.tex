@@ -1,0 +1,659 @@
+\hypertarget{class_controlador}{}\section{Controlador Class Reference}
+\label{class_controlador}\index{Controlador@{Controlador}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_controlador_a17db08229680461d4d1a2110a92ccf78}\label{class_controlador_a17db08229680461d4d1a2110a92ccf78}} 
+\mbox{\hyperlink{class_controlador_a17db08229680461d4d1a2110a92ccf78}{Controlador}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_controlador}{Controlador}}\+:\+: \mbox{\hyperlink{class_controlador}{Controlador}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_controlador_a89652e27b5fc06fa0489e6bae0328d33}{novo\+\_\+jogo}} (bool, bool)
+\item 
+\mbox{\Hypertarget{class_controlador_ab1464581160e7baba397b32ac41315ab}\label{class_controlador_ab1464581160e7baba397b32ac41315ab}} 
+bool {\bfseries salvar\+\_\+jogo} (std\+::string path)
+\item 
+\mbox{\Hypertarget{class_controlador_a6fac98d6cc32e0f413d55755000fca3a}\label{class_controlador_a6fac98d6cc32e0f413d55755000fca3a}} 
+bool {\bfseries carregar\+\_\+jogo} (std\+::string path)
+\item 
+bool \mbox{\hyperlink{class_controlador_a5c4aa9d015704147f6b24ca9a90c94c1}{criar\+\_\+pilar}} (\mbox{\hyperlink{class_player}{Player}} $\ast$, Tipo\+Pilar, unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_controlador_a7c0445d2f378ff7d9b26d2cc77059484}{fortalecer\+\_\+pilar}} (\mbox{\hyperlink{class_player}{Player}} $\ast$, Tipo\+Pilar)
+\item 
+bool \mbox{\hyperlink{class_controlador_aa444d0b080f4d4ecc397819d97098a3a}{criar\+\_\+necromancer}} (\mbox{\hyperlink{class_player}{Player}} $\ast$, Tipo\+Necromancer, unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_controlador_a417c5d209a4fb165ecc03063b3adef80}{fortalecer\+\_\+necromancer}} (\mbox{\hyperlink{class_player}{Player}} $\ast$, Tipo\+Necromancer)
+\item 
+bool \mbox{\hyperlink{class_controlador_a2455948558b79285060dbd2dd8d15bf1}{matar}} (unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_controlador_a75328c4987fa242b36531edac623ff3e}{pode\+\_\+movimentar}} (\mbox{\hyperlink{class_player}{Player}} $\ast$, unsigned short, unsigned short, unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_controlador_a928e6fc0f6cad97f68b4536a802f82bc}{movimentar}} (\mbox{\hyperlink{class_player}{Player}} $\ast$, unsigned short, unsigned short, unsigned short, unsigned short)
+\item 
+\mbox{\Hypertarget{class_controlador_aa91bbe914a404ef60a4cdef6cf7af4e6}\label{class_controlador_aa91bbe914a404ef60a4cdef6cf7af4e6}} 
+void {\bfseries processa\+\_\+jogada} ()
+\item 
+bool \mbox{\hyperlink{class_controlador_ad7e1f4e5dc199d9499cf1896c3f4fdf1}{alguem\+\_\+ganhou}} ()
+\item 
+\mbox{\Hypertarget{class_controlador_a55cb7c5d39b6218e62e61fe6a70b6ae3}\label{class_controlador_a55cb7c5d39b6218e62e61fe6a70b6ae3}} 
+void {\bfseries muda\+\_\+vez} ()
+\item 
+void \mbox{\hyperlink{class_controlador_ad836b4790965ddd4b654a42235b8267e}{verifica\+\_\+combate}} (unsigned short, unsigned short)
+\item 
+void \mbox{\hyperlink{class_controlador_a3f130df13f0c24605a3e34c3edbd2959}{realiza\+\_\+combate}} (unsigned short, unsigned short, unsigned short, unsigned short)
+\item 
+bool \mbox{\hyperlink{class_controlador_a331d668f08fc4946d79d3742978ef481}{gerou\+\_\+combate}} (unsigned short, unsigned short, unsigned short)
+\item 
+\mbox{\Hypertarget{class_controlador_a31986f0934c1b40dce19ef1bfbba5cbc}\label{class_controlador_a31986f0934c1b40dce19ef1bfbba5cbc}} 
+void {\bfseries print\+\_\+recursos} ()
+\item 
+\mbox{\Hypertarget{class_controlador_a9190ea722291cb46b8f30024c1cd10af}\label{class_controlador_a9190ea722291cb46b8f30024c1cd10af}} 
+void {\bfseries print\+\_\+mapa} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_controlador_a8fb90e5dbcda7ce8e855d8c9246df8a7}\label{class_controlador_a8fb90e5dbcda7ce8e855d8c9246df8a7}} 
+\mbox{\hyperlink{class_mapa}{Mapa}} {\bfseries mapa}
+\item 
+\mbox{\Hypertarget{class_controlador_a1e8a704be3d0a15c095c2897e623728d}\label{class_controlador_a1e8a704be3d0a15c095c2897e623728d}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries jogador}
+\item 
+\mbox{\Hypertarget{class_controlador_aec1c1cbe4488e23d4b423bf1ba054fd1}\label{class_controlador_aec1c1cbe4488e23d4b423bf1ba054fd1}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries computador}
+\item 
+\mbox{\Hypertarget{class_controlador_a34a8141b30a4f090f26eaf656b2b826a}\label{class_controlador_a34a8141b30a4f090f26eaf656b2b826a}} 
+Posicao {\bfseries cursor}
+\item 
+\mbox{\Hypertarget{class_controlador_aad6167445edd710d31143f304a83b900}\label{class_controlador_aad6167445edd710d31143f304a83b900}} 
+std\+::list$<$ \mbox{\hyperlink{class_recurso}{Recurso}} $>$ {\bfseries recursos}
+\item 
+\mbox{\Hypertarget{class_controlador_aceb7b0dfc54dc4bc40d8c6c2fc9a7d0d}\label{class_controlador_aceb7b0dfc54dc4bc40d8c6c2fc9a7d0d}} 
+bool {\bfseries jogo\+\_\+terminou}
+\item 
+\mbox{\Hypertarget{class_controlador_a5b9ba3da648ca06e50066247555af03d}\label{class_controlador_a5b9ba3da648ca06e50066247555af03d}} 
+int {\bfseries ganhou}
+\item 
+\mbox{\Hypertarget{class_controlador_aa50f9470bc51c7f6a9c523f5df9ae320}\label{class_controlador_aa50f9470bc51c7f6a9c523f5df9ae320}} 
+bool {\bfseries computador\+\_\+joga}
+\item 
+\mbox{\Hypertarget{class_controlador_a711a5579c3618d904609a478afca5a78}\label{class_controlador_a711a5579c3618d904609a478afca5a78}} 
+unsigned short {\bfseries vez}
+\item 
+\mbox{\Hypertarget{class_controlador_a1361a922b61a78ff56f97c3d1a2f6830}\label{class_controlador_a1361a922b61a78ff56f97c3d1a2f6830}} 
+int {\bfseries vezes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 26 of file Controlador.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controlador_ad7e1f4e5dc199d9499cf1896c3f4fdf1}\label{class_controlador_ad7e1f4e5dc199d9499cf1896c3f4fdf1}} 
+\index{Controlador@{Controlador}!alguem\+\_\+ganhou@{alguem\+\_\+ganhou}}
+\index{alguem\+\_\+ganhou@{alguem\+\_\+ganhou}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{alguem\+\_\+ganhou()}{alguem\_ganhou()}}
+{\footnotesize\ttfamily bool Controlador\+::alguem\+\_\+ganhou (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 332 of file Controlador.\+cpp.
+
+
+
+References Player\+::perdeu\+\_\+jogo(), and Player\+::pontuacao().
+
+
+\begin{DoxyCode}
+332                                 \{
+333     \textcolor{keywordflow}{if} (this->recursos.size() == 0) \{
+334         \textcolor{keywordflow}{if} (this->jogador.\mbox{\hyperlink{class_player_a945277689283bc50bd3afef306bf9740}{pontuacao}}() > this->computador.\mbox{\hyperlink{class_player_a945277689283bc50bd3afef306bf9740}{pontuacao}}()) \{
+335             this->jogo\_terminou = \textcolor{keyword}{true};
+336             this->ganhou = 0;
+337             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+338         \}
+339         \textcolor{keywordflow}{if} (this->jogador.\mbox{\hyperlink{class_player_a945277689283bc50bd3afef306bf9740}{pontuacao}}() < this->computador.\mbox{\hyperlink{class_player_a945277689283bc50bd3afef306bf9740}{pontuacao}}()) \{
+340             this->jogo\_terminou = \textcolor{keyword}{true};
+341             this->ganhou = 1;
+342             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+343         \}
+344 
+345         this->jogo\_terminou = \textcolor{keyword}{true};
+346         this->ganhou = -1;
+347         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+348     \}
+349 
+350     \textcolor{keywordflow}{if} (this->jogador.\mbox{\hyperlink{class_player_aad208bab9f9f88af5ac34ebe7c31dc61}{perdeu\_jogo}}()) \{
+351         this->jogo\_terminou = \textcolor{keyword}{true};
+352         this->ganhou = 1;
+353         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+354     \}
+355     \textcolor{keywordflow}{if} (this->computador.\mbox{\hyperlink{class_player_aad208bab9f9f88af5ac34ebe7c31dc61}{perdeu\_jogo}}()) \{
+356         this->jogo\_terminou = \textcolor{keyword}{true};
+357         this->ganhou = 0;
+358         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+359     \}
+360 
+361     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+362 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_aa444d0b080f4d4ecc397819d97098a3a}\label{class_controlador_aa444d0b080f4d4ecc397819d97098a3a}} 
+\index{Controlador@{Controlador}!criar\+\_\+necromancer@{criar\+\_\+necromancer}}
+\index{criar\+\_\+necromancer@{criar\+\_\+necromancer}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{criar\+\_\+necromancer()}{criar\_necromancer()}}
+{\footnotesize\ttfamily bool Controlador\+::criar\+\_\+necromancer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{jog,  }\item[{Tipo\+Necromancer}]{nec,  }\item[{unsigned short}]{x,  }\item[{unsigned short}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jog} & \\
+\hline
+{\em nec} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file Controlador.\+cpp.
+
+
+
+References Player\+::criar\+\_\+necromancer(), Mapa\+::inserir(), Player\+::necromancer(), and Mapa\+::vazio().
+
+
+\begin{DoxyCode}
+113                                                                                                         \{
+114     \textcolor{keywordflow}{if} (jog->\mbox{\hyperlink{class_player_a560ffc698994e73527433dd2bf4d2c0d}{necromancer}}(nec)->vivo) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+115     \textcolor{keywordflow}{if} (!this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(x, y)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+116     \textcolor{keywordflow}{if} (!jog->\mbox{\hyperlink{class_player_a118c76695a9c1f362a5371381bfe5be3}{criar\_necromancer}}(nec)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+117 
+118     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(jog->\mbox{\hyperlink{class_player_a560ffc698994e73527433dd2bf4d2c0d}{necromancer}}(nec), x, y);
+119 
+120     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+121 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a5c4aa9d015704147f6b24ca9a90c94c1}\label{class_controlador_a5c4aa9d015704147f6b24ca9a90c94c1}} 
+\index{Controlador@{Controlador}!criar\+\_\+pilar@{criar\+\_\+pilar}}
+\index{criar\+\_\+pilar@{criar\+\_\+pilar}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{criar\+\_\+pilar()}{criar\_pilar()}}
+{\footnotesize\ttfamily bool Controlador\+::criar\+\_\+pilar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{jog,  }\item[{Tipo\+Pilar}]{pil,  }\item[{unsigned short}]{x,  }\item[{unsigned short}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jog} & \\
+\hline
+{\em pil} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file Controlador.\+cpp.
+
+
+
+References Player\+::criar\+\_\+pilar(), Mapa\+::inserir(), Player\+::pilar(), and Mapa\+::vazio().
+
+
+\begin{DoxyCode}
+94                                                                                             \{
+95     \textcolor{keywordflow}{if} (jog->\mbox{\hyperlink{class_player_aa953125244cebb04b2363ae102c5fbf6}{pilar}}(pil)->vivo) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+96     \textcolor{keywordflow}{if} (!this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(x, y)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+97     \textcolor{keywordflow}{if} (!jog->\mbox{\hyperlink{class_player_a23fda6bb2c90d8033dc6ae07d1f27964}{criar\_pilar}}(pil)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+98     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(jog->\mbox{\hyperlink{class_player_aa953125244cebb04b2363ae102c5fbf6}{pilar}}(pil), x, y);
+99 
+100     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+101 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a417c5d209a4fb165ecc03063b3adef80}\label{class_controlador_a417c5d209a4fb165ecc03063b3adef80}} 
+\index{Controlador@{Controlador}!fortalecer\+\_\+necromancer@{fortalecer\+\_\+necromancer}}
+\index{fortalecer\+\_\+necromancer@{fortalecer\+\_\+necromancer}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{fortalecer\+\_\+necromancer()}{fortalecer\_necromancer()}}
+{\footnotesize\ttfamily bool Controlador\+::fortalecer\+\_\+necromancer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{jog,  }\item[{Tipo\+Necromancer}]{nec }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jog} & \\
+\hline
+{\em nec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file Controlador.\+cpp.
+
+
+
+References Player\+::criar\+\_\+necromancer(), and Player\+::necromancer().
+
+
+\begin{DoxyCode}
+145                                                                          \{
+146     \textcolor{keywordflow}{if} (!jog->\mbox{\hyperlink{class_player_a560ffc698994e73527433dd2bf4d2c0d}{necromancer}}(nec)->vivo) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+147 
+148     \textcolor{keywordflow}{return} jog->\mbox{\hyperlink{class_player_a118c76695a9c1f362a5371381bfe5be3}{criar\_necromancer}}(nec);
+149 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a7c0445d2f378ff7d9b26d2cc77059484}\label{class_controlador_a7c0445d2f378ff7d9b26d2cc77059484}} 
+\index{Controlador@{Controlador}!fortalecer\+\_\+pilar@{fortalecer\+\_\+pilar}}
+\index{fortalecer\+\_\+pilar@{fortalecer\+\_\+pilar}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{fortalecer\+\_\+pilar()}{fortalecer\_pilar()}}
+{\footnotesize\ttfamily bool Controlador\+::fortalecer\+\_\+pilar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{jog,  }\item[{Tipo\+Pilar}]{pil }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jog} & \\
+\hline
+{\em pil} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 131 of file Controlador.\+cpp.
+
+
+
+References Player\+::criar\+\_\+pilar(), and Player\+::pilar().
+
+
+\begin{DoxyCode}
+131                                                              \{
+132     \textcolor{keywordflow}{if} (!jog->\mbox{\hyperlink{class_player_aa953125244cebb04b2363ae102c5fbf6}{pilar}}(pil)->vivo) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+133 
+134     \textcolor{keywordflow}{return} jog->\mbox{\hyperlink{class_player_a23fda6bb2c90d8033dc6ae07d1f27964}{criar\_pilar}}(pil);
+135 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a331d668f08fc4946d79d3742978ef481}\label{class_controlador_a331d668f08fc4946d79d3742978ef481}} 
+\index{Controlador@{Controlador}!gerou\+\_\+combate@{gerou\+\_\+combate}}
+\index{gerou\+\_\+combate@{gerou\+\_\+combate}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{gerou\+\_\+combate()}{gerou\_combate()}}
+{\footnotesize\ttfamily bool Controlador\+::gerou\+\_\+combate (\begin{DoxyParamCaption}\item[{unsigned short}]{time,  }\item[{unsigned short}]{x,  }\item[{unsigned short}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 243 of file Controlador.\+cpp.
+
+
+
+References Mapa\+::posicao\+\_\+valida(), Mapa\+::vazio(), and Mapa\+::ver().
+
+
+
+Referenced by verifica\+\_\+combate().
+
+
+\begin{DoxyCode}
+243                                                                                        \{
+244     \textcolor{keywordflow}{if} (!this->mapa.\mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\_valida}}(x, y))
+245         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+246     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(x, y))
+247         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+248     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x, y)->tipo == TipoConteudoBloco::RECURSO)
+249         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+250 
+251     \textcolor{keywordflow}{return} this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x, y)->time != time;
+252 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a2455948558b79285060dbd2dd8d15bf1}\label{class_controlador_a2455948558b79285060dbd2dd8d15bf1}} 
+\index{Controlador@{Controlador}!matar@{matar}}
+\index{matar@{matar}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{matar()}{matar()}}
+{\footnotesize\ttfamily bool Controlador\+::matar (\begin{DoxyParamCaption}\item[{unsigned short}]{X,  }\item[{unsigned short}]{Y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & \\
+\hline
+{\em Y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 159 of file Controlador.\+cpp.
+
+
+
+References Mapa\+::vazio(), and Mapa\+::ver().
+
+
+\begin{DoxyCode}
+159                                                           \{
+160     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(X, Y))
+161         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+162     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(X, Y)->tipo == TipoConteudoBloco::RECURSO)
+163         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+164     \mbox{\hyperlink{class_colocavel_em_bloco}{ColocavelEmBloco}} * vitima = this->mapa.\mbox{\hyperlink{class_mapa_a8c216da0fb1514cb354c40b64d9af93a}{retirar}}(X, Y);
+165     vitima->\mbox{\hyperlink{class_colocavel_em_bloco_a89177aadb9f7fd73431adcb29b90f887}{mata}}();
+166     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+167 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a928e6fc0f6cad97f68b4536a802f82bc}\label{class_controlador_a928e6fc0f6cad97f68b4536a802f82bc}} 
+\index{Controlador@{Controlador}!movimentar@{movimentar}}
+\index{movimentar@{movimentar}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{movimentar()}{movimentar()}}
+{\footnotesize\ttfamily bool Controlador\+::movimentar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{jog,  }\item[{unsigned short}]{x\+\_\+orig,  }\item[{unsigned short}]{y\+\_\+orig,  }\item[{unsigned short}]{x\+\_\+dest,  }\item[{unsigned short}]{y\+\_\+dest }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jog} & \\
+\hline
+{\em x\+\_\+orig} & \\
+\hline
+{\em y\+\_\+orig} & \\
+\hline
+{\em x\+\_\+dest} & \\
+\hline
+{\em y\+\_\+dest} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 212 of file Controlador.\+cpp.
+
+
+
+References pode\+\_\+movimentar(), Mapa\+::retirar(), Mapa\+::vazio(), and Mapa\+::ver().
+
+
+\begin{DoxyCode}
+212                                                                                                            
+                               \{
+213     \textcolor{keywordflow}{if} ( !this->\mbox{\hyperlink{class_controlador_a75328c4987fa242b36531edac623ff3e}{pode\_movimentar}}(jog, x\_orig, y\_orig, x\_dest, y\_dest) )
+214         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+215     \mbox{\hyperlink{class_colocavel_em_bloco}{ColocavelEmBloco}} * unidade\_movida = this->mapa.\mbox{\hyperlink{class_mapa_a8c216da0fb1514cb354c40b64d9af93a}{retirar}}(x\_orig, y\_orig);
+216     \textcolor{keywordflow}{if} (!this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(x\_dest, y\_dest)) \{
+217         \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_dest, y\_dest)->tipo == TipoConteudoBloco::RECURSO) \{
+218             \mbox{\hyperlink{class_recurso}{Recurso}} * rec = ((\mbox{\hyperlink{class_recurso}{Recurso}} *) mapa.\mbox{\hyperlink{class_mapa_a8c216da0fb1514cb354c40b64d9af93a}{retirar}}(x\_dest, y\_dest));
+219             jog->\mbox{\hyperlink{class_player_a66d2bc18dfc9b913109761a95126f086}{captar\_recurso}}(rec->tipo\_recurso);
+220             \textcolor{keywordflow}{for} (std::list<Recurso>::iterator i = this->recursos.begin(); i != this->recursos.end(); ++i)
+221                 \textcolor{keywordflow}{if} (i->x == x\_dest && i->y == y\_dest) \{
+222 \textcolor{comment}{// std::cout << "recurso retirado de  " <<i->x << " " << i->y << std::endl;}
+223                     this->recursos.erase(i);
+224                     \textcolor{keywordflow}{break};
+225                 \}
+226         \}
+227     \}
+228     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(unidade\_movida, x\_dest, y\_dest);
+229 
+230     this->processa\_jogada();
+231     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+232 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a89652e27b5fc06fa0489e6bae0328d33}\label{class_controlador_a89652e27b5fc06fa0489e6bae0328d33}} 
+\index{Controlador@{Controlador}!novo\+\_\+jogo@{novo\+\_\+jogo}}
+\index{novo\+\_\+jogo@{novo\+\_\+jogo}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{novo\+\_\+jogo()}{novo\_jogo()}}
+{\footnotesize\ttfamily bool Controlador\+::novo\+\_\+jogo (\begin{DoxyParamCaption}\item[{bool}]{recursos\+\_\+aleatorios,  }\item[{bool}]{computador\+\_\+joga }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em recursos\+\_\+aleatorios} & \\
+\hline
+{\em computador\+\_\+joga} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 59 of file Controlador.\+cpp.
+
+
+
+References Mapa\+::inserir(), and Colocavel\+Em\+Bloco\+::set\+Ativo().
+
+
+\begin{DoxyCode}
+59                                                                           \{
+60     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(&jogador.guerreiro, X\_NECROMANCER\_PLAYER, Y\_NECROMANCER\_PLAYER);
+61     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(&jogador.pilar\_espada, X\_PILAR\_PLAYER, Y\_PILAR\_PLAYER);
+62     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(&computador.guerreiro, X\_NECROMANCER\_COMPUTADOR, Y\_NECROMANCER\_COMPUTADOR);
+63     this->mapa.\mbox{\hyperlink{class_mapa_a4dbab5cd3008b39687d8d2edb0ebacee}{inserir}}(&computador.pilar\_espada, X\_PILAR\_COMPUTADOR, Y\_PILAR\_COMPUTADOR);
+64 
+65     jogador.guerreiro.\mbox{\hyperlink{class_colocavel_em_bloco_a1d45029183e2b8fe4790d44ca0fa3484}{setAtivo}}(\textcolor{keyword}{true});
+66     computador.guerreiro.\mbox{\hyperlink{class_colocavel_em_bloco_a1d45029183e2b8fe4790d44ca0fa3484}{setAtivo}}(\textcolor{keyword}{true});
+67 
+68 \textcolor{preprocessor}{    #ifdef PROD}
+69     ativo\_x\_jog = X\_NECROMANCER\_PLAYER;
+70     ativo\_y\_jog = Y\_NECROMANCER\_PLAYER;
+71     ativo\_x\_cpu = X\_NECROMANCER\_COMPUTADOR;
+72     ativo\_y\_cpu = Y\_NECROMANCER\_COMPUTADOR;
+73 \textcolor{preprocessor}{    #endif}
+74 
+75     \textcolor{keywordflow}{if} (recursos\_aleatorios)
+76         this->preenche\_recursos\_iniciais();
+77 
+78     this->computador\_joga = computador\_joga;
+79 
+80     this->computador.muda\_time();
+81     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+82 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a75328c4987fa242b36531edac623ff3e}\label{class_controlador_a75328c4987fa242b36531edac623ff3e}} 
+\index{Controlador@{Controlador}!pode\+\_\+movimentar@{pode\+\_\+movimentar}}
+\index{pode\+\_\+movimentar@{pode\+\_\+movimentar}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{pode\+\_\+movimentar()}{pode\_movimentar()}}
+{\footnotesize\ttfamily bool Controlador\+::pode\+\_\+movimentar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$}]{jog,  }\item[{unsigned short}]{x\+\_\+orig,  }\item[{unsigned short}]{y\+\_\+orig,  }\item[{unsigned short}]{x\+\_\+dest,  }\item[{unsigned short}]{y\+\_\+dest }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jog} & \\
+\hline
+{\em x\+\_\+orig} & \\
+\hline
+{\em y\+\_\+orig} & \\
+\hline
+{\em x\+\_\+dest} & \\
+\hline
+{\em y\+\_\+dest} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file Controlador.\+cpp.
+
+
+
+References Mapa\+::posicao\+\_\+valida(), Mapa\+::vazio(), and Mapa\+::ver().
+
+
+
+Referenced by movimentar().
+
+
+\begin{DoxyCode}
+180                                                                                                            
+                                    \{
+181     \textcolor{keywordflow}{if} (!(this->mapa.\mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\_valida}}(x\_orig, y\_orig) && this->mapa.
+      \mbox{\hyperlink{class_mapa_aa07c1444720958b3efbc734d2691361d}{posicao\_valida}}(x\_dest, y\_dest)))
+182         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+183     \textcolor{keywordflow}{if} (abs(x\_dest - x\_orig) > RANGE\_MOVIMENTO || abs(y\_dest - y\_orig) > RANGE\_MOVIMENTO)
+184         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+185     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(x\_orig, y\_orig))
+186         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+187     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_orig, y\_orig)->tipo != TipoConteudoBloco::UNIDADE)
+188         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+189     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_orig, y\_orig)->time != jog->time)
+190         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+191     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a5bdde997d3c97c5b6fb7d37c124cdf93}{vazio}}(x\_dest, y\_dest))
+192         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+193     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_dest, y\_dest)->tipo == TipoConteudoBloco::UNIDADE)
+194         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+195     \textcolor{keywordflow}{if} (this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_dest, y\_dest)->tipo == TipoConteudoBloco::PREDIO)
+196         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+197 
+198     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+199 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_a3f130df13f0c24605a3e34c3edbd2959}\label{class_controlador_a3f130df13f0c24605a3e34c3edbd2959}} 
+\index{Controlador@{Controlador}!realiza\+\_\+combate@{realiza\+\_\+combate}}
+\index{realiza\+\_\+combate@{realiza\+\_\+combate}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{realiza\+\_\+combate()}{realiza\_combate()}}
+{\footnotesize\ttfamily void Controlador\+::realiza\+\_\+combate (\begin{DoxyParamCaption}\item[{unsigned short}]{x\+\_\+atac,  }\item[{unsigned short}]{y\+\_\+atac,  }\item[{unsigned short}]{x\+\_\+vit,  }\item[{unsigned short}]{y\+\_\+vit }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+atac} & \\
+\hline
+{\em y\+\_\+atac} & \\
+\hline
+{\em x\+\_\+vit} & \\
+\hline
+{\em y\+\_\+vit} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 262 of file Controlador.\+cpp.
+
+
+
+References Mapa\+::ver().
+
+
+
+Referenced by verifica\+\_\+combate().
+
+
+\begin{DoxyCode}
+262                                                                                                            
+                      \{
+263     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} dano\_golpe;
+264     std::cout<<  \textcolor{stringliteral}{"realizando combate em: "}<< x\_atac << \textcolor{stringliteral}{" "} << y\_atac << \textcolor{stringliteral}{" "}<< x\_vit << \textcolor{stringliteral}{" "} << y\_vit <<
+      std::endl;
+265     \mbox{\hyperlink{class_necromancer}{Necromancer}} *atacante = (\mbox{\hyperlink{class_necromancer}{Necromancer}} *)this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_atac, y\_atac);
+266 
+267     \mbox{\hyperlink{class_colocavel_em_bloco}{ColocavelEmBloco}} *vitima = this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_vit, y\_vit);
+268     TipoNecromancer tipo\_vitima\_nec = ((\mbox{\hyperlink{class_necromancer}{Necromancer}} *) vitima)->tipo\_necromancer;
+269     TipoPilar tipo\_vitima\_pil = ((\mbox{\hyperlink{class_pilar}{Pilar}} *) vitima)->tipo\_pilar;
+270     \textcolor{keywordflow}{switch} ((\textcolor{keywordtype}{int}) this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x\_vit, y\_vit)->tipo) \{
+271         \textcolor{keywordflow}{case} (\textcolor{keywordtype}{int}) TipoConteudoBloco::UNIDADE:
+272             dano\_golpe = DANO\_DE\_ATQ * atacante->\mbox{\hyperlink{class_necromancer_ae276261d4338078bb09b24e73c1abb5b}{multiplicador}}(tipo\_vitima\_nec);
+273             \textcolor{keywordflow}{if} (((\mbox{\hyperlink{class_necromancer}{Necromancer}} *) vitima)->mp <= dano\_golpe) \{
+274                 this->\mbox{\hyperlink{class_controlador_a2455948558b79285060dbd2dd8d15bf1}{matar}}(x\_vit, y\_vit);
+275                 ((\mbox{\hyperlink{class_necromancer}{Necromancer}} *) vitima)->mp = 0;
+276             \} \textcolor{keywordflow}{else} \{
+277                 ((\mbox{\hyperlink{class_necromancer}{Necromancer}} *) vitima)->mp = ((\mbox{\hyperlink{class_necromancer}{Necromancer}} *) vitima)->mp - 
+      dano\_golpe;
+278             \}
+279             \textcolor{keywordflow}{break};
+280         \textcolor{keywordflow}{case} (\textcolor{keywordtype}{int}) TipoConteudoBloco::PREDIO:
+281             dano\_golpe = DANO\_DE\_ATQ * atacante->\mbox{\hyperlink{class_necromancer_ae276261d4338078bb09b24e73c1abb5b}{multiplicador}}(tipo\_vitima\_pil);
+282             \textcolor{keywordflow}{if} (((\mbox{\hyperlink{class_pilar}{Pilar}} *) vitima)->hp <= dano\_golpe) \{
+283                 this->\mbox{\hyperlink{class_controlador_a2455948558b79285060dbd2dd8d15bf1}{matar}}(x\_vit, y\_vit);
+284             \} \textcolor{keywordflow}{else} \{
+285                 ((\mbox{\hyperlink{class_pilar}{Pilar}} *) vitima)->hp = ((\mbox{\hyperlink{class_pilar}{Pilar}} *) vitima)->hp - dano\_golpe;
+286             \}
+287             \textcolor{keywordflow}{break};
+288         \textcolor{keywordflow}{default}:
+289             \textcolor{keywordflow}{break};
+290     \}
+291     \textcolor{keywordflow}{return};
+292 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controlador_ad836b4790965ddd4b654a42235b8267e}\label{class_controlador_ad836b4790965ddd4b654a42235b8267e}} 
+\index{Controlador@{Controlador}!verifica\+\_\+combate@{verifica\+\_\+combate}}
+\index{verifica\+\_\+combate@{verifica\+\_\+combate}!Controlador@{Controlador}}
+\subsubsection{\texorpdfstring{verifica\+\_\+combate()}{verifica\_combate()}}
+{\footnotesize\ttfamily void Controlador\+::verifica\+\_\+combate (\begin{DoxyParamCaption}\item[{unsigned short}]{x,  }\item[{unsigned short}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 300 of file Controlador.\+cpp.
+
+
+
+References gerou\+\_\+combate(), realiza\+\_\+combate(), and Mapa\+::ver().
+
+
+\begin{DoxyCode}
+300                                                                      \{
+301     \textcolor{comment}{// std::cout<<  "verificando combate em: "<< x << " " << y << std::endl;}
+302     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} time = this->mapa.\mbox{\hyperlink{class_mapa_a52dbdf40a47afb56b1cb35dd1cb552f5}{ver}}(x, y)->time;
+303     \textcolor{comment}{// Só é combate se tiver na vez do atacante}
+304     \textcolor{keywordflow}{if} (time != this->vez)
+305         \textcolor{keywordflow}{return};
+306     \textcolor{comment}{// procura adversarios vizinhos e realiza combate se tiver}
+307     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=x-RANGE\_COMBATE; i <= x+RANGE\_COMBATE; i++)
+308         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = y-RANGE\_COMBATE; j <= y+RANGE\_COMBATE; j++)
+309             \textcolor{keywordflow}{if} (this->\mbox{\hyperlink{class_controlador_a331d668f08fc4946d79d3742978ef481}{gerou\_combate}}(time, i, j))
+310                 this->\mbox{\hyperlink{class_controlador_a3f130df13f0c24605a3e34c3edbd2959}{realiza\_combate}}(x, y, i, j);
+311 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_controlador_8hpp}{Controlador.\+hpp}}\item 
+src/\mbox{\hyperlink{_controlador_8cpp}{Controlador.\+cpp}}\end{DoxyCompactItemize}

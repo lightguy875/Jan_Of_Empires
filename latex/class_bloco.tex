@@ -1,0 +1,121 @@
+\hypertarget{class_bloco}{}\section{Bloco Class Reference}
+\label{class_bloco}\index{Bloco@{Bloco}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_bloco_a920ab5b6599552d1ba6ece51bb132626}\label{class_bloco_a920ab5b6599552d1ba6ece51bb132626}} 
+\mbox{\hyperlink{class_bloco_a920ab5b6599552d1ba6ece51bb132626}{Bloco}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_bloco}{Bloco}}\+:\+: \mbox{\hyperlink{class_bloco}{Bloco}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_bloco_a1e474398aae75176e9d6bb14b8258541}{Bloco}} (\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_bloco}{Bloco}}\+:\+: \mbox{\hyperlink{class_bloco}{Bloco}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_bloco_ad5e26f6c5636ac72db653bd1329d5e2e}{preenche}} (\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$)
+\item 
+bool \mbox{\hyperlink{class_bloco_a8260c149942e04f10f069696a6363451}{limpa}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_bloco_aa453b9d7d8ad875974c09e2c8b21ba73}\label{class_bloco_aa453b9d7d8ad875974c09e2c8b21ba73}} 
+bool {\bfseries vazio}
+\item 
+\mbox{\Hypertarget{class_bloco_a638a917a143c421c404483437004a422}\label{class_bloco_a638a917a143c421c404483437004a422}} 
+\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$ {\bfseries conteudo}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 38 of file Bloco.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bloco_a1e474398aae75176e9d6bb14b8258541}\label{class_bloco_a1e474398aae75176e9d6bb14b8258541}} 
+\index{Bloco@{Bloco}!Bloco@{Bloco}}
+\index{Bloco@{Bloco}!Bloco@{Bloco}}
+\subsubsection{\texorpdfstring{Bloco()}{Bloco()}}
+{\footnotesize\ttfamily Bloco\+::\+Bloco (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$}]{conteudo }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_bloco}{Bloco}}\+:\+: \mbox{\hyperlink{class_bloco}{Bloco}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conteudo} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 32 of file Bloco.\+cpp.
+
+
+\begin{DoxyCode}
+32                                        \{
+33     this->conteudo = conteudo;
+34     this->vazio = \textcolor{keyword}{false};
+35 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bloco_a8260c149942e04f10f069696a6363451}\label{class_bloco_a8260c149942e04f10f069696a6363451}} 
+\index{Bloco@{Bloco}!limpa@{limpa}}
+\index{limpa@{limpa}!Bloco@{Bloco}}
+\subsubsection{\texorpdfstring{limpa()}{limpa()}}
+{\footnotesize\ttfamily bool Bloco\+::limpa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 57 of file Bloco.\+cpp.
+
+
+\begin{DoxyCode}
+57                   \{
+58     \textcolor{keywordflow}{if} (this->vazio) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+59     this->conteudo = \textcolor{keyword}{nullptr};
+60     this->vazio = \textcolor{keyword}{true};
+61     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+62 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bloco_ad5e26f6c5636ac72db653bd1329d5e2e}\label{class_bloco_ad5e26f6c5636ac72db653bd1329d5e2e}} 
+\index{Bloco@{Bloco}!preenche@{preenche}}
+\index{preenche@{preenche}!Bloco@{Bloco}}
+\subsubsection{\texorpdfstring{preenche()}{preenche()}}
+{\footnotesize\ttfamily bool Bloco\+::preenche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colocavel_em_bloco}{Colocavel\+Em\+Bloco}} $\ast$}]{c }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file Bloco.\+cpp.
+
+
+\begin{DoxyCode}
+44                                         \{
+45     \textcolor{keywordflow}{if} (!this->vazio) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+46     this->conteudo = c;
+47     this->vazio = \textcolor{keyword}{false};
+48     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+49 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_bloco_8hpp}{Bloco.\+hpp}}\item 
+src/\mbox{\hyperlink{_bloco_8cpp}{Bloco.\+cpp}}\end{DoxyCompactItemize}
