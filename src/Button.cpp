@@ -6,18 +6,18 @@
  * @author Arthur Veiga (arthurveiga@github.com)
  * @author Matheus Veleci (matheusvsantos@github.com)
  * @author Luis Luz (lightguy875@github.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2018-12-01
- * 
+ *
  * @copyright Copyright (c) 2018
- * 
+ *
  */
 #include "../include/Button.hpp"
 
 /**
  * @brief Construct a new Button:: Button object
- * 
+ *
  */
 Button::Button() {
     position_x = 0;
@@ -26,13 +26,13 @@ Button::Button() {
     button_height = 0;
 }
 /**
- * @brief 
- * 
- * @param x 
- * @param y 
- * @param width 
- * @param height 
- * @param type 
+ * @brief
+ *
+ * @param x
+ * @param y
+ * @param width
+ * @param height
+ * @param type
  */
 void Button::setPositionSizeType(int x, int y, int width, int height, ButtonType type) {
     position_x = x;
@@ -43,10 +43,10 @@ void Button::setPositionSizeType(int x, int y, int width, int height, ButtonType
 }
 
 /**
- * @brief 
- * 
- * @param e 
- * @param game 
+ * @brief
+ *
+ * @param e
+ * @param game
  */
 void Button::handleEvent(SDL_Event* e, Game * game) {
     if (e->type == SDL_MOUSEBUTTONDOWN) {
@@ -66,7 +66,7 @@ void Button::handleEvent(SDL_Event* e, Game * game) {
                 case SDL_MOUSEBUTTONDOWN:
                     switch (buttonType) {
                     case BUTTON_PLAY:
-                        game->setGameRunning(GAME_PLAY);
+                        game->setGameRunning(GAME_CHOOSE);
                         break;
                     case BUTTON_CREDITS:
                         game->setGameRunning(GAME_CREDITS);
@@ -78,7 +78,16 @@ void Button::handleEvent(SDL_Event* e, Game * game) {
                         game->setGameRunning(GAME_MENU);
                         break;
                     case BUTTON_BACK_GAME:
+                        game->setGameRunning(GAME_CHOOSE);
+                        break;
+                    case BUTTON_CPU:
+                        cpu_or_player = true;
                         game->setGameRunning(GAME_PLAY);
+                        break;
+                    case BUTTON_P1_P2:
+                        cpu_or_player = false;
+                        game->setGameRunning(GAME_PLAY);
+                        break;
                     }
                 break;
             }
@@ -87,90 +96,90 @@ void Button::handleEvent(SDL_Event* e, Game * game) {
 }
 
 /**
- * @brief 
- * 
- * @param x 
+ * @brief
+ *
+ * @param x
  */
 void Button::setPositionX(int x) {
     position_x = x;
 }
 
 /**
- * @brief 
- * 
- * @param y 
+ * @brief
+ *
+ * @param y
  */
 void Button::setPositionY(int y) {
     position_y = y;
 }
 
 /**
- * @brief 
- * 
- * @param width 
+ * @brief
+ *
+ * @param width
  */
 void Button::setGeneralButtonWidth(int width) {
     button_width = width;
 }
 
 /**
- * @brief 
- * 
- * @param height 
+ * @brief
+ *
+ * @param height
  */
 void Button::setGeneralButtonHeight(int height) {
     button_height = height;
 }
 
 /**
- * @brief 
- * 
- * @return int 
+ * @brief
+ *
+ * @return int
  */
 int Button::getPositionX() {
     return position_x;
 }
 
 /**
- * @brief 
- * 
- * @return int 
+ * @brief
+ *
+ * @return int
  */
 int Button::getPositionY() {
     return position_y;
 }
 
 /**
- * @brief 
- * 
- * @return int 
+ * @brief
+ *
+ * @return int
  */
 int Button::getGeneralButtonWidth() {
     return button_width;
 }
 
 /**
- * @brief 
- * 
- * @return int 
+ * @brief
+ *
+ * @return int
  */
 int Button::getGeneralButtonHeight() {
     return button_height;
 }
 
 /**
- * @brief 
- * 
- * @param type 
+ * @brief
+ *
+ * @param type
  */
 void Button::setButtonType(ButtonType type) {
     buttonType = type;
 }
 
 /**
- * @brief 
- * 
- * @return ButtonType 
+ * @brief
+ *
+ * @return ButtonType
  */
 ButtonType Button::getButtonType() {
     return buttonType;

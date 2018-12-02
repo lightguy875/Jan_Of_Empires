@@ -6,17 +6,17 @@
  * @author Arthur Veiga (arthurveiga@github.com)
  * @author Matheus Veleci (matheusvsantos@github.com)
  * @author Luis Luz (lightguy875@github.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2018-12-01
- * 
+ *
  * @copyright Copyright (c) 2018
- * 
+ *
  */
 #include "../include/Graphics.hpp"
 
 Button menuButtons[ TOTAL_MENU_BUTTONS ];
-Button pauseButton[2];
+Button pauseButton[2], chooseButton[2];
 Button creditsBackButton;
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
@@ -25,13 +25,14 @@ Texture credit_screen;
 Texture pause_screen;
 Texture round_screen;
 Texture knight[2], solider[2], archer[2];
-Texture map_screen;
+Texture map_screen, chooseScreen;
 Texture ganhou_screen[2];
 TTF_Font * font;
 Texture textActiveItem, textHP, textBones, textMetal, textRound;
 Texture pilar_archer[2], pilar_knight[2], pilar_solider[2];
 Texture bones[20], metal[20];
 int ativo_x_jog, ativo_y_jog, ativo_x_cpu, ativo_y_cpu, ganhou_time;
+bool cpu_or_player;
 
 bool Graphics::init() {
     bool success = true;
@@ -169,6 +170,12 @@ bool Graphics::loadMedia() {
         success = false;
     }
 
+    if (!chooseScreen.loadFromFile("../assets/p1_cpu.png")) {
+        printf("Failed to load texture!\n");
+        success = false;
+    }
+
+
     for (int i = 0; i < 20; i++) {
         if (!bones[i].loadFromFile("../assets/bones.png")) {
             printf("Failed to load texture!\n");
@@ -188,6 +195,8 @@ bool Graphics::loadMedia() {
     creditsBackButton.setPositionSizeType(0, 500, 800, 100, BUTTON_BACK_CREDITS);
     pauseButton[0].setPositionSizeType(0, 0, 800, 300, BUTTON_BACK_GAME);
     pauseButton[1].setPositionSizeType(0, 300, 800, 300, BUTTON_QUIT);
+    chooseButton[0].setPositionSizeType(0, 0, 800, 300, BUTTON_P1_P2);
+    chooseButton[1].setPositionSizeType(0, 300, 800, 300, BUTTON_CPU);
 
     return success;
 }

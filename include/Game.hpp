@@ -6,12 +6,12 @@
  * @author Arthur Veiga (arthurveiga@github.com)
  * @author Matheus Veleci (matheusvsantos@github.com)
  * @author Luis Luz (lightguy875@github.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2018-12-01
- * 
+ *
  * @copyright Copyright (c) 2018
- * 
+ *
  */
 #include "common.hpp"
 
@@ -33,6 +33,7 @@ enum GameState {
     GAME_PAUSE,
     GAME_ROUND_PAUSE,
     GAME_GANHOU,
+    GAME_CHOOSE,
 };
 
 class Game{
@@ -51,6 +52,7 @@ class Game{
     void renderRoundPause();
     void renderStatus(int time);
     void renderGanhou();
+    void renderChoose();
 
 };
 

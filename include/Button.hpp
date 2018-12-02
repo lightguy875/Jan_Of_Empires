@@ -6,12 +6,12 @@
  * @author Arthur Veiga (arthurveiga@github.com)
  * @author Matheus Veleci (matheusvsantos@github.com)
  * @author Luis Luz (lightguy875@github.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2018-12-01
- * 
+ *
  * @copyright Copyright (c) 2018
- * 
+ *
  */
 #include "Game.hpp"
 
@@ -42,6 +42,8 @@ enum ButtonType {
     BUTTON_FORT_PILAR,
     BUTTON_FORT_NECRO,
     BUTTON_CRIAR,
+    BUTTON_P1_P2,
+    BUTTON_CPU,
     CANCEL,
 };
 
